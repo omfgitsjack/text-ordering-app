@@ -72,11 +72,11 @@
 									ng-click="makeOrder()"
 									ng-disable="order.length === 0">Order</button>
 							</span>
-							<p  class="text-muted"
-								ng-show="auth.id !== -1">
-								Check your phone for a confirmation code.
-							</p>
 						</div><!-- /input-group -->
+						<p  class="text-muted"
+							ng-show="auth.id !== -1">
+							Check your phone for a confirmation code.
+						</p>
 						<div class="input-group">
 							<input
 								class="form-control"
