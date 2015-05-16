@@ -7,8 +7,8 @@ class AuthenticateController extends Controller {
     function __construct()
     {
         $this->twilioClient = new Services_Twilio(
-            "PNb2fbd11455f96f24cf1f66fae0a86030",
-            "41e9b88d6c81576d8ed6587e211b75cb"
+            getenv('TWILIO_SID'),
+            getenv('TWILIO_AUTH_TOKEN')
         );
     }
 
@@ -19,12 +19,16 @@ class AuthenticateController extends Controller {
         Authentication::create([
             "code" => $authCode
         ]);
+	try {
 
         $this->twilioClient->account->messages->sendMessage(
-            "2892071270",
+            "+12892071270",
             $number,
             "UCafe: " . $authCode
         );
+	} catch (Services_Twilio_RestException $e) {
+		return $e;
+	}
     }
 
     private function generateRandomString($length = 10) {
