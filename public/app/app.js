@@ -33,6 +33,7 @@
     {
         $scope.food = food; // replace later
         $scope.order = [];
+        $scope.authId = -1;
 
         // Watch food collection and update order.
         $scope.$watch('food', function(newVal, oldVal) {
@@ -57,9 +58,21 @@
                     phoneNumber: $scope.phoneNumber
                 })
                 .success(function(res) {
+                    $scope.authId = res;
                     console.log(res);
                 })
         }
+
+        $scope.checkSMSCode = function(code) {
+            $http
+                .post('api/authenticate/check', {
+                    code: code
+                })
+                .success(function(res) {
+                    console.log(res);
+                });
+        }
+
     }
 
 })();

@@ -17,6 +17,7 @@ Route::get('/', function()
 });
 
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
+Route::post('api/authenticate/check', 'AuthenticateController@checkAuthToken');
 
 Route::match(['GET','POST'],'api/test', function()
 {

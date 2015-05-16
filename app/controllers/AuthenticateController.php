@@ -12,6 +12,14 @@ class AuthenticateController extends Controller {
         );
     }
 
+    public function checkAuthToken() {
+        $id = Input::get('id');
+        $code = Input::get('code');
+        $authRecord = Authentication::where('id',$id)->get();
+
+        return $authRecord;
+    }
+
     public function sendAuthToken() {
         $number = Input::get("phoneNumber");
 
@@ -19,16 +27,16 @@ class AuthenticateController extends Controller {
         Authentication::create([
             "code" => $authCode
         ]);
-	try {
 
-        $this->twilioClient->account->messages->sendMessage(
-            "+12892071270",
-            $number,
-            "UCafe: " . $authCode
-        );
-	} catch (Services_Twilio_RestException $e) {
-		return $e;
-	}
+        try {
+            $this->twilioClient->account->messages->sendMessage(
+                "+12892071270",
+                $number,
+                "UCafe: " . $authCode
+            );
+        } catch (Services_Twilio_RestException $e) {
+            return $e;
+        }
     }
 
     private function generateRandomString($length = 10) {
