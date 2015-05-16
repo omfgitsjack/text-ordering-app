@@ -17,3 +17,12 @@ Route::get('/', function()
 });
 
 Route::post('api/order', 'OrderController@makeOrder');
+
+Route::match(['GET','POST'],'api/test', function()
+{
+	$twiml = new Services_Twilio_Twiml();
+	$twiml->say('Hello - your app just answered the phone. Neat, eh?', array('voice' => 'alice'));
+	$response = Response::make($twiml, 200);
+	$response->header('Content-Type', 'text/xml');
+	return $response;
+});
