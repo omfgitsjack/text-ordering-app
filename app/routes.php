@@ -16,7 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::post('api/order', 'OrderController@makeOrder');
+Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 
 Route::match(['GET','POST'],'api/test', function()
 {

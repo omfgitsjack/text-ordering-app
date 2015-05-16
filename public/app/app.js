@@ -52,7 +52,13 @@
         };
 
         $scope.makeOrder = function() {
-            $http.post('api/order', $scope.order);
+            $http
+                .post('api/authenticate', {
+                    phoneNumber: $scope.phoneNumber
+                })
+                .success(function(res) {
+                    console.log(res);
+                })
         }
     }
 
