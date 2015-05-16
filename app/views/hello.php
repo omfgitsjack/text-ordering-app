@@ -70,6 +70,17 @@
 							ng-click="makeOrder()"
 							ng-disabled="order.length === 0">Make Order</button>
 					</div>
+					<div class="col-md-9" id="phone-number">
+						<input
+							class="form-control" type="text" placeholder="SMS Code" ng-show="auth.id !== -1"
+							ng-model="auth.code"/>
+					</div>
+					<div class="col-md-3" id="submit-button">
+						<button class="btn btn-success" ng-show="auth.id !== -1" ng-click="checkSMSCode(auth)">
+							Confirm
+						</button>
+					</div>
+
 				</row>
 			</div>
 		</div>

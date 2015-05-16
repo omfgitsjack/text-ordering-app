@@ -1,5 +1,5 @@
 <?php
 
 class Authentication extends \Eloquent {
-	protected $fillable = ['code'];
+	protected $fillable = ['code', 'phone'];
 }

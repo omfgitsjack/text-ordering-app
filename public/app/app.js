@@ -14,12 +14,12 @@
             selected: false
         },
         {
-            name: "C",
+            name: "Tofu",
             price: 4.5,
             selected: false
         },
         {
-            name: "D",
+            name: "Cake",
             price: 5,
             selected: false
         }
@@ -33,7 +33,10 @@
     {
         $scope.food = food; // replace later
         $scope.order = [];
-        $scope.authId = -1;
+        $scope.auth = {
+		id: -1,
+		code: ''
+	};
 
         // Watch food collection and update order.
         $scope.$watch('food', function(newVal, oldVal) {
@@ -58,16 +61,14 @@
                     phoneNumber: $scope.phoneNumber
                 })
                 .success(function(res) {
-                    $scope.authId = res;
-                    console.log(res);
-                })
+                    $scope.auth.id = res.id;
+                });
         }
 
-        $scope.checkSMSCode = function(code) {
+        $scope.checkSMSCode = function(authObj) {
+	    authObj.order = $scope.order;
             $http
-                .post('api/authenticate/check', {
-                    code: code
-                })
+                .post('api/authenticate/check', authObj)
                 .success(function(res) {
                     console.log(res);
                 });

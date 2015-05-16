@@ -12,20 +12,47 @@ class AuthenticateController extends Controller {
         );
     }
 
+    public function generateReceipt($order) {
+	$receipt = "";
+	$total = 0;
+
+	foreach($order as $item) {
+		$receipt = $receipt . ", ". $item['name'];
+		$total += $item['price'];
+        }
+	$receipt = $receipt . ".\n Total: " . $total;
+
+	return $receipt;
+    }
+
+
     public function checkAuthToken() {
         $id = Input::get('id');
         $code = Input::get('code');
-        $authRecord = Authentication::where('id',$id)->get();
+	$order = Input::get('order');
+        $authRecord = Authentication::where('id',$id)->first();
+	$validAuthToken = $authRecord->code == $code;
 
-        return $authRecord;
+	if ($validAuthToken) {
+		$this->twilioClient->account->messages->sendMessage(
+			"+12892071270",
+			$authRecord->phone,
+			"UCafe\n" . 
+			"You have successfully ordered your meal!\nYour Order:" . 
+			$this->generateReceipt($order));
+		return Response::json(['success'=>true]);
+	} else {
+		return Response::json(['success'=>false]);
+	}
     }
 
     public function sendAuthToken() {
         $number = Input::get("phoneNumber");
 
         $authCode = $this->generateRandomString(6);
-        Authentication::create([
-            "code" => $authCode
+        $authRecord = Authentication::create([
+            "code" => $authCode,
+	    "phone" => $number
         ]);
 
         try {
@@ -37,6 +64,8 @@ class AuthenticateController extends Controller {
         } catch (Services_Twilio_RestException $e) {
             return $e;
         }
+
+	return Response::json(['id' => $authRecord->id]);
     }
 
     private function generateRandomString($length = 10) {

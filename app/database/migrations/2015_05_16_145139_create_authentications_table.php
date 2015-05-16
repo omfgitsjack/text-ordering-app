@@ -16,6 +16,7 @@ class CreateAuthenticationsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->text('code');
+			$table->text('phone');
 			$table->timestamps();
 		});
 	}
