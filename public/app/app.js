@@ -63,10 +63,10 @@
                 .success(function(res) {
                     $scope.auth.id = res.id;
                 });
-        }
+        };
 
         $scope.checkSMSCode = function(authObj) {
-	    authObj.order = $scope.order;
+	        authObj.order = $scope.order;
             $http
                 .post('api/authenticate/check', authObj)
                 .success(function(res) {

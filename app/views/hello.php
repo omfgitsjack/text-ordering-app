@@ -40,63 +40,62 @@
 
 			<!-- Checkout Area -->
 			<row class="checkout-area">
-					<div class="col-md-6">
-						<!-- Order List -->
-						<h3>Your Order</h3>
-						<p class="text-muted"
-						   ng-show="order.length === 0">No selected items</p>
-						<ul class="list-group">
-							<li class="list-group-item"
-								ng-repeat="item in order">
-								<p>
-									<span class="pull-left">{{item.name}}</span>
-									<span class="text-muted pull-right">${{item.price}}</span></p>
-							</li>
-						</ul>
-						<h4 ng-hide="order.length === 0">Total: ${{orderTotal(order)}}</h4>
-					</div>
-					<div class="col-md-6">
-						<!-- Order Submission Area -->
-						<h3>Order Confirmation</h3>
-						<row class="phone">
-							<div class="input-group">
-								<input
-									class="form-control"
-									type="text"
-									placeholder="e.g. 6478325099"
-									ng-model="phoneNumber"/>
-								<span class="input-group-btn">
-									<button class="btn btn-success" type="button">Order</button>
-								</span>
-								<p  class="text-muted"
-									ng-show="auth.id !== -1">
-									Check your phone for a confirmation code.
-								</p>
-							</div><!-- /input-group -->
-							<div class="input-group">
-								<input
-									class="form-control"
-									type="text"
-									placeholder="SMS Code"
+				<div class="col-md-6">
+					<!-- Order List -->
+					<h3>Your Order</h3>
+					<p class="text-muted"
+					   ng-show="order.length === 0">No selected items</p>
+					<ul class="list-group">
+						<li class="list-group-item"
+							ng-repeat="item in order">
+							<p>
+								<span class="pull-left">{{item.name}}</span>
+								<span class="text-muted pull-right">${{item.price}}</span></p>
+						</li>
+					</ul>
+					<h4 ng-hide="order.length === 0">Total: ${{orderTotal(order)}}</h4>
+				</div>
+				<div class="col-md-6">
+					<!-- Order Submission Area -->
+					<h3>Order Confirmation</h3>
+					<row class="phone">
+						<div class="input-group">
+							<input
+								class="form-control"
+								type="text"
+								placeholder="e.g. 6478325099"
+								ng-model="phoneNumber"/>
+							<span class="input-group-btn">
+								<button
+									class="btn btn-success"
+									type="button"
+									ng-click="makeOrder()"
+									ng-disable="order.length === 0">Order</button>
+							</span>
+							<p  class="text-muted"
+								ng-show="auth.id !== -1">
+								Check your phone for a confirmation code.
+							</p>
+						</div><!-- /input-group -->
+						<div class="input-group">
+							<input
+								class="form-control"
+								type="text"
+								placeholder="SMS Code"
+								ng-show="auth.id !== -1"
+								ng-model="auth.code"/>
+							<span class="input-group-btn">
+								<button
+									class="btn btn-success"
 									ng-show="auth.id !== -1"
-									ng-model="auth.code"/>
-								<span class="input-group-btn">
-									<button class="btn btn-success" ng-show="auth.id !== -1" ng-click="checkSMSCode(auth)">
-										Confirm
-									</button>
-								</span>
-							</div><!-- /input-group -->
-
-							<div class="col-md-9" id="phone-number">
-
-							</div>
-							<div class="col-md-3" id="submit-button">
-
-							</div>
-
-						</row>
-					</div>
-				</row>
+									ng-click="checkSMSCode(auth)">
+									Confirm
+								</button>
+							</span>
+						</div><!-- /input-group -->
+					</row>
+				</div>
+			</row>
 		</div>
 	</div>
 </body>
