@@ -1,0 +1,77 @@
+/*
+ *  Header Area Styling
+ */
+    .header-area {
+        text-align: center;
+    }
+
+    .header-area h3 {
+        margin-top: -5px;
+    }
+
+/*
+ * General Styling
+ */
+    html {
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        padding-bottom: 40px;
+        height: 100%;
+        width: 100%;
+    }
+
+
+/*
+ *   Food Item Styling
+ */
+    .food-items {
+        max-width: 610px;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+
+    .food-item {
+        display: inline-block;
+        margin: 10px 10px 10px 10px;
+    }
+
+    .food-item-description {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .food-item-description p {
+        display: inline-block;
+        margin: 0;
+        font-size: 18px;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+
+    .food-img {
+        max-width: 250px;
+        height: auto;
+    }
+
+/*
+ * Checkout area
+ */
+    .checkout-area {
+        display: inline-block;
+        margin-top: 20px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 20px;
+    }
+
+    #phone-number {
+        padding-left: 0;
+    }
+
+    #submit-button {
+        padding-right: 0;
+    }
