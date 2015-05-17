@@ -70,7 +70,7 @@
 									class="btn btn-success"
 									type="button"
 									ng-click="makeOrder()"
-									ng-disable="order.length === 0">Order</button>
+									ng-disabled="order.length === 0">Order</button>
 							</span>
 						</div><!-- /input-group -->
 						<p  class="text-muted"
