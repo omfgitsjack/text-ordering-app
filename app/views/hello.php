@@ -67,29 +67,6 @@
 
 
 		<div class="food-items">
-
-			<!-- Food Items -->
-			<div class="food-item panel panel-default" ng-repeat="item in food">
-				<div class="panel-body">
-					<img class="food-img" src="assets/mapo.jpg" alt="mapo"/>
-					<div class="food-item-description">
-						<p class="pull-left">{{item.name}} <span class="text-muted">${{item.price}}</span></p>
-						<button
-							ng-hide="item.selected"
-							class="btn btn-sm btn-primary pull-right"
-							ng-click="item.selected = true">
-							Add Item
-						</button>
-						<button
-							ng-show="item.selected"
-							class="btn btn-sm btn-danger pull-right"
-							ng-click="item.selected = false">
-							Remove Item
-						</button>
-					</div>
-				</div>
-			</div>
-
 			<!-- Checkout Area -->
 			<row class="checkout-area">
 				<div class="col-md-6">
