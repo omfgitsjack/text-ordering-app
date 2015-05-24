@@ -78,6 +78,9 @@
   width: 100%;
   padding-top: 3em;
 }
+.food-item-mobile > * .food-description-box-mobile > * md-tabs {
+  padding-top: 3em;
+}
 md-tab-item span {
   font-weight: 300;
   color: #9da6b1;
