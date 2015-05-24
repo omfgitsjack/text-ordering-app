@@ -1,0 +1,131 @@
+// Variables
+@dark-gray: #e5e5e5;
+@mid-gray: #f7f7f7;
+@blue-gray: #9da6b1;
+
+.title-area {
+  text-align: center;
+  height: auto;
+  width: 100%;
+  line-height: 1em;
+  margin-bottom: 2em;
+  margin-top: 3em;
+
+  > h3 {
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    color: black;
+    font-weight: 500;
+    font-size: 17px;
+  }
+}
+
+.cost-section {
+  text-align: center;
+  margin-bottom: 2em;
+  margin-top: 2em;
+
+  > .menu-title {
+    font-weight: 300;
+    font-size: 125%;
+  }
+  > .price {
+    font-weight: 500;
+  }
+}
+
+.description-button {
+  margin: 0;
+  width: 100%;
+  display: block;
+  background: @dark-gray;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0 .75em;
+  font-size: 1em;
+  height: 3em;
+  line-height: 3em;
+}
+
+.food-item-mobile {
+  margin-bottom: 2em;
+
+  > * img {
+    width: 100%;
+  }
+
+  > * .food-description-box-mobile {
+    border: 0 solid transparent !important;
+    -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+    background-color: @mid-gray;
+    padding: 1em;
+
+    > .panel-heading {
+      background-color: @dark-gray !important;
+      text-transform: uppercase;
+      width: 100%;
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      > .panel-title {
+        font-weight: 500;
+      }
+    }
+
+    > * .panel-body {
+      background-color: @mid-gray;
+
+      > .card-text-top {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-weight: 500;
+        font-size: .9em;
+      }
+
+      > .card-text-bottom {
+        float: left;
+        font-size: .8em;
+        height: auto;
+        width: 100%;
+        padding-top: 3em;
+      }
+    }
+  }
+}
+
+md-tab-item span {
+    font-weight: 300;
+    color: @blue-gray;
+}
+
+md-tab-item.md-active span {
+  font-weight: 300;
+  color: rgb(33,33,33);
+}
+
+md-tab-content {
+  margin-top: 1em;
+
+  > span {
+    font-weight: 300;
+  }
+}
+
+.nutrition {
+  margin-top: .5em;
+  margin-left: .5em;
+
+  > .nutrition-item {
+    width: 4em;
+    display: inline-block;
+  }
+
+  > * .nutrition-value,
+  > * .nutrition-label {
+    text-align: center;
+    margin: .5em 0;
+  }
+}

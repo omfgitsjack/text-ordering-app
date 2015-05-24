@@ -2,17 +2,69 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>UTCafe</title>
 	<link href="http://bootswatch.com/yeti/bootstrap.css" rel="stylesheet">
+	<link href="bower_components/angular-material/angular-material.css" rel="stylesheet">
 	<link href="app/style.css" rel="stylesheet">
+	<link href="app/menu-styles.css" rel="stylesheet">
 </head>
 <body ng-app="app.main">
 	<div ng-controller="mainController">
 		<div class="header-area">
-			<h1>UTCafe</h1>
-			<h3 class="text-muted">Affordable Delicious Chinese cuisine</h3>
-			<h3 class="text-muted">delivered to UTSC</h3>
+			<h1>优厨房</h1>
+			<h3 class="text-muted">精彩在味蕾绽放</h3>
 		</div>
+
+		<div class="title-area">
+			<h3>today's utsc brunch menu</h3>
+		</div>
+
+		<div class="food-item-mobile visible-xs-block"
+			ng-controller="foodController"
+			ng-repeat="item in food">
+			<div>
+				<img ng-src="{{item.image}}" alt="food item 1"/>
+				<md-button class="description-button" ng-click="isCollapsed = !isCollapsed">
+					description
+				</md-button>
+				<div class="food-description-box-mobile" collapse="isCollapsed">
+					<div class="card-text-top">
+						{{item.description}}
+					</div>
+					<div class="card-text-bottom">
+						<md-tabs md-stretch-tabs="never" md-dynamic-height="true">
+							<md-tab>
+								<md-tab-label>Ingredients</md-tab-label>
+								<md-tab-body>
+									{{item.ingredients}}
+								</md-tab-body>
+							</md-tab>
+							<md-tab>
+								<md-tab-label>Nutrition Info</md-tab-label>
+								<md-tab-body>
+									<div class="nutrition">
+										<div class="nutrition-item" ng-repeat="values in item.nutrition">
+											<div class="nutrition-value">{{values['nutrition-value']}}</div>
+											<div class="nutrition-label">{{values['nutrition-label']}}</div>
+										</div>
+									</div>
+								</md-tab-body>
+							</md-tab>
+						</md-tabs>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="cost-section">
+				<div class="menu-title">{{item.name}}</div>
+				<div class="price">${{item.price}}</div>
+			</div>
+		</div>
+
 
 		<div class="food-items">
 
@@ -101,5 +153,9 @@
 </body>
 
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="app/app.js"></script>
 </html>
