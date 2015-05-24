@@ -19,7 +19,7 @@
             ]
         },
         {
-            name: "Bacon and Veggie Quiche",
+            name: "Grougere Sandwich",
             image: 'assets/food_pic2.png',
             price: 12,
             selected: false,
