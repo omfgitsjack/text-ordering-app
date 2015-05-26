@@ -10,6 +10,7 @@
 	<link href="bower_components/angular-material/angular-material.css" rel="stylesheet">
 	<link href="app/style.css" rel="stylesheet">
 	<link href="app/menu-styles.css" rel="stylesheet">
+	<link href="assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
 </head>
 <body ng-app="app.main">
 	<div ng-controller="mainController">
@@ -28,7 +29,9 @@
 			<div>
 				<img ng-src="{{item.image}}" alt="food item 1"/>
 				<md-button class="description-button" ng-click="isCollapsed = !isCollapsed">
-					description
+					description <span class="pull-right">
+						<i ng-show="isCollapsed" class="fa fa-plus"></i>
+					<i ng-hide="isCollapsed" class="fa fa-minus"></i></span>
 				</md-button>
 				<div class="food-description-box-mobile" collapse="isCollapsed">
 					<div class="card-text-top">
@@ -62,6 +65,18 @@
 			<div class="cost-section">
 				<div class="menu-title">{{item.name}}</div>
 				<div class="price">${{item.price}}</div>
+				<div class="quantity-selector">
+					<md-button class="minus-icon md-fab md-warn md-mini md-hue-3" aria-label="Remove">
+						<md-icon md-svg-src="assets/icons/ic_remove_48px.svg"></md-icon>
+					</md-button>
+					<div class="amount">
+						2
+					</div>
+					<md-button class="plus-icon md-fab md-warn md-mini" aria-label="Plus">
+						<md-icon md-svg-src="assets/icons/ic_add_48px.svg"></md-icon>
+					</md-button>
+				</div>
+
 			</div>
 		</div>
 

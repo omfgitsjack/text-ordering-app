@@ -14,18 +14,6 @@
   font-weight: 500;
   font-size: 17px;
 }
-.cost-section {
-  text-align: center;
-  margin-bottom: 2em;
-  margin-top: 2em;
-}
-.cost-section > .menu-title {
-  font-weight: 300;
-  font-size: 125%;
-}
-.cost-section > .price {
-  font-weight: 500;
-}
 .description-button {
   margin: 0;
   width: 100%;
@@ -107,4 +95,43 @@ md-tab-content > span {
 .nutrition > * .nutrition-label {
   text-align: center;
   margin: .5em 0;
+}
+.cost-section {
+  text-align: center;
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+.cost-section > .menu-title {
+  font-weight: 300;
+  font-size: 125%;
+}
+.cost-section > .price {
+  font-weight: 500;
+}
+md-icon {
+  margin-top: -3px !important;
+  margin-left: .5px !important;
+}
+.minus-icon {
+  margin-right: -5px;
+}
+.plus-icon {
+  margin-left: -5px;
+}
+.minus-icon,
+.plus-icon {
+  margin-top: -10px;
+}
+.minus-icon > md-icon,
+.plus-icon > md-icon {
+  color: white !important;
+}
+.amount {
+  display: inline-block;
+  color: #1b9279;
+  font-size: 250%;
+  margin-right: .25em;
+  margin-left: .25em;
+  text-align: center;
+  width: .75em;
 }

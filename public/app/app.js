@@ -51,7 +51,8 @@
             })
             .accentPalette('grey', {
                 'default': '800'
-            });
+            })
+            .warnPalette('deep-orange');
     }
 
     function mainController($scope, $http)
