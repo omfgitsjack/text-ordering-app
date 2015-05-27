@@ -14,10 +14,18 @@
   font-weight: 500;
   font-size: 17px;
 }
+.food-items {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  max-width: 716.77px;
+}
 .description-button {
   margin: 0;
   width: 100%;
-  display: block;
+  float: left;
+  display: none;
   background: #e5e5e5;
   text-transform: uppercase;
   text-align: left;
@@ -26,48 +34,104 @@
   height: 3em;
   line-height: 3em;
 }
-.food-item-mobile {
-  margin-bottom: 2em;
+@media screen and (max-width: 720px) {
+  .description-button {
+    display: block;
+    height: auto;
+  }
 }
-.food-item-mobile > * img {
+.food-item {
+  margin-bottom: 2em;
+  display: inline-block;
+}
+.food-item > .img-container {
+  float: left;
+  display: block;
+  width: 64.73666%;
+  height: 20em;
+  position: relative;
+  overflow: hidden;
+}
+@media screen and (max-width: 720px) {
+  .food-item > .img-container {
+    width: 100%;
+    height: auto;
+  }
+}
+.food-item > .img-container > img {
   width: 100%;
 }
-.food-item-mobile > * .food-description-box-mobile {
+.food-item > .food-description-box {
+  float: left;
+  display: block;
+  width: 35.26334%;
+  height: 20em;
   border: 0 solid transparent !important;
   -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
   background-color: #f7f7f7;
   padding: 1em;
 }
-.food-item-mobile > * .food-description-box-mobile > .panel-heading {
+@media screen and (max-width: 720px) {
+  .food-item > .food-description-box {
+    display: none;
+    width: 100%;
+  }
+}
+.food-item > .food-description-box > .panel-heading {
   background-color: #e5e5e5 !important;
   text-transform: uppercase;
   width: 100%;
   padding-top: 15px;
   padding-bottom: 15px;
 }
-.food-item-mobile > * .food-description-box-mobile > .panel-heading > .panel-title {
+.food-item > .food-description-box > .panel-heading > .panel-title {
   font-weight: 500;
 }
-.food-item-mobile > * .food-description-box-mobile > * .panel-body {
-  background-color: #f7f7f7;
-}
-.food-item-mobile > * .food-description-box-mobile > * .panel-body > .card-text-top {
+.food-item > .food-description-box > .card-text-top {
   margin: 0;
   padding: 0;
   border: 0;
   font-weight: 500;
-  font-size: .9em;
+  font-size: .8em;
+  line-height: 1.3em;
 }
-.food-item-mobile > * .food-description-box-mobile > * .panel-body > .card-text-bottom {
+@media screen and (max-width: 720px) {
+  .food-item > .food-description-box > .card-text-top {
+    font-size: 12px;
+    line-height: 1.3em;
+  }
+}
+.food-item > .food-description-box > .card-text-bottom {
   float: left;
   font-size: .8em;
   height: auto;
   width: 100%;
+}
+@media screen and (max-width: 720px) {
+  .food-item > .food-description-box > .card-text-bottom {
+    padding-top: 3em;
+    font-size: .6em;
+    height: 15em;
+    padding-top: 2em;
+  }
+}
+.food-item > .food-description-box > * md-tabs {
   padding-top: 3em;
 }
-.food-item-mobile > * .food-description-box-mobile > * md-tabs {
-  padding-top: 3em;
+.food-item > .food-description-box.open {
+  display: block;
+  height: auto;
+}
+.ingredients-section {
+  height: 80px;
+  background-color: #f7f7f7 !important;
+}
+@media screen and (max-width: 720px) {
+  .ingredients-section {
+    height: auto;
+    font-size: .7em;
+  }
 }
 md-tab-item span {
   font-weight: 300;
@@ -96,10 +160,16 @@ md-tab-content > span {
   text-align: center;
   margin: .5em 0;
 }
-.cost-section {
-  text-align: center;
-  margin-bottom: 2em;
-  margin-top: 2em;
+@media screen and (max-height: 720px) {
+  .cost-section {
+    display: block;
+    text-align: center;
+    margin-top: 2em;
+    padding: 0 1.5em;
+    float: left;
+    width: 100%;
+    height: auto;
+  }
 }
 .cost-section > .menu-title {
   font-weight: 300;
@@ -114,6 +184,9 @@ md-icon {
 }
 .minus-icon {
   margin-right: -5px;
+}
+.test {
+  color: white;
 }
 .plus-icon {
   margin-left: -5px;

@@ -23,30 +23,36 @@
 			<h3>today's utsc brunch menu</h3>
 		</div>
 
-		<div class="food-item-mobile visible-xs-block"
-			ng-controller="foodController"
-			ng-repeat="item in food">
-			<div>
-				<img ng-src="{{item.image}}" alt="food item 1"/>
+		<div class="food-items">
+			<div class="food-item"
+				 ng-controller="foodController"
+				 ng-repeat="item in food">
+
+				<div class="img-container">
+					<img ng-src="{{item.image}}" alt="Food Image"/>
+				</div>
 				<md-button class="description-button" ng-click="isCollapsed = !isCollapsed">
 					description <span class="pull-right">
-						<i ng-show="isCollapsed" class="fa fa-plus"></i>
-					<i ng-hide="isCollapsed" class="fa fa-minus"></i></span>
+					<!--<i ng-show="isCollapsed" class="fa fa-plus"></i>-->
+					<md-icon ng-show='isCollapsed' md-svg-src="assets/icons/ic_add_48px.svg" alt="plus"></md-icon>
+				<md-icon ng-hide="isCollapsed" md-svg-src="assets/icons/ic_remove_48px.svg" alt="minus"></md-icon>
 				</md-button>
-				<div class="food-description-box-mobile" collapse="isCollapsed">
+				<div class="food-description-box" ng-class="{open: !isCollapsed}">
 					<div class="card-text-top">
 						{{item.description}}
 					</div>
 					<div class="card-text-bottom">
 						<md-tabs md-stretch-tabs="never" md-dynamic-height="true">
 							<md-tab>
-								<md-tab-label>Ingredients</md-tab-label>
+								<md-tab-label>材料</md-tab-label>
 								<md-tab-body>
-									{{item.ingredients}}
+									<md-content class="ingredients-section">
+										{{item.ingredients}}
+									</md-content>
 								</md-tab-body>
 							</md-tab>
 							<md-tab>
-								<md-tab-label>Nutrition Info</md-tab-label>
+								<md-tab-label>营养数据</md-tab-label>
 								<md-tab-body>
 									<div class="nutrition">
 										<div class="nutrition-item" ng-repeat="values in item.nutrition">
@@ -60,26 +66,23 @@
 					</div>
 
 				</div>
-			</div>
-
-			<div class="cost-section">
-				<div class="menu-title">{{item.name}}</div>
-				<div class="price">${{item.price}}</div>
-				<div class="quantity-selector">
-					<md-button class="minus-icon md-fab md-warn md-mini md-hue-3" aria-label="Remove">
-						<md-icon md-svg-src="assets/icons/ic_remove_48px.svg"></md-icon>
-					</md-button>
-					<div class="amount">
-						2
+				<div class="cost-section">
+					<div class="menu-title">{{item.name}}</div>
+					<div class="price">${{item.price}}</div>
+					<div class="quantity-selector">
+						<md-button class="minus-icon md-fab md-warn md-mini md-hue-3" aria-label="Remove">
+							<md-icon md-svg-src="assets/icons/ic_remove_48px.svg"></md-icon>
+						</md-button>
+						<div class="amount">
+							2
+						</div>
+						<md-button class="plus-icon md-fab md-warn md-mini" aria-label="Plus">
+							<md-icon md-svg-src="assets/icons/ic_add_48px.svg"></md-icon>
+						</md-button>
 					</div>
-					<md-button class="plus-icon md-fab md-warn md-mini" aria-label="Plus">
-						<md-icon md-svg-src="assets/icons/ic_add_48px.svg"></md-icon>
-					</md-button>
 				</div>
-
 			</div>
 		</div>
-
 
 		<div class="food-items">
 			<!-- Checkout Area -->

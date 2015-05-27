@@ -21,10 +21,19 @@
   }
 }
 
+.food-items {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  max-width: 716.77px;
+}
+
 .description-button {
   margin: 0;
   width: 100%;
-  display: block;
+  float: left;
+  display: none;
   background: @dark-gray;
   text-transform: uppercase;
   text-align: left;
@@ -32,16 +41,46 @@
   font-size: 1em;
   height: 3em;
   line-height: 3em;
+
+  @media screen and (max-width: 720px) {
+    display: block;
+    height: auto;
+  }
 }
 
-.food-item-mobile {
+.food-item {
   margin-bottom: 2em;
+  display: inline-block;
 
-  > * img {
-    width: 100%;
+  > .img-container {
+    float: left;
+    display: block;
+    width: 64.73666%;
+    height: 20em;
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (max-width: 720px) {
+      width: 100%;
+      height: auto;
+    }
+
+    > img {
+      width: 100%;
+    }
   }
 
-  > * .food-description-box-mobile {
+  > .food-description-box {
+    float: left;
+    display: block;
+    width: 35.26334%;
+    height: 20em;
+
+    @media screen and (max-width: 720px) { // By default closed when in mobile
+      display: none;
+      width: 100%;
+    }
+
     border: 0 solid transparent !important;
     -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
     box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
@@ -60,29 +99,52 @@
       }
     }
 
-    > * .panel-body {
-      background-color: @mid-gray;
+    > .card-text-top {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-weight: 500;
+      font-size: .8em;
+      line-height: 1.3em;
 
-      > .card-text-top {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-weight: 500;
-        font-size: .9em;
+      @media screen and (max-width: 720px) {
+        font-size: 12px;
+        line-height: 1.3em;
       }
+    }
 
-      > .card-text-bottom {
-        float: left;
-        font-size: .8em;
-        height: auto;
-        width: 100%;
+    > .card-text-bottom {
+      float: left;
+      font-size: .8em;
+      height: auto;
+      width: 100%;
+
+      @media screen and (max-width: 720px) {
         padding-top: 3em;
+        font-size: .6em;
+        height: 15em;
+        padding-top: 2em;
       }
     }
 
     > * md-tabs {
       padding-top: 3em;
     }
+  }
+
+  > .food-description-box.open {
+    display: block;
+    height: auto;
+  }
+}
+
+.ingredients-section {
+  height: 80px;
+  background-color: #f7f7f7 !important;
+
+  @media screen and (max-width: 720px) {
+    height: auto;
+    font-size: .7em;
   }
 }
 
@@ -123,9 +185,16 @@ md-tab-content {
 // Amount/Title/Price Section
 
 .cost-section {
-  text-align: center;
-  margin-bottom: 2em;
-  margin-top: 2em;
+
+  @media screen and (max-height: 720px) {
+    display: block;
+    text-align: center;
+    margin-top: 2em;
+    padding: 0 1.5em;
+    float: left;
+    width: 100%;
+    height: auto;
+  }
 
   > .menu-title {
     font-weight: 300;
@@ -144,7 +213,7 @@ md-icon {
 .minus-icon {
   margin-right: -5px;
 }
-
+.test { color:white    }
 .plus-icon {
   margin-left: -5px;
 }
@@ -167,3 +236,5 @@ md-icon {
   text-align: center;
   width: .75em;
 }
+
+// Windows styling
