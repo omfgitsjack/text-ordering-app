@@ -1,0 +1,43 @@
+/*
+ *  Header Area Styling
+ */
+.header-area {
+    text-align: center;
+}
+
+.header-area h3 {
+    margin-top: -5px;
+}
+
+/*
+ * General Styling
+ */
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    padding-bottom: 40px;
+    height: 100%;
+    width: 100%;
+}
+
+/*
+ * Checkout area
+ */
+.checkout-area {
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+}
+
+#phone-number {
+    padding-left: 0;
+}
+
+#submit-button {
+    padding-right: 0;
+}

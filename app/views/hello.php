@@ -46,15 +46,18 @@
 							<md-tab>
 								<md-tab-label>材料</md-tab-label>
 								<md-tab-body>
-									<md-content class="ingredients-section">
+									<md-content class="ingredients-section-content">
 										{{item.ingredients}}
 									</md-content>
+									<div class="ingredients-section">
+										{{item.ingredients}}
+									</div>
 								</md-tab-body>
 							</md-tab>
 							<md-tab>
 								<md-tab-label>营养数据</md-tab-label>
 								<md-tab-body>
-									<div class="nutrition">
+									<div class="nutrition-tab">
 										<div class="nutrition-item" ng-repeat="values in item.nutrition">
 											<div class="nutrition-value">{{values['nutrition-value']}}</div>
 											<div class="nutrition-label">{{values['nutrition-label']}}</div>

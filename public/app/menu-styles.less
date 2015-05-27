@@ -118,33 +118,50 @@
       font-size: .8em;
       height: auto;
       width: 100%;
-
-      @media screen and (max-width: 720px) {
-        padding-top: 3em;
-        font-size: .6em;
-        height: 15em;
-        padding-top: 2em;
-      }
+      padding-top: 3em;
     }
 
     > * md-tabs {
-      padding-top: 3em;
+      padding-top: 0;
+
+      @media screen and (max-width: 720px) {
+        padding-top: 3em;
+      }
     }
   }
 
   > .food-description-box.open {
     display: block;
+    height: 20em;
+
+    @media screen and (max-width: 720px) {
+      height: auto;
+    }
+  }
+}
+
+.ingredients-section-content {
+  display: block;
+  height: 80px;
+  background-color: #f7f7f7 !important;
+  font-size: .8em;
+
+  @media screen and (max-width: 720px) {
+    display: none;
     height: auto;
   }
 }
 
 .ingredients-section {
-  height: 80px;
-  background-color: #f7f7f7 !important;
+  display: none;
+  height: auto;
 
   @media screen and (max-width: 720px) {
+    display: block;
+    float: left;
+    font-size: .8em;
     height: auto;
-    font-size: .7em;
+    width: 100%;
   }
 }
 
@@ -166,9 +183,15 @@ md-tab-content {
   }
 }
 
-.nutrition {
-  margin-top: .5em;
+.nutrition-tab {
+  margin-top: 1.8em;
   margin-left: .5em;
+  font-size: .88em;
+
+  @media screen and (max-width: 720px) {
+    margin-top: .5em;
+    font-size: 1em;
+  }
 
   > .nutrition-item {
     width: 4em;
@@ -179,6 +202,14 @@ md-tab-content {
   > * .nutrition-label {
     text-align: center;
     margin: .5em 0;
+  }
+
+  > * .nutrition-value {
+    font-weight: 500;
+  }
+
+  > * .nutrition-label {
+
   }
 }
 
