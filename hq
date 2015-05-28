@@ -1,0 +1,124 @@
+[33mcommit 4793b0fda44f0156cd49c700c5a4a732ff88b1a2[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Wed May 27 21:04:57 2015 -0400
+
+    Created Order and Food controllers, models. migrations and seeders
+
+[33mcommit c1e905381bed19cad99157166f17c6ce620846d6[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Wed May 27 20:27:49 2015 -0400
+
+    Finished styling windows version, moved quantifier to the right
+
+[33mcommit 3e36bc2342e989679f790016bece710c9f39141d[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Wed May 27 00:32:25 2015 -0400
+
+    Finished windows version
+
+[33mcommit 751878089e0cd1aa987dc9b874f27af7543db192[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Tue May 26 23:44:57 2015 -0400
+
+    Finished 80% of windows version
+
+[33mcommit ebcf5af5361fd9ff6c902db94d5ea1b70192037b[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Mon May 25 23:00:17 2015 -0400
+
+    Added amount picker
+
+[33mcommit 925933df6834f739e4850c25b84f3051c7039f9f[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sun May 24 14:33:17 2015 -0400
+
+    Updated
+
+[33mcommit 3930ccf56adc48aa4f4363a30df822bbf6b377b8[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sun May 24 14:22:51 2015 -0400
+
+    Updated sample data
+
+[33mcommit ceb2a7a70301e0a1e16d6666937571f85261bc68[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sun May 24 14:21:46 2015 -0400
+
+    Removed old mapo tofu food items
+
+[33mcommit 3b511b3c81becc8aba21ccb19113b49c694a1de0[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sun May 24 14:20:15 2015 -0400
+
+    Overhauled mobile front-end for browsing food available.
+    
+    Still need to:
+     - Integrate choosing how many items.
+     - CRUD for switching out daily items
+     - We're closed banner
+
+[33mcommit b9aeb269b69de55addf242e5c666ab0b77023bac[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sun May 17 01:03:52 2015 -0400
+
+    Fixed disabled submit button
+
+[33mcommit ca82360ddb7d95ea86030088ade7fe837a791ede[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sat May 16 17:46:32 2015 -0400
+
+    [UI] Fixed padding issues
+
+[33mcommit a7cb1e80a259473519aa9202bc2c35ec4caa2f07[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sat May 16 17:41:09 2015 -0400
+
+    Added ng-click back to confirmation button
+
+[33mcommit ff08c0da5bd4485ed224ab191a3f27c4b4d0a561[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sat May 16 17:34:54 2015 -0400
+
+    [UI] Moved order confirmation
+
+[33mcommit 7a5de69b3f9725510f6a90b328dceb1ef7a61af3[m
+Author: Jack Yiu <jackinyiu@gmail.com>
+Date:   Sat May 16 17:12:51 2015 -0400
+
+    Added confirmation message
+
+[33mcommit 0dd6fd25dc191d48b21361fc4c98a3ba2525ad9a[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sat May 16 15:59:15 2015 -0400
+
+    Added checking code
+
+[33mcommit 2fc7d0926fa8838517c12ed9e3a0c1d542beb7eb[m
+Author: Jack Yiu <jackinyiu@gmail.com>
+Date:   Sat May 16 11:43:51 2015 -0400
+
+    Abstracted Twilio account details, confirmed texting works
+
+[33mcommit 7f60656ae95ce8891f29bb75d96c10b08fbc79f6[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sat May 16 11:23:35 2015 -0400
+
+    Added Code Texting
+
+[33mcommit fca140e9cc9127f8da7af18e15541827410e15f1[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Sat May 16 00:18:51 2015 -0400
+
+    Added twilio phone test
+
+[33mcommit 3d6e16df086b077f81d324505e7aeab2bc1cae58[m
+Author: omfgitsjack <jackinyiu@gmail.com>
+Date:   Fri May 15 22:04:24 2015 -0400
+
+    Contructed basic UI for selected static food
+
+[33mcommit 7c2108360695ba0c01332bd56e505777cd08b590[m
+Author: Jack Yiu <jackinyiu@gmail.com>
+Date:   Fri May 15 14:02:35 2015 -0400
+
+    Initial commit
