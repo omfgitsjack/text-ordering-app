@@ -70,8 +70,10 @@
 
 				</div>
 				<div class="cost-section">
-					<div class="menu-title">{{item.name}}</div>
-					<div class="price">${{item.price}}</div>
+					<div>
+						<div class="menu-title">{{item.name}}</div>
+						<div class="price">${{item.price}}</div>
+					</div>
 					<div class="quantity-selector">
 						<md-button class="minus-icon md-fab md-warn md-mini md-hue-3" aria-label="Remove">
 							<md-icon md-svg-src="assets/icons/ic_remove_48px.svg"></md-icon>
