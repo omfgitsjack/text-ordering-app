@@ -158,4 +158,5 @@
 <script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="app/app.js"></script>
+<script src="app/food-model.service.js"></script>
 </html>

@@ -16,6 +16,23 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('api/food', function() {
+
+    return Response::json([
+		'name' => "name",
+		'price' => "price",
+		'image' => "assets/food_pic1.png",
+		'selected' => "false",
+		'description' => "descr",
+		'nutrition' => [
+			[
+				'nutrition-label' => 'calories',
+				'nutrition-value' => '10g'
+			]
+		]
+    ]);
+});
+
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 Route::post('api/authenticate/check', 'AuthenticateController@checkAuthToken');
 

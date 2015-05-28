@@ -55,7 +55,7 @@
             .warnPalette('deep-orange');
     }
 
-    function mainController($scope, $http)
+    function mainController($scope, $http, FoodService)
     {
         $scope.food = food; // replace later
         $scope.order = [];
@@ -63,6 +63,11 @@
             id: -1,
             code: ''
         };
+
+        FoodService.get()
+            .success(function(res) {
+                console.log(FoodService.items);
+            });
 
         // Watch food collection and update order.
         $scope.$watch('food', function(newVal, oldVal) {
