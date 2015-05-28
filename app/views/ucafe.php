@@ -174,8 +174,8 @@
     <div class="team-box">
       <img src="images/jack.jpg" class="team-image">
       <h4>Jack</h4>
-      <h5>Webmaster</h5>
-      <p class="team-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+      <h5>Web Developer</h5>
+      <p class="team-text">我喜欢买外卖，因为我太懒惰，使我自己的食物。尤其是在考试的时候，我会买外卖。外卖是爱。外卖是生活。外卖是Web开发。</p>
     </div>
 
     <div class="team-box">
