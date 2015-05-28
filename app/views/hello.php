@@ -55,7 +55,7 @@
 								</md-tab-body>
 							</md-tab>
 							<md-tab>
-								<md-tab-label>营养数据</md-tab-label>
+								<md-tab-label>营养价值</md-tab-label>
 								<md-tab-body>
 									<div class="nutrition-tab">
 										<div class="nutrition-item" ng-repeat="values in item.nutrition">
@@ -70,8 +70,10 @@
 
 				</div>
 				<div class="cost-section">
-					<div class="menu-title">{{item.name}}</div>
-					<div class="price">${{item.price}}</div>
+					<div>
+						<div class="menu-title">{{item.name}}</div>
+						<div class="price">${{item.price}}</div>
+					</div>
 					<div class="quantity-selector">
 						<md-button class="minus-icon md-fab md-warn md-mini md-hue-3" aria-label="Remove">
 							<md-icon md-svg-src="assets/icons/ic_remove_48px.svg"></md-icon>

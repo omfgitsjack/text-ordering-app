@@ -188,7 +188,33 @@ md-tab-content > span {
 .nutrition-tab > * .nutrition-value {
   font-weight: 500;
 }
-@media screen and (max-height: 720px) {
+.cost-section {
+  margin-top: 0;
+  text-align: left;
+  display: block;
+  float: left;
+  position: relative;
+  width: 100%;
+}
+.cost-section > * .price {
+  font-weight: 500;
+  font-size: 1.15em;
+}
+.cost-section > * .menu-title {
+  font-weight: 300;
+  font-size: 125%;
+}
+.cost-section > .quantity-selector {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+@media screen and (max-width: 720px) {
+  .cost-section > .quantity-selector {
+    position: relative;
+  }
+}
+@media screen and (max-width: 720px) {
   .cost-section {
     display: block;
     text-align: center;
@@ -198,13 +224,6 @@ md-tab-content > span {
     width: 100%;
     height: auto;
   }
-}
-.cost-section > .menu-title {
-  font-weight: 300;
-  font-size: 125%;
-}
-.cost-section > .price {
-  font-weight: 500;
 }
 md-icon {
   margin-top: -3px !important;

@@ -216,8 +216,34 @@ md-tab-content {
 // Amount/Title/Price Section
 
 .cost-section {
+  margin-top: 0;
+  text-align: left;
+  display: block;
+  float: left;
+  position: relative;
+  width: 100%;
 
-  @media screen and (max-height: 720px) {
+  > * .price {
+    font-weight: 500;
+    font-size: 1.15em;
+  }
+
+  > * .menu-title {
+    font-weight: 300;
+    font-size: 125%;
+  }
+
+  > .quantity-selector {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @media screen and (max-width: 720px) {
+      position: relative;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
     display: block;
     text-align: center;
     margin-top: 2em;
@@ -225,14 +251,6 @@ md-tab-content {
     float: left;
     width: 100%;
     height: auto;
-  }
-
-  > .menu-title {
-    font-weight: 300;
-    font-size: 125%;
-  }
-  > .price {
-    font-weight: 500;
   }
 }
 
