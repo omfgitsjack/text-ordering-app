@@ -13,7 +13,8 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	//return View::make('hello');
+	return View::make('ucafe');
 });
 
 Route::get('api/food', function() {
