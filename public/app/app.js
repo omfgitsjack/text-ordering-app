@@ -62,29 +62,20 @@
         // Calculate total price of order
         $scope.orderTotal = function(order) {
             return order.reduce(function(prevVal, curVal) {
-                return prevVal + curVal.price;
+                return prevVal + (curVal.order.quantity * curVal.price);
             }, 0);
         };
 
         $scope.makeOrder = function() {
             $http
                 .post('api/authenticate', {
-                    phoneNumber: $scope.phoneNumber
+                    phoneNumber: $scope.phoneNumber,
+                    order: $scope.order
                 })
                 .success(function(res) {
-                    $scope.auth.id = res.id;
+
                 });
         };
-
-        $scope.checkSMSCode = function(authObj) {
-	        authObj.order = $scope.order;
-            $http
-                .post('api/authenticate/check', authObj)
-                .success(function(res) {
-                    console.log(res);
-                });
-        }
-
     }
 
     function foodController($scope) {

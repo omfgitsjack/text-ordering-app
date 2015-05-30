@@ -2,10 +2,9 @@
 
 class Order extends \Eloquent {
 	protected $fillable = [
-		'phone',
-		'quantity',
-		'verified',
-		'food_id'
+		'food_id',
+		'authentication_id',
+		'quantity'
 	];
 
 	public function food() {

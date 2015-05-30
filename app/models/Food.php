@@ -14,8 +14,4 @@ class Food extends \Eloquent {
 		'ingredients',
 		'available'
 	];
-
-	public function order(){
-		return $this->hasMany('Order');
-	}
 }

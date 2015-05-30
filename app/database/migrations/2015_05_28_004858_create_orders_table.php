@@ -16,10 +16,11 @@ class CreateOrdersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('food_id')->unsigned();
-			$table->string('phone');
+			$table->integer('authentication_id')->unsigned();
 			$table->integer('quantity');
-			$table->boolean('verified');
 			$table->foreign('food_id')->references('id')->on('foods');
+			$table->foreign('authentication_id')->references('id')->on('authentications');
+			$table->timestamps();
 		});
 	}
 

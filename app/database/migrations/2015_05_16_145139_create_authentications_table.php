@@ -15,8 +15,8 @@ class CreateAuthenticationsTable extends Migration {
 		Schema::create('authentications', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->text('code');
 			$table->text('phone');
+			$table->boolean('verified');
 			$table->timestamps();
 		});
 	}
