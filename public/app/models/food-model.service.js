@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    angular.module('app.main')
+    angular.module('app.models')
         .service('FoodService', function($http) {
             return {
                 items: [],

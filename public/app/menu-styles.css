@@ -95,6 +95,7 @@
   font-weight: 500;
   font-size: .8em;
   line-height: 1.3em;
+  height: 50%;
 }
 @media screen and (max-width: 720px) {
   .food-item > .food-description-box > .card-text-top {
@@ -105,9 +106,8 @@
 .food-item > .food-description-box > .card-text-bottom {
   float: left;
   font-size: .8em;
-  height: auto;
   width: 100%;
-  padding-top: 3em;
+  height: 50%;
 }
 .food-item > .food-description-box > * md-tabs {
   padding-top: 0;
@@ -177,7 +177,7 @@ md-tab-content > span {
   }
 }
 .nutrition-tab > .nutrition-item {
-  width: 4em;
+  width: 3.9em;
   display: inline-block;
 }
 .nutrition-tab > * .nutrition-value,

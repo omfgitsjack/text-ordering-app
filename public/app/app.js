@@ -2,43 +2,12 @@
     "use strict";
 
     var ns = 'app.main';
-    var food = [
-        {
-            name: "Bacon and Veggie Quiche",
-            price: 12,
-            image: 'assets/food_pic1.png',
-            selected: false,
-            description: "Organic grilled red onions, spinach, cremini mushrooms, free-range bacon and roasted peppers baked in a rich egg custard with a puff pastry crust. Side salad of arugula, apples, and fennel with apple cider vinaigrette.",
-            ingredients: "Puff pastry, eggs, heavy cream, creme fraiche, fontina cheese, never ever bacon, roasted red peppers, spinach, red onion, cremini mushrooms, nutmeg, cayenne, grapeseed oil, kosher salt, pepper, apple arugula salad (arugula, pink lady apples, fennel, apple cider, lime zest, lime juice), vinaigrette (shallot, apple cider vinegar, olive oil, grapeseed oil, kosher salt, black pepper, honey).",
-            nutrition: [
-                { 'nutrition-label':'Calories', 'nutrition-value':'470' },
-                { 'nutrition-label':'Protein', 'nutrition-value':'10g' },
-                { 'nutrition-label':'Fat', 'nutrition-value':'22g' },
-                { 'nutrition-label':'Carbs', 'nutrition-value':'13g' },
-                { 'nutrition-label':'Fiber', 'nutrition-value':'1g' }
-            ]
-        },
-        {
-            name: "Grougere Sandwich",
-            image: 'assets/food_pic2.png',
-            price: 12,
-            selected: false,
-            description: "Housemade Gougere filled with cage-free scrambled egg, cauliflower-gruyere bechamel, Canadian bacon, and onion-bacon jam. Side salad of arugula, apples, and fennel with apple cider vinaigrette.",
-            ingredients: "Canadian bacon, butter, flour, whole milk, cage-free eggs, gruyere, cauliflower, black pepper, thyme, onion, bacon, grapeseed oil, salt, pepper, mixed greens, house vinaigrette.",
-            nutrition: [
-                { 'nutrition-label':'Calories', 'nutrition-value':'470' },
-                { 'nutrition-label':'Protein', 'nutrition-value':'10g' },
-                { 'nutrition-label':'Fat', 'nutrition-value':'22g' },
-                { 'nutrition-label':'Carbs', 'nutrition-value':'13g' },
-                { 'nutrition-label':'Fiber', 'nutrition-value':'1g' }
-            ]
-        }
-    ];
 
     angular
         .module(ns, [
             'ui.bootstrap',
-            'ngMaterial'
+            'ngMaterial',
+            'app.models'
         ])
         .config(materialConfig)
         .controller('mainController', mainController)
@@ -57,24 +26,35 @@
 
     function mainController($scope, $http, FoodService)
     {
-        $scope.food = food; // replace later
         $scope.order = [];
         $scope.auth = {
             id: -1,
             code: ''
         };
 
+        // Init our $scope.food
         FoodService.get()
             .success(function(res) {
-                console.log(FoodService.items);
+                $scope.food = res.map(function(el) {
+                    el.order = {
+                        quantity: 0,
+                        cost: function() {
+                            return this.quantity * el.price
+                        }
+                    };
+                    return el;
+                });
             });
+
+        $scope.increment = function(item) { item.order.quantity++ };
+        $scope.decrement = function(item) { item.order.quantity-- };
 
         // Watch food collection and update order.
         $scope.$watch('food', function(newVal, oldVal) {
             if (newVal != oldVal) {
                 // Update Order
                 $scope.order = $scope.food.filter(function(el) {
-                   return el.selected;
+                    return el.order.quantity > 0;
                 });
             }
         }, true);
@@ -110,5 +90,4 @@
     function foodController($scope) {
         $scope.isCollapsed = true;
     }
-
 })();

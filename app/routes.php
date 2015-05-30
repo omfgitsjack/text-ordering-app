@@ -17,22 +17,7 @@ Route::get('/', function()
 	//return View::make('ucafe');
 });
 
-Route::get('api/food', function() {
-
-    return Response::json([
-		'name' => "name",
-		'price' => "price",
-		'image' => "assets/food_pic1.png",
-		'selected' => "false",
-		'description' => "descr",
-		'nutrition' => [
-			[
-				'nutrition-label' => 'calories',
-				'nutrition-value' => '10g'
-			]
-		]
-    ]);
-});
+Route::get('api/food', 'FoodsController@index');
 
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 Route::post('api/authenticate/check', 'AuthenticateController@checkAuthToken');

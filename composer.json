@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
+	  	"fzaninotto/faker": "1.5.*@dev",
 		"twilio/sdk": "~4.1"
 	},
 	"require-dev": {

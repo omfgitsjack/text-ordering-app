@@ -10,7 +10,7 @@ class FoodsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return Response::json(Food::where('available', true)->get());
 	}
 
 	/**

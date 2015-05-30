@@ -58,9 +58,25 @@
 								<md-tab-label>营养价值</md-tab-label>
 								<md-tab-body>
 									<div class="nutrition-tab">
-										<div class="nutrition-item" ng-repeat="values in item.nutrition">
-											<div class="nutrition-value">{{values['nutrition-value']}}</div>
-											<div class="nutrition-label">{{values['nutrition-label']}}</div>
+										<div class="nutrition-item">
+											<div class="nutrition-value">{{item.calories}}</div>
+											<div class="nutrition-label">Calories</div>
+										</div>
+										<div class="nutrition-item">
+											<div class="nutrition-value">{{item.protein}}g</div>
+											<div class="nutrition-label">Protein</div>
+										</div>
+										<div class="nutrition-item">
+											<div class="nutrition-value">{{item.fat}}g</div>
+											<div class="nutrition-label">Fat</div>
+										</div>
+										<div class="nutrition-item">
+											<div class="nutrition-value">{{item.carbs}}g</div>
+											<div class="nutrition-label">Carbs</div>
+										</div>
+										<div class="nutrition-item">
+											<div class="nutrition-value">{{item.fiber}}g</div>
+											<div class="nutrition-label">Fiber</div>
 										</div>
 									</div>
 								</md-tab-body>
@@ -75,13 +91,16 @@
 						<div class="price">${{item.price}}</div>
 					</div>
 					<div class="quantity-selector">
-						<md-button class="minus-icon md-fab md-warn md-mini md-hue-3" aria-label="Remove">
+						<md-button class="minus-icon md-fab md-warn md-mini md-hue-3" aria-label="Remove"
+							ng-click="decrement(item)"
+							ng-disabled="item.order.quantity === 0">
 							<md-icon md-svg-src="assets/icons/ic_remove_48px.svg"></md-icon>
 						</md-button>
 						<div class="amount">
-							2
+							{{item.order.quantity}}
 						</div>
-						<md-button class="plus-icon md-fab md-warn md-mini" aria-label="Plus">
+						<md-button class="plus-icon md-fab md-warn md-mini" aria-label="Plus"
+							ng-click="increment(item)">
 							<md-icon md-svg-src="assets/icons/ic_add_48px.svg"></md-icon>
 						</md-button>
 					</div>
@@ -101,8 +120,8 @@
 						<li class="list-group-item"
 							ng-repeat="item in order">
 							<p>
-								<span class="pull-left">{{item.name}}</span>
-								<span class="text-muted pull-right">${{item.price}}</span></p>
+								<span class="pull-left">{{item.order.quantity}}x {{item.name}}</span>
+								<span class="text-muted pull-right">${{item.order.cost()}}</span></p>
 						</li>
 					</ul>
 					<h4 ng-hide="order.length === 0">Total: ${{orderTotal(order)}}</h4>
@@ -157,6 +176,8 @@
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<!-- models -->
+<script src="app/models/models.js"></script>
+<script src="app/models/food-model.service.js"></script>
 <script src="app/app.js"></script>
-<script src="app/food-model.service.js"></script>
 </html>

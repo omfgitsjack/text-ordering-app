@@ -11,7 +11,8 @@ class Food extends \Eloquent {
 		'fat',
 		'carbs',
 		'fiber',
-		'ingredients'
+		'ingredients',
+		'available'
 	];
 
 	public function order(){
