@@ -22,6 +22,14 @@ Route::get('api/food', 'FoodsController@index');
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 Route::post('api/authenticate/check', 'AuthenticateController@checkAuthToken');
 
+Route::post('api/twilio', function() {
+	$twiml = new Services_Twilio_Twiml();
+	$twiml->message('Message');
+	$response = Response::make($twiml, 200);
+	$response->header('Content-Type', 'text/xml');
+	return $response;
+});
+
 Route::match(['GET','POST'],'api/test', function()
 {
 	$twiml = new Services_Twilio_Twiml();
