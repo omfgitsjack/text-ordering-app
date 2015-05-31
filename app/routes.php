@@ -20,21 +20,15 @@ Route::get('/', function()
 Route::get('api/food', 'FoodsController@index');
 
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
-Route::post('api/authenticate/check', 'AuthenticateController@checkAuthToken');
 
 Route::post('api/twilio', function() {
 	$twiml = new Services_Twilio_Twiml();
-	$twiml->message('Message');
+	$twiml->message('Order confirmed. Your order will arrive within an hour.');
 	$response = Response::make($twiml, 200);
 	$response->header('Content-Type', 'text/xml');
-	return $response;
-});
 
-Route::match(['GET','POST'],'api/test', function()
-{
-	$twiml = new Services_Twilio_Twiml();
-	$twiml->say('Hello - your app just answered the phone. Neat, eh?', array('voice' => 'alice'));
-	$response = Response::make($twiml, 200);
-	$response->header('Content-Type', 'text/xml');
+	$auth = Authentication::where('phone', Input::get('From'))->first();
+	$auth->verified = true;
+
 	return $response;
 });
