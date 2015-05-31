@@ -60,7 +60,7 @@ class AuthenticateController extends Controller {
 
         // Store Authentication details
         $authRecord = Authentication::create([
-            "phone"    => $number,
+            "phone"    => '+1' . $number,
             "verified" => false
         ]);
 

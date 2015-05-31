@@ -1,0 +1,59 @@
+<?php
+
+class AuthenticateController extends Controller {
+
+    private $twilioClient;
+
+    function __construct()
+    {
+        $this->twilioClient = new Services_Twilio(
+            getenv('TWILIO_SID'),
+            getenv('TWILIO_AUTH_TOKEN')
+        );
+    }
+
+    public function checkAuthToken() {
+        $id = Input::get('id');
+        $code = Input::get('code');
+        $authRecord = Authentication::where('id',$id)->first();
+	
+	$validAuthToken = $authRecord['code'] == $code;
+	if ($validAuthToken) {
+		
+		return Response:json(['success' => true]);
+	} else {
+		return Response:json(['success' => false]);
+	]);
+    }
+
+    public function sendAuthToken() {
+        $number = Input::get("phoneNumber");
+
+        $authCode = $this->generateRandomString(6);
+        $authRecord = Authentication::create([
+            "code" => $authCode
+        ]);
+
+        try {
+            $this->twilioClient->account->messages->sendMessage(
+                "+12892071270",
+                $number,
+                "UCafe: " . $authCode
+            );
+        } catch (Services_Twilio_RestException $e) {
+            return $e;
+        }
+
+	return Response::json(['id' => $authRecord->id]);
+    }
+
+    private function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+}

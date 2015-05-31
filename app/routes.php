@@ -25,10 +25,11 @@ Route::post('api/twilio', function() {
 	$twiml = new Services_Twilio_Twiml();
 	$twiml->message('Order confirmed. Your order will arrive within an hour.');
 	$response = Response::make($twiml, 200);
-	$response->header('Content-Type', 'text/xml');
+	$response->header('Content-Type', 'text/xml');	
 
-	$auth = Authentication::where('phone', Input::get('From'))->first();
+	$auth = Authentication::where('phone', Input::get('From'))->orderBy('updated_at')->first();
 	$auth->verified = true;
+	$auth->save();
 
 	return $response;
 });
