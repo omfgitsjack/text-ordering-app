@@ -49,7 +49,7 @@
 
     <div class="menu-box">
       <h1 class="title">优厨房</h1>
-      <h3 class="subtitle">精彩在味蕾绽放</h3>
+      <h3 class="subtitle">不仅仅是便当</h3>
       <h4 class="menutitle">现在就点餐</h4>
       <div class="menu"><a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h5>看看今天的菜单</h5></a> </div>
     </div>
@@ -175,7 +175,7 @@
       <img src="images/jack.jpg" class="team-image">
       <h4>Jack</h4>
       <h5>Web Developer</h5>
-      <p class="team-text">我喜欢买外卖，因为我太懒惰，使我自己的食物。尤其是在考试的时候，我会买外卖。外卖是爱。外卖是生活。外卖是Web开发。</p>
+      <p class="team-text">我喜欢买外卖，因为我太懒去做饭。尤其是在考试的时候，我会买外卖。外卖是爱。外卖是生活。外卖是Web开发。</p>
     </div>
 
     <div class="team-box">
@@ -205,10 +205,6 @@
       
       <a href="#" target="_blank">
         <img src="images/instagram_icon.jpg" class="iconImage">
-      </a>
-
-      <a href="#" target="_blank">
-        <img src="images/linkedin_icon.jpg" class="iconImage" >
       </a> 
 
       <a href="wechat.html" target="_blank">

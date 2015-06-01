@@ -13,8 +13,8 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
-	//return View::make('ucafe');
+	//return View::make('hello');
+	return View::make('ucafe');
 });
 
 Route::get('api/food', 'FoodsController@index');
