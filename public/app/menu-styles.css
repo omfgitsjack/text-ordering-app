@@ -20,6 +20,7 @@
   margin-right: auto;
   float: none;
   max-width: 716.77px;
+  width: 100%;
 }
 .description-button {
   margin: 0;
@@ -177,7 +178,7 @@ md-tab-content > span {
   }
 }
 .nutrition-tab > .nutrition-item {
-  width: 3.9em;
+  width: 3.7em;
   display: inline-block;
 }
 .nutrition-tab > * .nutrition-value,
