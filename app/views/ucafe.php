@@ -196,7 +196,7 @@
 <footer>      
     <div class="icon">
       <div class="email">
-        <a href="mailto:info@ucafe.ca">info@ucafe.ca  → </a>
+        <a href="mailto:info@ucafe.ca">info@ucafe.ca→ </a>
       </div>
 
       <a href="#" target="_blank">
