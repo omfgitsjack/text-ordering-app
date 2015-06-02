@@ -1,10 +1,7 @@
 <!doctype html>
-<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name='viewport' content='width=device-width' />
 
   <!--Page design idea credit to Sprig -> https://www.sprig.com/#/--!>
 
@@ -13,10 +10,10 @@
   <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 </head>
 <body>
-	 <div class="main-header">
+  <div class="main-header">
     <div class="logo-section">
     </div>
-
+  
     <div class="icon">
       <div class="email">
         <a href="mailto:info@ucafe.ca">info@ucafe.ca→ </a>
@@ -34,8 +31,7 @@
         <img src="images/wechat.jpg" class="iconImage" >
       </a>
     </div>
-  </div>
-
+    </div>
   <div class="carousel slide fixed" data-ride="carousel">
     <!-- Indicators -->
     <!-- <ol class="carousel-indicators">
@@ -67,9 +63,9 @@
 
     <div class="menu-box">
       <h1 class="title">优厨房</h1>
-      <h3 class="subtitle">不仅仅是便当</h3>
+      <h3 class="subtitle">精彩在味蕾绽放</h3>
       <h4 class="menutitle">现在就点餐</h4>
-      <div class="menu"><a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h5>看看今天的菜单</h5></a> </div>
+      <div class="menu"><a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h5 class="menutext">看看今天的菜单</h5></a> </div>
     </div>
     
     <!-- </div> -->
@@ -192,8 +188,8 @@
     <div class="team-box">
       <img src="images/jack.jpg" class="team-image">
       <h4>Jack</h4>
-      <h5>Web Developer</h5>
-      <p class="team-text">我喜欢买外卖，因为我太懒去做饭。尤其是在考试的时候，我会买外卖。外卖是爱。外卖是生活。外卖是Web开发。</p>
+      <h5>Webmaster</h5>
+      <p class="team-text">我喜欢买外卖，因为我太懒惰，使我自己的食物。尤其是在考试的时候，我会买外卖。外卖是爱。外卖是生活。外卖是Web开发。</p>
     </div>
 
     <div class="team-box">
@@ -214,7 +210,7 @@
 <!-- <footer>      
     <div class="icon">
       <div class="email">
-        <a href="mailto:info@ucafe.ca">info@ucafe.ca→ </a>
+        <a href="mailto:info@ucafe.ca">info@ucafe.ca  → </a>
       </div>
 
       <a href="#" target="_blank">
@@ -223,7 +219,7 @@
       
       <a href="#" target="_blank">
         <img src="images/instagram_icon.jpg" class="iconImage">
-      </a> 
+      </a>
 
       <a href="wechat.html" target="_blank">
         <img src="images/wechat.jpg" class="iconImage" >
@@ -231,6 +227,8 @@
     </div>
 
 </footer> -->
+
+
 </body>
 
 <script href="js/myscripts.js"></script>
@@ -238,5 +236,4 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-
-</html>
+<html>
