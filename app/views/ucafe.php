@@ -16,6 +16,24 @@
 	 <div class="main-header">
     <div class="logo-section">
     </div>
+
+    <div class="icon">
+      <div class="email">
+        <a href="mailto:info@ucafe.ca">info@ucafe.ca→ </a>
+      </div>
+
+      <a href="#" target="_blank">
+        <img src="images/facebook_icon.jpg" class="iconImage" >
+      </a>
+      
+      <a href="#" target="_blank">
+        <img src="images/instagram_icon.jpg" class="iconImage">
+      </a>
+
+      <a href="wechat.html" target="_blank">
+        <img src="images/wechat.jpg" class="iconImage" >
+      </a>
+    </div>
   </div>
 
   <div class="carousel slide fixed" data-ride="carousel">

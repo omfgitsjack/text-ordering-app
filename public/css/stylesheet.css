@@ -62,14 +62,40 @@ a:active{
 .main-header{
 	height:160px;
 	width: 100%;
-	padding-left: 10%
+	padding-left: 10%;
+	padding-right: 10%;
+	display: block;
 }
 
 .logo-section{
 	height: 160px;
 	width: 160px;
 	background-image: url("../images/logo.jpg");
+	display: inline;
+	float: left;
 }
+
+
+.icon{
+	text-align: center;
+	float: right;
+
+}
+
+.iconImage{
+	width:35px;
+	height:35px;
+	margin-left: 10px;
+}
+
+.email{
+	font-size: 1.8em;
+	color: black;
+	text-align: center;
+	padding-top: 35px;
+	margin-bottom: 1.3em;
+}
+
 
 .menu-box{
 	height: 250px;
@@ -82,8 +108,8 @@ a:active{
 	margin-top: -30%;
 
 
-	/*opacity: 0.9;
-    filter: alpha(opacity=60);*/
+	opacity: 0.9;
+    filter: alpha(opacity=60);
 }
 
 .title{
@@ -106,7 +132,7 @@ a:active{
 	margin-top: 1%;
 	height: 40px; 
 	width: 110px; 
-	border-color: red; 
+	border-color: rgb(114,193,139); 
 	border-style: solid; 
 	border-width:2px; 
 	border-radius:5px; 
@@ -114,8 +140,12 @@ a:active{
 	float: right;
 	margin-right: 1%;
 	margin-bottom:1%;
+	background-color: rgb(114,193,139);
 }
 
+.menutext{
+	color: white;
+}
 .index-wrapper{
 	margin-bottom: 50px; 
 	text-align: center;
@@ -183,8 +213,10 @@ a:active{
 	margin-right: auto;
 	position: relative;
 	z-index: 13;
-	margin-top: -30%;
-	background-color: white;
+	margin-top: -35%;
+	background-color: transparent;
+	
+
 }
 
 
@@ -288,8 +320,8 @@ a:active{
 	border-color: red; 
 	border-style: solid; 
 	border-width:2px; 
-	border-radius:5px; 
-	text-align:center ;
+/*	border-radius:5px; 
+*/	text-align:center ;
 	float: right;
 }
 
@@ -300,27 +332,6 @@ footer{
 	display: block;
 }
 
-
-
-.icon{
-	text-align: center;
-	margin: 0 auto;
-
-}
-
-.iconImage{
-	width:3em;
-	height:3em;
-	margin-left: 10px;
-}
-
-.email{
-	font-size: 2em;
-	color: black;
-	text-align: center;
-	padding-top: 50px;
-	margin-bottom: 1.3em;
-}
 
 
 @media screen and (max-width:420px) and (orientation: portrait){
