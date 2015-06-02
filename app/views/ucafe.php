@@ -193,7 +193,7 @@
   <a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h5>今天的菜单</h5></a>
 </div>
 
-<footer>      
+<!-- <footer>      
     <div class="icon">
       <div class="email">
         <a href="mailto:info@ucafe.ca">info@ucafe.ca→ </a>
@@ -212,7 +212,7 @@
       </a>
     </div>
 
-</footer>
+</footer> -->
 </body>
 
 <script href="js/myscripts.js"></script>
