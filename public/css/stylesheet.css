@@ -67,8 +67,8 @@ a:active{
 }
 
 .logo-section{
-	height: 160px;
-	width: 160px;
+	height: 150px;
+	width: 150px;
 	background-image: url("../images/logo.jpg");
 	display: inline;
 	float: left;
@@ -215,7 +215,7 @@ a:active{
 	margin-top: -35%;
 /*	background-color: transparent;
 */
-	background-color: white;
+	background-color: rgb(245,245,245);
 }
 
 
