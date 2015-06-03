@@ -63,7 +63,7 @@
 
     <div class="menu-box">
       <h1 class="title">优厨房</h1>
-      <h3 class="subtitle">精彩在味蕾绽放</h3>
+      <h3 class="subtitle">不仅仅是便当</h3>
       <h4 class="menutitle">现在就点餐</h4>
       <div class="menu"><a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h5 class="menutext">看看今天的菜单</h5></a> </div>
     </div>
@@ -166,12 +166,62 @@
   </section>
 
 
-  <div class="team-box-wrapper">
-    <h1>我们团队</h1>
 
+  <!-- new -->
+            
+
+  <div class="about-wrapper">
+    <h1>我们团队</h1>
+    <div class="about-box">
+      <img src="images/luna.jpg" class="about-image">
+    </div>
+    <div class="about-box">
+        <h4>Luna</h4>
+        <h5>Marketing</h5>
+        <div class="about-text">我是一名资深的，热爱大自然的，吃货。 这两年一直想创业，找了很多不同的渠道但一直因为缺乏激情而无从下手。随着时间一点一滴的过去，体重一斤一磅的增长，终于发现原来绕了一大圈既然可以从自己由始至终最爱的两个方向发展：美食与环境。嘻嘻，小伙伴们， 姐来给你们送饭了！
+        </div>
+    </div>
+    <div class="about-box">
+      <img src="images/layla.jpg" class="about-image">
+    </div>
+    
+    <div class="about-box">
+        <h4>Layla</h4>
+        <h5>Marketing</h5>
+        <div class="about-text">找优秀厨师过程中，曾一周暴增五斤，也曾吃坏卧床四天。业余Marketing, 职业司机，带着玻璃胃和钻石心想要和你一起吃很多很多顿饭。
+        </div>
+    </div>
     
     
-    <div class="team-box">
+
+    <div class="about-box">
+        <h4>Chris</h4>
+        <h5>Webmaster</h5>
+        <div class="about-text">虽然是个瘦子，内心却想吃成个胖子，然后练出八块腹肌，泡上白富美，当上CEO，登上人生巅峰。没错，头像就是理想型。
+        </div>
+    </div>
+    
+
+    <div class="about-box">
+      <img src="images/chris.jpg" class="about-image">
+    </div>
+    <div class="about-box">
+        <h4>Jack</h4>
+        <h5>Webmaster</h5>
+        <div class="about-text">
+        我喜欢买外卖，因为我太懒惰，使我自己的食物。尤其是在考试的时候，我会买外卖。外卖是爱。外卖是生活。外卖是Web开发。
+
+        </div>
+    </div>
+
+    <div class="about-box">
+      <img src="images/jack.jpg" class="about-image">
+    </div>
+</div>
+<!-- new -->    
+    
+    <!-- normal -->
+    <!-- <div class="team-box">
       <img src="images/layla.jpg" class="team-image">
       <h4>Layla</h4>
       <h5>Marketing</h5>
@@ -197,14 +247,15 @@
       <h4>Chris</h4>
       <h5>Webmaster</h5>
       <p class="team-text">虽然是个瘦子，内心却想吃成个胖子，然后练出八块腹肌，泡上白富美，当上CEO，登上人生巅峰。没错，头像就是理想型。</p>
-    </div>
-    
+    </div> -->
+        <!-- normal -->
+
   
   </div>
 </div>
 
 <div class="footer">
-  <a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h5>今天的菜单</h5></a>
+  <a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><div class="bottom-m">今天的菜单</div></a>
 </div>
 
 <!-- <footer>      
