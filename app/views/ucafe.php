@@ -171,7 +171,9 @@
             
 
   <div class="about-wrapper">
-    <h1>我们团队</h1>
+    <div class="about-wrapper">
+      <h1>我们团队</h1>
+    </div>
     <div class="about-box">
       <img src="images/luna.jpg" class="about-image">
     </div>
