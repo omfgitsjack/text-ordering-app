@@ -304,8 +304,9 @@ a:active{
 
 .homeDImage{
 	width: 80%;
-}
+	height: 20%
 
+}
 
 /*about page*/
 /*.intro-text{

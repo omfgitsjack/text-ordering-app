@@ -111,7 +111,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner width" role="listbox">
       <div class="item active">
-        <img src="images/1.jpg" alt="...">
+        <img src="images/e.png" alt="...">
         <div class="carousel-caption">
         </div>
       </div>
