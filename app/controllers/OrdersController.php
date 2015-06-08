@@ -1,6 +1,12 @@
 <?php
 
+use Carbon\Carbon;
+
 class OrdersController extends \BaseController {
+
+	const ORDERHOURCUTOFF = 10;
+	const ORDERHOURMAX = 24;
+	const CURTIMEZONE = 'America/Toronto';
 
 	/**
 	 * Display a listing of the resource.
@@ -81,6 +87,31 @@ class OrdersController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function todaysOrder()
+	{
+		$deadline = self::calculateTodaysDeadline();
+		$today = Carbon::now(self::getTimeZone());
+
+		return Order::where('updated_at','<',$deadline)
+			->where('updated_at','>',$today)->get();
+	}
+
+	private function calculateTodaysDeadline() {
+		$today = Carbon::now(self::getTimeZone());
+		$todayDeadline = null;
+
+		if ($today->hour > self::ORDERHOURCUTOFF) {
+			$todayDeadline = $today->addDays(1);
+		}
+		$todayDeadline->startOfDay()->addHours(self::ORDERHOURCUTOFF);
+
+		return $todayDeadline;
+	}
+
+	private function getTimeZone() {
+		return new DateTimeZone(self::CURTIMEZONE);
 	}
 
 }

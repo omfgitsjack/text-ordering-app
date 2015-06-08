@@ -21,6 +21,8 @@ Route::get('api/food', 'FoodsController@index');
 
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 
+Route::get('api/orders/today', 'OrdersController@todaysOrder');
+
 Route::post('api/twilio', function() {
 	$twiml = new Services_Twilio_Twiml();
 	$twiml->message('Order confirmed. Your order will arrive within an hour.');
