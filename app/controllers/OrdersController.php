@@ -95,7 +95,9 @@ class OrdersController extends \BaseController {
 		$today = Carbon::now(self::getTimeZone());
 
 		return Order::where('updated_at','<',$deadline)
-			->where('updated_at','>',$today)->get();
+			->where('updated_at','>',$today)
+			->orderBy('updated_at','desc')
+			->get();
 	}
 
 	private function calculateTodaysDeadline() {
