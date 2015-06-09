@@ -92,11 +92,15 @@ class OrdersController extends \BaseController {
 	public function todaysOrder()
 	{
 		$deadline = self::calculateTodaysDeadline();
-		$today = Carbon::now(self::getTimeZone());
+		$today = Carbon::now(self::getTimeZone())->startOfDay();
 
-		return Order::where('updated_at','<',$deadline)
-			->where('updated_at','>',$today)
-			->orderBy('updated_at','desc')
+		return DB::table('authentications')
+			->join('orders','authentications.id','=','orders.authentication_id')
+			->join('foods','foods.id','=','orders.food_id')
+			->where('orders.updated_at','<',$deadline)
+			->where('orders.updated_at','>',$today)
+			->where('authentications.verified','=',true)
+			->orderBy('authentications.updated_at','desc')
 			->get();
 	}
 
