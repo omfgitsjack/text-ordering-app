@@ -91,8 +91,9 @@ class OrdersController extends \BaseController {
 
 	public function todaysOrder()
 	{
-		$deadline = self::calculateTodaysDeadline();
-		$today = Carbon::now(self::getTimeZone())->startOfDay();
+		$timePeriod = self::calculateDeadline();
+		$deadline = $timePeriod['deadline'];
+		$today = $timePeriod['start'];
 
 		return DB::table('authentications')
 			->join('orders','authentications.id','=','orders.authentication_id')
@@ -104,16 +105,22 @@ class OrdersController extends \BaseController {
 			->get();
 	}
 
-	private function calculateTodaysDeadline() {
-		$today = Carbon::now(self::getTimeZone());
-		$todayDeadline = null;
+	private function calculateDeadline($dayOffset = 0) {
+		$now = Carbon::now(self::getTimeZone());
+		$todayDeadline = Carbon::now(self::getTimeZone());
+		$todayStart = Carbon::now(self::getTimeZone());
 
-		if ($today->hour > self::ORDERHOURCUTOFF) {
-			$todayDeadline = $today->addDays(1);
+		if ($now->hour > self::ORDERHOURCUTOFF) {
+			$todayDeadline->addDays($dayOffset + 1);
+		} else {
+			$todayStart->subDays($dayOffset + 1);
 		}
-		$todayDeadline->startOfDay()->addHours(self::ORDERHOURCUTOFF);
 
-		return $todayDeadline;
+		$todayDeadline->startOfDay()->addHours(self::ORDERHOURCUTOFF);
+		$todayStart->startOfDay()->addHours(self::ORDERHOURCUTOFF);
+
+		return [ 'deadline' => $todayDeadline,
+			 'start'    => $todayStart     ];
 	}
 
 	private function getTimeZone() {
