@@ -17,11 +17,12 @@ Route::get('/', function()
 	//return View::make('ucafe');
 });
 
+
 Route::get('api/food', 'FoodsController@index');
 
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 
-Route::get('api/orders/today', 'OrdersController@todaysOrder');
+Route::get('api/orders/today', array('after' => 'allowOrigin', 'uses' => 'OrdersController@todaysOrder'));
 Route::get('api/orders/yesterday', 'OrdersController@yesterdaysOrder');
 
 Route::post('api/twilio', function() {
