@@ -12,7 +12,7 @@
 	<link href="app/menu-styles.css" rel="stylesheet">
 	<link href="assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
 </head>
-<body ng-app="app.main">
+<body ng-app="app">
 	<div ui-view></div>
 </body>
 
@@ -27,5 +27,7 @@
 <script src="app/models/models.js"></script>
 <script src="app/models/food-model.service.js"></script>
 <script src="app/models/order-model.service.js"></script>
+<script src="app/admin-app.js"></script>
+<script src="app/menu-app.js"></script>
 <script src="app/app.js"></script>
 </html>
