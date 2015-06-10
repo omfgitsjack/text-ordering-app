@@ -106,6 +106,8 @@ class OrdersController extends \BaseController {
 				'phone','authentications.id','foods.name',
 				'foods.description','foods.price','foods.image','foods.calories','foods.protein','foods.fat','foods.carbs','foods.fiber','foods.ingredients')
 			->get();
+
+		return $records;
 	}
 
 	public function yesterdaysOrder()
