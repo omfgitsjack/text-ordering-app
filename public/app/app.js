@@ -37,7 +37,11 @@
             .state('menu', {
                 url: "/menu",
                 templateUrl: 'app/menu.html'
-            });
+            })
+		.state("admin", {
+			url: "/admin,
+			templateUrl: "app/admin.html"
+		});
     }
 
     function mainController($scope, $http, FoodService, OrderService)

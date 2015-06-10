@@ -103,7 +103,7 @@ class OrdersController extends \BaseController {
 			->where('authentications.verified','=',true)
 			->orderBy('authentications.updated_at','desc')
 			->select('authentications.updated_at',
-				'phone','authentications.id','foods.name',
+				'phone','authentications.id','foods.name','orders.quantity',
 				'foods.description','foods.price','foods.image','foods.calories','foods.protein','foods.fat','foods.carbs','foods.fiber','foods.ingredients')
 			->get();
 
