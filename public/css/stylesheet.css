@@ -67,11 +67,13 @@ a:active{
 .logo-section{
 	height: 160px;
 	width: 320px;
-	background-image: url("../images/UCafe1.jpg");、
 	display: inline;
 	float: left;
 }
-
+.logo{
+	height: 160px;
+	width: 320px;
+}
 
 .icon{
 	text-align: center;
@@ -95,7 +97,7 @@ a:active{
 
 
 .menu-box{
-	height: 250px;
+	height: 270px;
 	width: 350px;
 	background-color: white;
 	margin-left: auto;
@@ -103,8 +105,6 @@ a:active{
 	position: relative;
 	z-index: 10;
 	margin-top: -30%;
-
-
 	opacity: 0.9;
     filter: alpha(opacity=60);
 }
@@ -119,24 +119,47 @@ a:active{
 	text-align: center;
 
 }
-.menutitle{
+
+.subsubtitle{
+	text-align: center;
+	margin-bottom: 7%;
+}
+/*.menutitle{
 	padding-top: 15%;
 	padding-right: 3%;
 	text-align: right;
-}
+}*/
 
-.menu{
+
+.instruction_button{
 	margin-top: 1%;
 	height: 40px; 
-	width: 110px; 
+	width: 260px; 
 	border-color: rgb(251,64,7); 
 	border-style: solid; 
 	border-width:2px; 
 	border-radius:5px; 
 	text-align:center ;
-	float: right;
-	margin-right: 1%;
-	margin-bottom:1%;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 3%;
+	background-color: rgb(251,64,7);
+}
+
+.menu_button{
+	margin-top: 1%;
+	height: 40px; 
+	width: 260px; 
+	border-color: rgb(251,64,7); 
+	border-style: solid; 
+	border-width:2px; 
+	border-radius:5px; 
+	text-align:center ;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+
 	background-color: rgb(251,64,7);
 }
 
@@ -175,23 +198,15 @@ a:active{
 
 }
 
-.food-description-left{
+.food-description-box{
 	display: inline-block;
 	vertical-align:top;
 	background-color: rgb(245,245,245);
 	text-align: center;
 	width: 80%;
+	margin-bottom: 2%;
 
 
-}
-
-
-.food-description-right{
-	display: inline-block;
-	vertical-align:top;
-	background-color: rgb(245,245,245);
-	text-align: center;
-	width: 80%;
 }
 
 .foodDImage{
@@ -205,16 +220,20 @@ a:active{
 }
 
 .indicator-wrapper{
-	height: 450px;
+	height: 570px;
 	width: 350px;
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
 	z-index: 13;
 	margin-top: -35%;
-/*	background-color: transparent;
-*/
-	background-color: white;
+	background-color: rgb(245,245,245);
+	opacity: 0.9;
+    filter: alpha(opacity=60);
+}
+
+.carousel-indicators{
+	 top: 120px;
 }
 
 
@@ -260,7 +279,7 @@ a:active{
 }
 
 .Text{
-	padding-top: 14%;
+	padding-top: 10%;
 	padding-left: 35%;
 	padding-right:15%;
 
@@ -268,10 +287,15 @@ a:active{
 
 .Eat{
 	padding-left: 35%;
-	padding-top: 14%;
+	padding-top: 10%;
 	padding-right:15%;
+}
 
-
+.instruction_text{
+	margin-top: 10%;
+	margin-bottom: 10%;
+	padding-left: 8%;
+	padding-right: 8%;
 }
 
 
@@ -321,7 +345,7 @@ a:active{
 	margin-top: 70px;
 	margin-bottom: 50px; 
 	text-align: center;
-	width: 70%;
+	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -397,10 +421,13 @@ a:hover div{
 	.logo-section{
 		height: 100px;
 		width: 200px;
-		background-image: url("../images/UCafe2.jpg");、
+
 	}
 
-
+	.logo{
+		height: 100px;
+		width: 200px;
+	}
 	.iconImage{
 		width:20px;
 		height:20px;
@@ -420,8 +447,17 @@ a:hover div{
 		width: 270px;
 	}
 
+	.instruction_button{
+		width: 200px
+	}
+
+	.menu_button{
+		width: 200px
+
+	}
 	.indicator-wrapper{
 		width: 270px;
+		height: 650px;
 	}
 
 	.Click{

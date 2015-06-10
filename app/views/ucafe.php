@@ -12,18 +12,19 @@
 <body>
   <div class="main-header">
     <div class="logo-section">
+    <img src="images/logo.png" class="logo">
     </div>
   
     <div class="icon">
       <div class="email">
-        <a href="mailto:info@ucafe.ca">info@ucafe.ca→ </a>
+        <p>微信号：ucafe_ca</p>
       </div>
 
-      <a href="#" target="_blank">
+      <a href="https://www.facebook.com/ucafetoronto?fref=ts" target="_blank">
         <img src="images/facebook_icon.jpg" class="iconImage" >
       </a>
       
-      <a href="#" target="_blank">
+      <a href="https://instagram.com/ucafe_inc/" target="_blank">
         <img src="images/instagram_icon.jpg" class="iconImage">
       </a>
 
@@ -63,9 +64,13 @@
 
     <div class="menu-box">
       <h1 class="title">优厨房</h1>
-      <h3 class="subtitle">不仅仅是便当</h3>
-      <h4 class="menutitle">现在就点餐</h4>
-      <div class="menu"><a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h5 class="menutext">看看今天的菜单</h5></a> </div>
+      <h3 class="subtitle">UTSC送餐计划</h3>
+      <h5 class="subsubtitle">不仅仅是便当</h5>
+
+    
+      <div class="instruction_button"><a href="#instruction" type="button"><h4 class="menutext">如何点单</h4></a> </div>
+
+      <div class="menu_button"><a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h4 class="menutext">看看今天的菜单</h4></a> </div>
     </div>
     
     <!-- </div> -->
@@ -129,7 +134,7 @@
       </div>
     </div>
 
-    <div class="indicator-wrapper">
+    <div class="indicator-wrapper" id="instruction">
       <h1 class="i-title">点   发   吃</h1>
 
       <ol class="carousel-indicators">
@@ -138,26 +143,30 @@
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
       </ol>
 
-        <h4 class="Click">浏览菜单，点菜确保在10am之前下订单哦！</h4>
-        <h4 class="Text">发送订单信息</h4>
-        <h4 class="Eat">你的美食已经上路!我们会短信update你的饭的状态哟～取餐地点：我们会在1-1点送到XX地点</h4>
+        <h4 class="Click">浏览菜单，选择你的午餐。可以从前一天的10am到当天的10am之间下订单</h4>
+        <h4 class="Text">输入手机号，订单信息将发送到手机</h4>
+        <h4 class="Eat">回复“OK” 确认订单，你的美食已经上路！我们会短信更新你的订单的状态哟~ </h4>
+        <h4 class="instruction_text">取餐时间、地点：13:00-13:30 于BUS LOOP（38路旁边）
+我们暂时只收现金，请尽量带零钱哟:）</h4>
+        <div class="menu_button"><a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h4 class="menutext">看看今天的菜单</h4></a> </div>
     </div>
+
 
 
   <section class="index-wrapper">
     <div class="food-description">
       <h1>让你像在家一样</h1> 
-      <div class="food-description-left" >
+      <div class="food-description-box" >
         <img src="images/h1.jpg" class="homeDImage">
         <h3>菜单与食材</h3>
         <p class="foodDtext">我们钻研每一份菜单。每滴汤汁、每味调味品都为了滋润你的味蕾。我们搭配每一份食材。每颗蔬菜、每盎司肉都为了保持你的膳食均衡。我们不断创新，每一次尝试、每一次革新，都为了你能有更好的用餐体验。</p>
       </div>
-      <div class="food-description-right">
+      <div class="food-description-box">
         <img src="images/h2.jpg" class="homeDImage">
         <h3>可回收包装</h3>
         <p class="foodDtext">我们热爱伟大的地球母亲。因此，在确保菜品美味的同时，我们用————来降低我们对大自然的影响。餐后放进recycle bin就可以，“妈妈再也不用担心我不爱洗碗了”！</p>
       </div>
-      <div class="food-description-right">
+      <div class="food-description-box">
         <img src="images/h3.jpg" class="homeDImage">
         <h3>想吃就吃</h3>
         <p class="foodDtext">Ucafe努力保障你的每一次用餐享受。每天都有专职司机第一时间把你的午餐送到你身边。</p>
@@ -211,7 +220,7 @@
         <h4>Jack</h4>
         <h5>Webmaster</h5>
         <div class="about-text">
-        我喜欢买外卖，因为我懒得去做自己的饭菜，尤其是在考试的时候，我会买外卖。外卖是爱。外卖是生活。外卖是Web开发。
+        我喜欢买外卖，因为我太懒惰，使我自己的食物。尤其是在考试的时候，我会买外卖。外卖是爱。外卖是生活。外卖是Web开发。
 
         </div>
     </div>
