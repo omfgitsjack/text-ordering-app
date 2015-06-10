@@ -7,9 +7,11 @@
         .module(ns, [
             'ui.bootstrap',
             'ngMaterial',
-            'app.models'
+            'app.models',
+            'ui.router'
         ])
         .config(materialConfig)
+        .config(uiRouterConfig)
         .controller('mainController', mainController)
         .controller('foodController', foodController);
 
@@ -24,7 +26,21 @@
             .warnPalette('deep-orange');
     }
 
-    function mainController($scope, $http, FoodService)
+    function uiRouterConfig($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/menu');
+
+        $stateProvider
+            .state('/', {
+                url: "/",
+                templateUrl: 'app/promo.html'
+            })
+            .state('menu', {
+                url: "/menu",
+                templateUrl: 'app/menu.html'
+            });
+    }
+
+    function mainController($scope, $http, FoodService, OrderService)
     {
         $scope.order = [];
         $scope.auth = {
@@ -45,6 +61,13 @@
                     return el;
                 });
             });
+        $scope.orderService = OrderService;
+        OrderService.getToday()
+            .success(function(res) {
+                $scope.todayAggregateOrder = $scope.orderService.aggregateTransformer(res);
+                $scope.todayOrderList = $scope.orderService.orderListTransformer(res);
+            });
+
 
         $scope.increment = function(item) { item.order.quantity++ };
         $scope.decrement = function(item) { item.order.quantity-- };
@@ -81,4 +104,6 @@
     function foodController($scope) {
         $scope.isCollapsed = true;
     }
+
+
 })();
