@@ -22,16 +22,24 @@ Route::get('api/food', 'FoodsController@index');
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 
 Route::get('api/orders/today', 'OrdersController@todaysOrder');
+Route::get('api/orders/yesterday', 'OrdersController@yesterdaysOrder');
 
 Route::post('api/twilio', function() {
+	$auth = Authentication::where('phone', Input::get('From'))->orderBy('id', 'desc')->first();
 	$twiml = new Services_Twilio_Twiml();
-	$twiml->message('Order confirmed. Your order will arrive within an hour.');
-	$response = Response::make($twiml, 200);
-	$response->header('Content-Type', 'text/xml');	
 
-	$auth = Authentication::where('phone', Input::get('From'))->orderBy('updated_at')->first();
-	$auth->verified = true;
-	$auth->save();
+	if (!$auth->verified) {
+		$auth->verified = true;
+		$auth->save();
+
+		$twiml->message('Order confirmed. Your order will arrive within an hour.');
+		$response = Response::make($twiml, 200);
+		$response->header('Content-Type', 'text/xml');	
+	} else {
+		$twiml->message("Please visit http://www.ucafe.ca to order.\nIf you have any queries, please add ucafe_ca on WeChat.");
+		$response = Response::make($twiml, 200);
+		$response->header('Content-Type', 'text/xml');
+	}
 
 	return $response;
 });

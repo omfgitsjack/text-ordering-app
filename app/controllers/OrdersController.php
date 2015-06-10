@@ -89,35 +89,48 @@ class OrdersController extends \BaseController {
 		//
 	}
 
-	public function todaysOrder()
+	public function getOrders($dayOffset)
 	{
-		$timePeriod = self::calculateDeadline();
+		$timePeriod = self::calculateDeadline($dayOffset);
 		$deadline = $timePeriod['deadline'];
 		$today = $timePeriod['start'];
-
-		return DB::table('authentications')
+		
+		$records = DB::table('authentications')
 			->join('orders','authentications.id','=','orders.authentication_id')
 			->join('foods','foods.id','=','orders.food_id')
-			->where('orders.updated_at','<',$deadline)
-			->where('orders.updated_at','>',$today)
+			->where('authentications.updated_at','<',$deadline)
+			->where('authentications.updated_at','>',$today)
 			->where('authentications.verified','=',true)
 			->orderBy('authentications.updated_at','desc')
+			->select('authentications.updated_at',
+				'phone','authentications.id','foods.name',
+				'foods.description','foods.price','foods.image','foods.calories','foods.protein','foods.fat','foods.carbs','foods.fiber','foods.ingredients')
 			->get();
 	}
 
-	private function calculateDeadline($dayOffset = 0) {
+	public function yesterdaysOrder()
+	{
+		return self::getOrders(-1);
+	}
+
+	public function todaysOrder()
+	{
+		return self::getOrders(0);
+	}
+
+	private function calculateDeadline($dayOffset) {
 		$now = Carbon::now(self::getTimeZone());
 		$todayDeadline = Carbon::now(self::getTimeZone());
 		$todayStart = Carbon::now(self::getTimeZone());
 
 		if ($now->hour > self::ORDERHOURCUTOFF) {
-			$todayDeadline->addDays($dayOffset + 1);
+			$todayDeadline = $todayDeadline->addDays($dayOffset + 1);
 		} else {
-			$todayStart->subDays($dayOffset + 1);
+			$todayStart = $todayStart->subDays($dayOffset + 1);
 		}
 
 		$todayDeadline->startOfDay()->addHours(self::ORDERHOURCUTOFF);
-		$todayStart->startOfDay()->addHours(self::ORDERHOURCUTOFF);
+		$todayStart->startOfDay()->addHours(self::ORDERHOURCUTOFF)->addDays($dayOffset);
 
 		return [ 'deadline' => $todayDeadline,
 			 'start'    => $todayStart     ];
