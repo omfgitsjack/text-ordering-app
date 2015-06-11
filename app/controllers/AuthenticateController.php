@@ -63,7 +63,7 @@ class AuthenticateController extends Controller {
                 "***请回复 OK 确定订单***"
             );
             
-            return true;
+            return "OK";
         } catch (Services_Twilio_RestException $e)
         {
             return $e;
