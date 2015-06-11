@@ -5,10 +5,10 @@
     <row>
         <div class="col-sm-0 col-md-3"> </div>
         <div class="col-sm-12 col-md-3 admin-date-change">
-            <md-button class="md-raised md-warn" ng-click="yesterday()">{{yesterdayDay | amDateFormat:'dddd, MMMM Do'}}</md-button>
+            <md-button class="md-raised md-warn" ng-click="yesterday()" ng-disabled="!prevDayEnabled">{{yesterdayDay | amDateFormat:'dddd, MMMM Do'}}</md-button>
         </div>
         <div class="col-sm-12 col-md-3 admin-date-change">
-            <md-button class="md-raised md-warn" ng-click="today()">{{todayDay | amDateFormat:'dddd, MMMM Do'}}</md-button>
+            <md-button class="md-raised md-warn" ng-click="today()" ng-disabled="prevDayEnabled">{{todayDay | amDateFormat:'dddd, MMMM Do'}}</md-button>
         </div>
         <div class="col-sm-0 col-md-3"> </div>
     </row>
