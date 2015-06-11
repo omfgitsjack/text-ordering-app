@@ -5,7 +5,7 @@
     </div>
 
     <div class="title-area">
-        <h3>today's utsc brunch menu</h3>
+        <h3>UTSC 今日午饭菜单</h3>
     </div>
 
     <div class="food-items">
@@ -98,9 +98,9 @@
         <row class="checkout-area">
             <div class="col-md-6">
                 <!-- Order List -->
-                <h3>Your Order</h3>
+                <h3>你的订单</h3>
                 <p class="text-muted"
-                   ng-show="order.length === 0">No selected items</p>
+                   ng-show="order.length === 0">暂无选项</p>
                 <ul class="list-group">
                     <li class="list-group-item"
                         ng-repeat="item in order">
@@ -113,7 +113,7 @@
             </div>
             <div class="col-md-6">
                 <!-- Order Submission Area -->
-                <h3>Order Confirmation</h3>
+                <h3>确定下单</h3>
                 <row class="phone">
                     <div class="input-group">
                         <input
@@ -126,7 +126,7 @@
                                         class="btn btn-success"
                                         type="button"
                                         ng-click="makeOrder()"
-                                        ng-disabled="order.length === 0">Order</button>
+                                        ng-disabled="order.length === 0">下单</button>
 							</span>
                     </div><!-- /input-group -->
                     <p  class="text-muted"
