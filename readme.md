@@ -5,7 +5,7 @@
  - All order updates sent through SMS
  - WeChat integration [To be added]
  - Export data into CSV [To be added]
- - Admin portal [To be added]
+ - Admin portal  
  - Real-time customer messaging/bulk messaging [To be added]
 
 ## Front-end setup
