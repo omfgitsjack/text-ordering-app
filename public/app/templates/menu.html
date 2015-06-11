@@ -121,35 +121,19 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="e.g. 6478325099"
-                                ng-model="phoneNumber"/>
+                                ng-model="phoneNumber"
+                                ng-disabled="order.length === 0 || disableOrderBtn"/>
 							<span class="input-group-btn">
 								<button
                                         class="btn btn-success"
                                         type="button"
                                         ng-click="makeOrder()"
-                                        ng-disabled="order.length === 0">下单</button>
+                                        ng-disabled="order.length === 0 || disableOrderBtn">下单</button>
 							</span>
                     </div><!-- /input-group -->
                     <p  class="text-muted">
                         按下单后，我们会发一个短信给你，请回复 OK 确定下单。
                     </p>
-                    <div class="input-group">
-                        <input
-                                class="form-control"
-                                type="text"
-                                placeholder="SMS Code"
-                                ng-show="auth.id !== -1"
-                                ng-model="auth.code"
-                                ng-disabled="disableOrderBtn"/>
-							<span class="input-group-btn">
-								<button
-                                        class="btn btn-success"
-                                        ng-show="auth.id !== -1"
-                                        ng-click="checkSMSCode(auth)">
-                                    Confirm
-                                </button>
-							</span>
-                    </div><!-- /input-group -->
                 </row>
             </div>
         </row>
