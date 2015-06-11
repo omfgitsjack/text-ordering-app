@@ -5,6 +5,7 @@ class Food extends \Eloquent {
 		'name',
 		'description',
 		'price',
+		'taxedprice',
 		'image',
 		'calories',
 		'protein',

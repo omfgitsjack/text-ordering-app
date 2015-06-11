@@ -16,12 +16,12 @@ class AuthenticateController extends Controller {
     {
         // Has to have at least one item in the order.
         $receipt = $order[0]->quantity . 'x ' . $order[0]->food->name . "\n";
-        $total = $order[0]->quantity * $order[0]->food->price;
+        $total = $order[0]->quantity * $order[0]->food->taxedprice;
 
         for ($i = 1; $i < sizeof($order); $i++)
         {
             $receipt = $receipt . $order[$i]->quantity . 'x ' . $order[$i]->food->name . "\n";
-            $total += $order[$i]->quantity * $order[$i]->food->price;
+            $total += $order[$i]->quantity * $order[$i]->food->taxedprice;
         }
         $receipt = $receipt . "价格（请付现金）: " . $total . "\n";
 
@@ -68,7 +68,5 @@ class AuthenticateController extends Controller {
         {
             return $e;
         }
-
-        return Response::json(['id' => $authRecord->id]);
     }
 }

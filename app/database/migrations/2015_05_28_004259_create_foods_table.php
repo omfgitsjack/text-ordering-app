@@ -18,6 +18,7 @@ class CreateFoodsTable extends Migration {
 			$table->string('name');
 			$table->string('description');
 			$table->float('price');
+			$table->float('taxedprice');
 			$table->string('image');
 			$table->integer('calories');
 			$table->integer('protein');

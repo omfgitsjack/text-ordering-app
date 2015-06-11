@@ -16,6 +16,7 @@ class FoodsTableSeeder extends Seeder {
 				'name' => $faker->sentence(3),
 				'description' => $faker->sentence(rand(10, 100)),
 				'price' => rand(5,10),
+				'taxprice' => rand(5,10)+1,
 				'image' => 'assets/food_pic' . (rand(1,5) . '.png'),
 				'calories' => rand(0,400),
 				'protein' => rand(0,400),
