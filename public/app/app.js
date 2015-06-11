@@ -13,7 +13,10 @@
 
             // App dependencies
             'app.menu',
-            'app.admin'
+            'app.admin',
+
+            // Core
+            'utilities.datetime'
         ])
         .config(materialConfig)
         .config(uiRouterConfig);

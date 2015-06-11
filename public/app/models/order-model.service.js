@@ -11,32 +11,32 @@
                 getToday: function() {
                     return $http.get('http://ucafe.jackyiu.me/api/orders/today');
                 },
+                getYesterday: function() {
+                    return $http.get('http://ucafe.jackyiu.me/api/orders/yesterday');
+                },
                 aggregateTransformer: function(items) {
-                    var aggregate = {};
+                    var aggregate = [];
+                    var me = this;
+
                     for (var i = 0; i < items.length; i++) {
-                        if (aggregate[items[i].name]) {
-                            aggregate[items[i].name] += items[i].quantity;
+                        var index = me.isInList(items[i].name, 'name', aggregate);
+                        if (index !== false ) {
+                            aggregate[index].quantity += items[i].quantity;
                         } else {
-                            aggregate[items[i].name] = items[i].quantity;
+                            aggregate.push({
+                                'name': items[i].name,
+                                'quantity': items[i].quantity
+                            });
                         }
                     }
                     return aggregate;
                 },
                 orderListTransformer: function(items) {
+                    var me = this;
                     var list = [];
 
-                    var isInList = function(id) {
-                        for (var i = 0; i < list.length; i++) {
-                            if (list[i]) {
-                                if (list[i].id === id)
-                                    return i;
-                            }
-                        }
-                        return false;
-                    };
-
                     for (var i = 0; i < items.length; i++) {
-                        var index = isInList(items[i].id);
+                        var index = me.isInList(items[i].id, 'id', list);
                         if (index !== false) {
                             list[index].items.push({
                                 name: items[i].name,
@@ -55,6 +55,15 @@
                     }
 
                     return list;
+                },
+                isInList: function(propertyValue, identifyingProperty, list) {
+                    for (var i = 0; i < list.length; i++) {
+                        if (list[i]) {
+                            if (list[i][identifyingProperty] === propertyValue)
+                                return i;
+                        }
+                    }
+                    return false;
                 }
             }
         });

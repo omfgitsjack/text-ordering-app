@@ -1,3 +1,51 @@
-<h2>Admin Page</h2>
-{{todayAggregateOrder}}
-{{todayOrderList}}
+<h3 class="center-header">Admin Page</h3>
+
+<h4 class="text-muted center-header select-order-header">Select Delivery Date</h4>
+<md-content>
+    <row>
+        <div class="col-sm-0 col-md-3"> </div>
+        <div class="col-sm-12 col-md-3 admin-date-change">
+            <md-button class="md-raised md-warn" ng-click="yesterday()">{{yesterdayDay | amDateFormat:'dddd, MMMM Do'}}</md-button>
+        </div>
+        <div class="col-sm-12 col-md-3 admin-date-change">
+            <md-button class="md-raised md-warn" ng-click="today()">{{todayDay | amDateFormat:'dddd, MMMM Do'}}</md-button>
+        </div>
+        <div class="col-sm-0 col-md-3"> </div>
+    </row>
+</md-content>
+
+<div class="center-header order-info">
+    <h4 class="text-muted">Order Information for</h4>
+    <h3 class="">{{currentDay | amDateFormat:'dddd, MMMM Do'}}</h3>
+</div>
+
+<row>
+    <div class="col-sm-0 col-md-3"> </div>
+    <div class="col-sm-12 col-md-6">
+        <h3 class="text-muted">Order Quantities</h3>
+        <md-whiteframe class="md-whiteframe-z2" layout layout-align="center left">
+            <md-list>
+                <md-list-item class="md-1-line" ng-repeat="order in todayAggregateOrder">
+                    <div class="md-list-item-text">
+                        <h4>{{order.quantity}}x {{order.name}}</h4>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-whiteframe>
+        <h3 class="text-muted">Individual Orders</h3>
+        <md-whiteframe class="md-whiteframe-z2" layout layout-align="center left">
+            <md-list>
+                <md-subheader class="md-no-sticky"
+                              ng-repeat-start="order in todayOrderList">Order {{order.id}}: {{order.phone}}</md-subheader>
+                <md-list-item class="md-1-line"
+                              ng-repeat="item in order.items">
+                    <div class="md-list-item-text">
+                        <p>{{item.quantity}}x {{item.name}}</p>
+                    </div>
+                </md-list-item>
+                <md-divider ng-if="!$last" ng-repeat-end></md-divider>
+            </md-list>
+        </md-whiteframe>
+    </div>
+    <div class="col-sm-0 col-md-3"> </div>
+</row>
