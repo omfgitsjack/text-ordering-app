@@ -10,7 +10,7 @@
         .controller('menuController', menuController)
         .controller('foodController', foodController);
 
-    function menuController($scope, $http, FoodService)
+    function menuController($scope, $http, $timeout, FoodService)
     {
         $scope.order = [];
         $scope.auth = {
@@ -52,6 +52,7 @@
             }, 0);
         };
 
+        $scope.disableOrderBtn = false;
         $scope.makeOrder = function() {
             $http
                 .post('api/authenticate', {
@@ -59,7 +60,11 @@
                     order: $scope.order
                 })
                 .success(function(res) {
-
+                    $scope.disableOrderBtn = true;
+                    
+                    $timeout(function() {
+                        $scope.disableOrderBtn = false;
+                    }, 60000);
                 });
         };
     }
