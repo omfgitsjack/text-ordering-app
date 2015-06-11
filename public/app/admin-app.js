@@ -10,12 +10,12 @@
         var me = this;
         var now = DateTimeService.now();
 
-        $scope.yesterdayDay = DateTimeService.now().subtract(1, 'days').startOf('day');
-        $scope.todayDay = DateTimeService.now().startOf('day');
+        $scope.yesterdayDay = DateTimeService.now().startOf('day');
+        $scope.todayDay = DateTimeService.now().add(1,'days').startOf('day');
 
         // If it's today before 4pm, show yesterday's order.
         $scope.yesterday = function() {
-            $scope.currentDay = $scope.yesterdayDay;
+		$scope.currentDay = $scope.yesterdayDay;
             $scope.currentAggregateOrder = $scope.yesterdayAggregateOrder;
             $scope.currentOrderList = $scope.yesterdayOrderList;
         };
@@ -55,9 +55,14 @@
 
             me.pollOrders();
 
-            $timeout(function() {
-                me.pollOrders();
-            }, 5000);
+            me.initPoll = function() {
+		$timeout(function() {
+                	me.pollOrders();
+			me.initPoll();
+            	}, 5000);
+	    };
+
+	    me.initPoll();
         };
 
         me.init();
