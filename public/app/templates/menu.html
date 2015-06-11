@@ -45,23 +45,23 @@
                                 <div class="nutrition-tab">
                                     <div class="nutrition-item">
                                         <div class="nutrition-value">{{item.calories}}</div>
-                                        <div class="nutrition-label">Calories</div>
+                                        <div class="nutrition-label">卡路里</div>
                                     </div>
                                     <div class="nutrition-item">
                                         <div class="nutrition-value">{{item.protein}}g</div>
-                                        <div class="nutrition-label">Protein</div>
+                                        <div class="nutrition-label">蛋白质</div>
                                     </div>
                                     <div class="nutrition-item">
                                         <div class="nutrition-value">{{item.fat}}g</div>
-                                        <div class="nutrition-label">Fat</div>
+                                        <div class="nutrition-label">脂肪</div>
                                     </div>
                                     <div class="nutrition-item">
                                         <div class="nutrition-value">{{item.carbs}}g</div>
-                                        <div class="nutrition-label">Carbs</div>
+                                        <div class="nutrition-label">碳水化合物</div>
                                     </div>
                                     <div class="nutrition-item">
                                         <div class="nutrition-value">{{item.fiber}}g</div>
-                                        <div class="nutrition-label">Fiber</div>
+                                        <div class="nutrition-label">纤维</div>
                                     </div>
                                 </div>
                             </md-tab-body>
@@ -129,9 +129,8 @@
                                         ng-disabled="order.length === 0">下单</button>
 							</span>
                     </div><!-- /input-group -->
-                    <p  class="text-muted"
-                        ng-show="auth.id !== -1">
-                        Check your phone for a confirmation code.
+                    <p  class="text-muted">
+                        按下单后，我们会发一个短信给你，请回复 OK 确定下单。
                     </p>
                     <div class="input-group">
                         <input

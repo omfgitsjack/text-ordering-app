@@ -23,33 +23,9 @@ class AuthenticateController extends Controller {
             $receipt = $receipt . $order[$i]->quantity . 'x ' . $order[$i]->food->name . "\n";
             $total += $order[$i]->quantity * $order[$i]->food->price;
         }
-        $receipt = $receipt . "Total: " . $total . "\n";
+        $receipt = $receipt . "价格（请付现金）: " . $total . "\n";
 
         return $receipt;
-    }
-
-    public function checkAuthToken()
-    {
-        $id = Input::get('id');
-        $code = Input::get('code');
-        $order = Input::get('order');
-        $authRecord = Authentication::where('id', $id)->first();
-        $validAuthToken = $authRecord->code == $code;
-
-        if ($validAuthToken)
-        {
-            $this->twilioClient->account->messages->sendMessage(
-                "+12892071270",
-                $authRecord->phone,
-                "优厨房\n" .
-                "You have successfully ordered your meal!\nYour Order:" .
-                $this->generateReceipt($order));
-
-            return Response::json(['success' => true]);
-        } else
-        {
-            return Response::json(['success' => false]);
-        }
     }
 
     public function sendAuthToken()
@@ -79,8 +55,12 @@ class AuthenticateController extends Controller {
             $this->twilioClient->account->messages->sendMessage(
                 "+12892071270",
                 $number,
-                "优厨房 Order Confirmation: \n" . $this->generateReceipt($savedOrders) .
-                "请回答 OK to confirm"
+                "优厨房已收到你的订单: \n" . 
+                "订单号码: " . $authRecord->id . "\n" .
+                "你的午餐: \n" . $this->generateReceipt($savedOrders) .
+                "取餐地点: UTSC bus loop 38路旁边\n" .
+                "预计时间: 1 PM\n" . 
+                "***请回复 OK 确定订单***"
             );
         } catch (Services_Twilio_RestException $e)
         {
