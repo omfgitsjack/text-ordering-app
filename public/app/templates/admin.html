@@ -25,7 +25,7 @@
         <h3 class="text-muted">Order Quantities</h3>
         <md-whiteframe class="md-whiteframe-z2" layout layout-align="center left">
             <md-list>
-                <md-list-item class="md-1-line" ng-repeat="order in todayAggregateOrder">
+                <md-list-item class="md-1-line" ng-repeat="order in currentAggregateOrder">
                     <div class="md-list-item-text">
                         <h4>{{order.quantity}}x {{order.name}}</h4>
                     </div>
@@ -36,7 +36,7 @@
         <md-whiteframe class="md-whiteframe-z2" layout layout-align="center left">
             <md-list>
                 <md-subheader class="md-no-sticky"
-                              ng-repeat-start="order in todayOrderList">Order {{order.id}}: {{order.phone}}</md-subheader>
+                              ng-repeat-start="order in currentOrderList">Order {{order.id}}: {{order.phone}}</md-subheader>
                 <md-list-item class="md-1-line"
                               ng-repeat="item in order.items">
                     <div class="md-list-item-text">

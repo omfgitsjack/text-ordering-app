@@ -17,13 +17,13 @@
         $scope.yesterday = function() {
             $scope.currentDay = $scope.yesterdayDay;
             $scope.currentAggregateOrder = $scope.yesterdayAggregateOrder;
-            $scope.currentOrderLIst = $scope.yesterdayOrderList;
+            $scope.currentOrderList = $scope.yesterdayOrderList;
         };
 
         $scope.today = function() {
             $scope.currentDay = $scope.todayDay;
             $scope.currentAggregateOrder = $scope.todayAggregateOrder;
-            $scope.currentOrderLIst = $scope.todayOrderList;
+            $scope.currentOrderList = $scope.todayOrderList;
         };
 
         me.init = function() {
@@ -32,14 +32,25 @@
                 OrderService.getToday()
                     .success(function(res) {
                         $scope.todayAggregateOrder = $scope.orderService.aggregateTransformer(res);
-                        $scope.todayOrderList = $scope.orderService.orderListTransformer(res);
+                        $scope.todayOrderList = $scope.orderService.orderListTransformer(res)
+                        me.chooseActiveDay();
                     });
 
                 OrderService.getYesterday()
                     .success(function(res) {
                         $scope.yesterdayAggregateOrder = $scope.orderService.aggregateTransformer(res);
                         $scope.yesterdayOrderList = $scope.orderService.orderListTransformer(res);
+                        me.chooseActiveDay();
                     });
+            };
+
+            me.chooseActiveDay = function() {
+
+                if (0 <= now.get('hour') && now.get('hour') < 16 && now.get('date') === $scope.todayDay.get('date')) {
+                    $scope.yesterday();
+                } else {
+                    $scope.today();
+                }
             };
 
             me.pollOrders();
@@ -47,12 +58,6 @@
             $timeout(function() {
                 me.pollOrders();
             }, 5000);
-
-            if (0 <= now.get('hour') && now.get('hour') < 16 && now.get('date') === $scope.todayDay.get('date')) {
-                $scope.yesterday();
-            } else {
-                $scope.today();
-            }
         };
 
         me.init();
