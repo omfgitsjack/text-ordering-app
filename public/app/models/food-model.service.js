@@ -8,7 +8,7 @@
                 get: function() {
                     var me = this;
 
-                    return $http.get('api/food')
+                    return $http.get('http://ucafe.jackyiu.me/api/food')
                         .success(function(res) {
                             me.items = res;
                             return me.items;
