@@ -24,17 +24,18 @@
 				<md-icon ng-hide="isCollapsed" md-svg-src="assets/icons/ic_remove_48px.svg" alt="minus"></md-icon>
             </md-button>
             <div class="food-description-box" ng-class="{open: !isCollapsed}">
-                <div class="card-text-top">
-                    {{item.description}}
+                <div class="card-text-top" ng-bind-html="item.description">
                 </div>
                 <div class="card-text-bottom">
                     <md-tabs md-stretch-tabs="never" md-dynamic-height="true">
                         <md-tab>
                             <md-tab-label>材料</md-tab-label>
                             <md-tab-body>
-                                <md-content class="ingredients-section-content" ng-bind-html="item.ingredients">
+                                <md-content class="ingredients-section-content">
+                                    {{item.ingredients}}
                                 </md-content>
-                                <div class="ingredients-section" ng-bind-html="item.ingredients">
+                                <div class="ingredients-section">
+                                    {{item.ingredients}}
                                 </div>
                             </md-tab-body>
                         </md-tab>
