@@ -77,7 +77,7 @@
                     <div class="price">${{item.price}}</div>
                 </div>
                 <div class="quantity-selector">
-                    <md-button class="minus-icon md-fab md-warn md-mini md-hue-3" aria-label="Remove"
+                    <md-button md-theme='redThemeBtn' class="minus-icon md-fab md-primary md-mini" aria-label="Remove"
                                ng-click="decrement(item)"
                                ng-disabled="item.order.quantity === 0">
                         <md-icon md-svg-src="assets/icons/ic_remove_48px.svg"></md-icon>
@@ -85,7 +85,7 @@
                     <div class="amount">
                         {{item.order.quantity}}
                     </div>
-                    <md-button class="plus-icon md-fab md-warn md-mini" aria-label="Plus"
+                    <md-button md-theme='greenThemeBtn' class="plus-icon md-fab md-mini md-primary" aria-label="Plus"
                                ng-click="increment(item)">
                         <md-icon md-svg-src="assets/icons/ic_add_48px.svg"></md-icon>
                     </md-button>

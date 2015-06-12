@@ -30,6 +30,10 @@
                 'default': '800'
             })
             .warnPalette('deep-orange');
+        $mdThemingProvider.theme('redThemeBtn')
+            .primaryPalette('deep-orange');
+        $mdThemingProvider.theme('greenThemeBtn')
+            .primaryPalette('green');
     }
 
     function uiRouterConfig($stateProvider, $urlRouterProvider) {
