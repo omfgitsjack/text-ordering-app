@@ -202,9 +202,8 @@
         <div class="about-text">找优秀厨师过程中，曾一周暴增五斤，也曾吃坏卧床四天。业余Marketing, 职业司机，带着玻璃胃和钻石心想要和你一起吃很多很多顿饭。
         </div>
     </div>
-    
-    
-
+  </div>
+  <div class="about-wrapper">
     <div class="about-box">
         <h4>Chris</h4>
         <h5>Webmaster</h5>
@@ -228,7 +227,7 @@
     <div class="about-box">
       <img src="images/jack.jpg" class="about-image">
     </div>
-</div>
+  </div>
 <!-- new -->    
     
     <!-- normal -->

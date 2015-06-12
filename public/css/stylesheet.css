@@ -342,13 +342,16 @@ a:active{
 	margin-right: auto;
 }*/
 .about-wrapper{
-	margin-top: 70px;
-	margin-bottom: 50px; 
+	margin-top: 50px;
+	margin-bottom: 20px; 
 	text-align: center;
-	width: 70%;
+	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 }
+
+
+
 
 .about-box{
 	width: 200px;
