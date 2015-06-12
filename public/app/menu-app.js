@@ -63,8 +63,8 @@
                     order: $scope.order
                 })
                 .success(function (res) {
+                    toastr.success('谢谢您的订单已收到, 请查看您手机');
                     $scope.disableOrderBtn = true;
-
                     $timeout(function () {
                         $scope.disableOrderBtn = false;
                     }, 60000);
@@ -75,6 +75,5 @@
     function foodController($scope) {
         $scope.isCollapsed = true;
     }
-
 
 })();

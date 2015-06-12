@@ -58,9 +58,10 @@
             me.initPoll = function () {
                 $timeout(function () {
                     me.getOrders().success(function() {
+                        toastr.success('Updated list...');
                         me.initPoll();
                     });
-                }, 5000);
+                }, 10000);
             };
 
             me.getOrders().success(function() {

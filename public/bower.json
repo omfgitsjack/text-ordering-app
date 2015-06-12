@@ -19,6 +19,7 @@
     "angular-material": "~0.9.4",
     "angular-ui-router": "~0.2.15",
     "angular-moment": "~0.10.1",
-    "moment-timezone": "~0.4.0"
+    "moment-timezone": "~0.4.0",
+    "toastr": "~2.1.1"
   }
 }

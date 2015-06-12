@@ -11,12 +11,14 @@
 	<link href="app/style.css" rel="stylesheet">
 	<link href="app/menu-styles.css" rel="stylesheet">
 	<link href="assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<link href="bower_components/toastr/toastr.min.css" rel="stylesheet">
 </head>
 <body ng-app="app">
 	<div ui-view class="body-container"></div>
 </body>
 
 <!-- vendor -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
@@ -26,6 +28,7 @@
 <script src="bower_components/moment/moment.js"></script>
 <script src="bower_components/moment-timezone/moment-timezone.js"></script>
 <script src="bower_components/angular-moment/angular-moment.js"></script>
+<script src="bower_components/toastr/toastr.min.js"></script>
 
 <!-- models -->
 <script src="app/models/models.js"></script>

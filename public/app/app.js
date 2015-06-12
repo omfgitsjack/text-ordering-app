@@ -19,7 +19,8 @@
             'utilities.datetime'
         ])
         .config(materialConfig)
-        .config(uiRouterConfig);
+        .config(uiRouterConfig)
+        .config(toastrConfig);
 
     function materialConfig($mdThemingProvider) {
         $mdThemingProvider.theme('default')
@@ -54,6 +55,11 @@
                 templateUrl: TEMPLATEPATH + "admin.html",
                 controller: 'adminController'
             });
+    }
+
+    function toastrConfig() {
+        toastr.options.timeOut = 10000;
+        toastr.options.positionClass = 'toast-bottom-right';
     }
 
 })();
