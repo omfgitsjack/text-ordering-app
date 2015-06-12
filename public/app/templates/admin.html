@@ -1,19 +1,5 @@
 <h3 class="center-header">Admin Page</h3>
 
-<h4 class="text-muted center-header select-order-header">Select Delivery Date</h4>
-<md-content>
-    <row>
-        <div class="col-sm-0 col-md-3"> </div>
-        <div class="col-sm-12 col-md-3 admin-date-change">
-            <md-button class="md-raised md-warn" ng-click="yesterday()" ng-disabled="!prevDayEnabled">{{yesterdayDay | amDateFormat:'dddd, MMMM Do'}}</md-button>
-        </div>
-        <div class="col-sm-12 col-md-3 admin-date-change">
-            <md-button class="md-raised md-warn" ng-click="today()" ng-disabled="prevDayEnabled">{{todayDay | amDateFormat:'dddd, MMMM Do'}}</md-button>
-        </div>
-        <div class="col-sm-0 col-md-3"> </div>
-    </row>
-</md-content>
-
 <div class="center-header order-info">
     <h4 class="text-muted">订单資料</h4>
     <h3 class="">{{currentDay | amDateFormat:'dddd, MMMM Do'}}</h3>

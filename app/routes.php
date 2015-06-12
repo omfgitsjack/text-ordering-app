@@ -21,8 +21,7 @@ Route::get('api/food', 'FoodsController@index');
 
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 
-Route::get('api/orders/today', array('after' => 'allowOrigin', 'uses' => 'OrdersController@todaysOrder'));
-Route::get('api/orders/yesterday', array('after' => 'allowOrigin', 'uses' => 'OrdersController@yesterdaysOrder'));
+Route::get('api/orders/current', array('after' => 'allowOrigin', 'uses' => 'OrdersController@currentOrders'));
 
 Route::post('api/twilio', function() {
 	$auth = Authentication::where('phone', Input::get('From'))->orderBy('id', 'desc')->first();

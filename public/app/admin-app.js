@@ -10,63 +10,46 @@
         var me = this;
         var now = DateTimeService.now();
 
-        $scope.yesterdayDay = DateTimeService.now().startOf('day');
-        $scope.todayDay = DateTimeService.now().add(1, 'days').startOf('day');
+        $scope.todayDay = DateTimeService.now().startOf('day');
+        $scope.tomorrowDay = DateTimeService.now().add(1, 'days').startOf('day');
 
         // If it's today before 4pm, show yesterday's order.
-        $scope.yesterday = function () {
-            $scope.currentDay = $scope.yesterdayDay;
-            $scope.currentAggregateOrder = $scope.yesterdayAggregateOrder;
-            $scope.currentOrderList = $scope.yesterdayOrderList;
-
+        $scope.tomorrow = function () {
+            $scope.currentDay = $scope.tomorrowDay;
         };
 
         $scope.today = function () {
             $scope.currentDay = $scope.todayDay;
-            $scope.currentAggregateOrder = $scope.todayAggregateOrder;
-            $scope.currentOrderList = $scope.todayOrderList;
         };
 
         me.init = function () {
 
             me.getOrders = function () {
-                return OrderService.getToday()
-                    .success(function (res) {
-                        $scope.todayAggregateOrder = $scope.orderService.aggregateTransformer(res);
-                        $scope.todayOrderList = $scope.orderService.orderListTransformer(res);
-                        return true;
-                    })
-                    .success(function(res) {
-                        OrderService.getYesterday()
-                            .success(function (res) {
-                                $scope.yesterdayAggregateOrder = $scope.orderService.aggregateTransformer(res);
-                                $scope.yesterdayOrderList = $scope.orderService.orderListTransformer(res);
-                            });
-                    });
-            };
-
-            me.chooseActiveDay = function () {
-                if (0 <= now.get('hour') && now.get('hour') < 16 && now.get('date') === $scope.todayDay.get('date')) {
-                    $scope.yesterday();
-                    $scope.prevDayEnabled = true;
-                } else {
-                    $scope.prevDayEnabled = false;
+                // If it's during delivery time, show the order to be delivered today.
+                if (0 <= now.get('hour') && now.get('hour') < 16) {
                     $scope.today();
+                } else {
+                    // If it's after delivery time for today, show the order to be delivered tomorrow
+                    $scope.tomorrow();
                 }
+                return OrderService.getCurrent()
+                    .success(function (res) {
+                        $scope.currentAggregateOrder = $scope.orderService.aggregateTransformer(res);
+                        $scope.currentOrderList = $scope.orderService.orderListTransformer(res);
+                        return true;
+                    });
             };
 
             me.initPoll = function () {
                 $timeout(function () {
                     me.getOrders().success(function() {
-                        toastr.success('Updated list...');
+                        toastr.info('Updated Order List');
                         me.initPoll();
                     });
-                }, 10000);
+                }, 15000);
             };
 
-            me.getOrders().success(function() {
-                me.chooseActiveDay();
-            });
+            me.getOrders();
             me.initPoll();
         };
 

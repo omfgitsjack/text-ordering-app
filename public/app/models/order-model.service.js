@@ -4,15 +4,8 @@
     angular.module('app.models')
         .service('OrderService', function($http) {
             return {
-                todayItemAggregate: null,
-                yesterdayItemAggregate: null,
-                todayOrderList: [],
-                yesterdayOrderList: [],
-                getToday: function() {
-                    return $http.get('http://ucafe.jackyiu.me/api/orders/today');
-                },
-                getYesterday: function() {
-                    return $http.get('http://ucafe.jackyiu.me/api/orders/yesterday');
+                getCurrent: function() {
+                    return $http.get('http://ucafe.jackyiu.me/api/orders/current');
                 },
                 aggregateTransformer: function(items) {
                     var aggregate = [];
