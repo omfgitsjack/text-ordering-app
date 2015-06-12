@@ -55,6 +55,11 @@
             }, 0);
         };
 
+        $scope.toHtml = function(str) {
+            var decoded = $('<div/>').html(str).text();
+            return decoded;
+        };
+
         $scope.disableOrderBtn = false;
         $scope.makeOrder = function () {
             $http

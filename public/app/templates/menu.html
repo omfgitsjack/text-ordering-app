@@ -33,10 +33,10 @@
                             <md-tab-label>材料</md-tab-label>
                             <md-tab-body>
                                 <md-content class="ingredients-section-content">
-                                    {{decodeURIComponent(item.ingredients)}}
+                                    {{toHtml(item.ingredients)}}
                                 </md-content>
                                 <div class="ingredients-section">
-                                    {{decodeURIComponent(item.ingredients)}}
+                                    {{toHtml(item.ingredients)}}
                                 </div>
                             </md-tab-body>
                         </md-tab>
