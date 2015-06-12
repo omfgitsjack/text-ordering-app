@@ -29,6 +29,7 @@
 <script src="bower_components/moment-timezone/moment-timezone.js"></script>
 <script src="bower_components/angular-moment/angular-moment.js"></script>
 <script src="bower_components/toastr/toastr.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 
 <!-- models -->
 <script src="app/models/models.js"></script>

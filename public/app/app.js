@@ -16,7 +16,8 @@
             'app.admin',
 
             // Core
-            'utilities.datetime'
+            'utilities.datetime',
+		'ngSanitize'
         ])
         .config(materialConfig)
         .config(uiRouterConfig)

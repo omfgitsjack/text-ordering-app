@@ -32,11 +32,9 @@
                         <md-tab>
                             <md-tab-label>材料</md-tab-label>
                             <md-tab-body>
-                                <md-content class="ingredients-section-content">
-                                    {{toHtml(item.ingredients)}}
+                                <md-content class="ingredients-section-content" ng-bind-html="item.ingredients">
                                 </md-content>
-                                <div class="ingredients-section">
-                                    {{toHtml(item.ingredients)}}
+                                <div class="ingredients-section" ng-bind-html="item.ingredients">
                                 </div>
                             </md-tab-body>
                         </md-tab>
