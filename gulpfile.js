@@ -47,7 +47,7 @@
             .pipe(bytediff.start())
             .pipe(less()).on('error', gutil.log)
             .pipe(autoprefixer("last 2 versions", "> 1%", "ie 8"))
-            //.pipe(gulpif(taskConstants.prod, minifyCss()))
+            .pipe(gulpif(taskConstants.prod, minifyCss()))
             .pipe(bytediff.stop())
             .pipe(concat(paths.build.files.css))
             .pipe(gulp.dest(paths.build.folder))
@@ -66,7 +66,7 @@
         gulp.src(paths.vendorcss)
             .pipe(concat(paths.build.files.vendorcss))
             .pipe(bytediff.start())
-            //.pipe(gulpif(taskConstants.prod, minifyCss()))
+            .pipe(gulpif(taskConstants.prod, minifyCss()))
             .pipe(bytediff.stop())
             .pipe(gulp.dest(paths.build.folder));
     });

@@ -39,7 +39,6 @@
     "public/bower_components/angular-sanitize/angular-sanitize.min.js"
   ],
   "vendorcss": [
-    "public/css/bootstrap.css",
     "public/bower_components/angular-material/angular-material.css",
     "public/app/style.css",
     "public/assets/fonts/font-awesome/css/font-awesome.css",
