@@ -4,11 +4,8 @@
     var ns = 'app.menu';
 
     angular
-        .module(ns, [
-            'app.models'
-        ])
-        .controller('menuController', menuController)
-        .controller('foodController', foodController);
+        .module(ns)
+        .controller('menuController', menuController);
 
     function menuController($scope, $http, $timeout, FoodService) {
         $scope.order = [];
@@ -72,10 +69,6 @@
                     }, 60000);
                 });
         };
-    }
-
-    function foodController($scope) {
-        $scope.isCollapsed = true;
     }
 
 })();
