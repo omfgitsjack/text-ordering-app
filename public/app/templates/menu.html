@@ -116,21 +116,24 @@
                 <h3>确定下单</h3>
                 <row class="phone">
                     <div class="input-group">
+
+                            <span class="input-group-btn">
                         <input
                                 class="form-control"
                                 type="text"
-                                placeholder="e.g. 6478325099"
+                                placeholder="e.g. 6478321234"
                                 ng-model="phoneNumber"
-                                ng-disabled="order.length === 0 || disableOrderBtn"/>
+                                ng-disabled="order.length === 0 || isCountingDown()"/>
 							<span class="input-group-btn">
 								<button
                                         class="btn btn-success"
                                         type="button"
                                         ng-click="makeOrder()"
-                                        ng-disabled="order.length === 0 || disableOrderBtn">下单</button>
+                                        ng-disabled="order.length === 0 || isCountingDown()">{{inputPlaceHolder()}}</button>
 							</span>
+                                                            
                     </div><!-- /input-group -->
-                    <p  class="text-muted">
+                    <p class="text-muted order-subtext">
                         按下单后，我们会发一个短信给你，请回复 OK 确定下单。
                     </p>
                 </row>

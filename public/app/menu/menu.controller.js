@@ -7,12 +7,21 @@
         .module(ns)
         .controller('menuController', menuController);
 
-    function menuController($scope, $http, $timeout, FoodService) {
+    function menuController($scope, $http, $timeout, $filter, FoodService, DateTimeService) {
         $scope.order = [];
         $scope.auth = {
             id: -1,
             code: ''
-        };
+        };  
+
+        var now = DateTimeService.now();
+        $scope.tomorrowDay = DateTimeService.now().add(1, 'days').startOf('day').format('dddd, MMMM Do');
+
+        if (0 <= now.get('hour') && now.get('hour') < 10) {
+            
+        } else {
+            toastr.warning('All orders made from this point on will be for ' + $scope.tomorrowDay);
+        }
 
         // Init our $scope.food
         FoodService.get()
@@ -52,9 +61,21 @@
             }, 0);
         };
 
+        $scope.isCountingDown = function() {
+            return $scope.countDownVal > 0;
+        }
 
-
+        $scope.countDownVal = 0;
         $scope.disableOrderBtn = false;
+
+        $scope.inputPlaceHolder = function() {
+            if ($scope.isCountingDown()) {
+                return "请等" + $scope.countDownVal + "秒"
+            } else {
+                return "下单"
+            }
+        }
+
         $scope.makeOrder = function () {
             $http
                 .post('api/authenticate', {
@@ -62,11 +83,16 @@
                     order: $scope.order
                 })
                 .success(function (res) {
-                    toastr.success('谢谢您的订单已收到, 请查看您手机');
-                    $scope.disableOrderBtn = true;
-                    $timeout(function () {
-                        $scope.disableOrderBtn = false;
-                    }, 60000);
+                    toastr.success('谢谢！你的订单已经收到。请查看短信完成订单');
+                    var countDown = function(val) {
+                        $scope.countDownVal = val;
+                        $timeout(function() {
+                            if (val > 0) {
+                                countDown(--val);
+                            }
+                        }, 1000);
+                    }
+                    countDown(60); 
                 });
         };
     }
