@@ -5,7 +5,7 @@
         .service('OrderService', function($http) {
             return {
                 getCurrent: function() {
-                    return $http.get('http://ucafe.jackyiu.me/api/orders/current');
+                    return $http.get('orders/current');
                 },
                 aggregateTransformer: function(items) {
                     var aggregate = [];
