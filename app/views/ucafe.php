@@ -70,7 +70,7 @@
     
       <div class="instruction_button"><a href="#instruction" type="button"><h4 class="menutext">如何点单</h4></a> </div>
 
-      <div class="menu_button"><a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h4 class="menutext">看看今天的菜单</h4></a> </div>
+      <div class="menu_button"><a href="http://menu.ucafe.ca/#/menu" type="button"><h4 class="menutext">看看今天的菜单</h4></a> </div>
     </div>
     
     <!-- </div> -->
@@ -148,7 +148,7 @@
         <h4 class="Eat">回复“OK” 确认订单，你的美食已经上路！我们会短信更新你的订单的状态哟~ </h4>
         <h4 class="instruction_text">取餐时间、地点：13:00-13:30 于BUS LOOP（38路旁边）
 我们暂时只收现金，请尽量带零钱哟:）</h4>
-        <div class="menu_button"><a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><h4 class="menutext">看看今天的菜单</h4></a> </div>
+        <div class="menu_button"><a href="http://menu.ucafe.ca/#/menu" type="button"><h4 class="menutext">看看今天的菜单</h4></a> </div>
     </div>
 
 
@@ -202,9 +202,8 @@
         <div class="about-text">找优秀厨师过程中，曾一周暴增五斤，也曾吃坏卧床四天。业余Marketing, 职业司机，带着玻璃胃和钻石心想要和你一起吃很多很多顿饭。
         </div>
     </div>
-    
-    
-
+  </div>
+  <div class="about-wrapper">
     <div class="about-box">
         <h4>Chris</h4>
         <h5>Webmaster</h5>
@@ -228,7 +227,7 @@
     <div class="about-box">
       <img src="images/jack.jpg" class="about-image">
     </div>
-</div>
+  </div>
 <!-- new -->    
     
     <!-- normal -->
@@ -266,7 +265,7 @@
 </div>
 
 <div class="footer">
-  <a href="#" type="button" onclick="alert('网页建设中， 敬请期待！')"><div class="bottom-m">今天的菜单</div></a>
+  <a href="http://menu.ucafe.ca/#/menu" type="button"><div class="bottom-m">今天的菜单</div></a>
 </div>
 
 <!-- <footer>      

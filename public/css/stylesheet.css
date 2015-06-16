@@ -159,7 +159,6 @@ a:active{
 	float: none;
 	margin-left: auto;
 	margin-right: auto;
-
 	background-color: rgb(251,64,7);
 }
 
@@ -234,6 +233,8 @@ a:active{
 
 .carousel-indicators{
 	 top: 120px;
+	 bottom: 50px;
+
 }
 
 
@@ -342,13 +343,16 @@ a:active{
 	margin-right: auto;
 }*/
 .about-wrapper{
-	margin-top: 70px;
-	margin-bottom: 50px; 
+	margin-top: 50px;
+	margin-bottom: 20px; 
 	text-align: center;
-	width: 70%;
+	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 }
+
+
+
 
 .about-box{
 	width: 200px;
