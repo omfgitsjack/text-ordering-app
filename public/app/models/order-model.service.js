@@ -5,7 +5,7 @@
         .service('OrderService', function($http) {
             return {
                 getCurrent: function() {
-                    return $http.get('orders/current');
+                    return $http.get('api/orders/current');
                 },
                 aggregateTransformer: function(items) {
                     var aggregate = [];
