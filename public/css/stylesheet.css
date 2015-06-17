@@ -346,7 +346,7 @@ a:active{
 	margin-top: 50px;
 	margin-bottom: 20px; 
 	text-align: center;
-	width: 80%;
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -477,3 +477,15 @@ a:hover div{
 	}
 }
 
+@media screen and (max-width:768px) and (orientation:portrait){
+
+	.about-wrapper{
+		width: 60%;	
+	}
+}
+
+@media screen and (max-width:1024px) and (orientation: landscape){
+	.about-wrapper{
+		width: 60%;	
+	}
+}

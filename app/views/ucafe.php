@@ -203,6 +203,7 @@
         </div>
     </div>
   </div>
+  
   <div class="about-wrapper">
     <div class="about-box">
         <h4>Chris</h4>
