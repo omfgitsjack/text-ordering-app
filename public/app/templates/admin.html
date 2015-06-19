@@ -22,7 +22,7 @@
         <md-whiteframe class="md-whiteframe-z2" layout layout-align="center left">
             <md-list>
                 <md-subheader class="md-no-sticky"
-                              ng-repeat-start="order in currentOrderList">{{order.id}}: {{order.phone}}. (Total: ${{totalprice}})</md-subheader>
+                              ng-repeat-start="order in currentOrderList">{{order.id}}: {{order.phone}}. (${{order.totalprice}})</md-subheader>
                 <md-list-item class="md-1-line"
                               ng-repeat="item in order.items">
                     <div class="md-list-item-text">
