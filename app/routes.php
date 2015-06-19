@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,8 +29,8 @@ Route::post('api/twilio', function() {
 	$auth = Authentication::where('phone', Input::get('From'))->orderBy('id', 'desc')->first();
 	$twiml = new Services_Twilio_Twiml();
 	$WECHATACC = 'ucafe_ca';
-
-	if (!$auth->verified) {
+	
+	if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60) {
 		$auth->verified = true;
 		$auth->save();
 
