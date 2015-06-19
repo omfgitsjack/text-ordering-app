@@ -31,6 +31,7 @@
                     for (var i = 0; i < items.length; i++) {
                         var index = me.isInList(items[i].id, 'id', list);
                         if (index !== false) {
+                            list[index].totalprice += (items[i].quantity * items[i].taxedprice);
                             list[index].items.push({
                                 name: items[i].name,
                                 quantity: items[i].quantity
@@ -39,16 +40,18 @@
                             list.push({
                                 id: items[i].id,
                                 phone: items[i].phone,
+                                totalprice: items[i].quantity * items[i].taxedprice,
                                 items: [{
                                     name: items[i].name,
-                                    quantity: items[i].quantity
+                                    quantity: items[i].quantity,
+                                    price: items[i].taxedprice * items[i].quantity
                                 }]
                             });
                         }
                     }
 
                     return list;
-                },
+                }
                 isInList: function(propertyValue, identifyingProperty, list) {
                     for (var i = 0; i < list.length; i++) {
                         if (list[i]) {

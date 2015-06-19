@@ -104,7 +104,7 @@ class OrdersController extends \BaseController {
 			->orderBy('authentications.updated_at','desc')
 			->select('authentications.updated_at',
 				'phone','authentications.id','foods.name','orders.quantity',
-				'foods.description','foods.price','foods.image','foods.calories','foods.protein','foods.fat','foods.carbs','foods.fiber','foods.ingredients')
+				'foods.description','foods.price','foods.image','foods.calories','foods.taxedprice','foods.protein','foods.fat','foods.carbs','foods.fiber','foods.ingredients')
 			->get();
 
 		return $records;
