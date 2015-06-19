@@ -17,7 +17,8 @@
 
             // Core
             'utilities.datetime',
-		'ngSanitize'
+            'utilities.googleanalytics',
+            'ngSanitize'
         ])
         .config(materialConfig)
         .config(uiRouterConfig)
