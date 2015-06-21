@@ -6,7 +6,7 @@
 
     <div class="title-area">
         <!-- <h3>亲, 我们周六不开放.</h3> -->
-        <h4>如果想周一又吃上我们的美食的话周日早上10点又可以下订单了!</h4>
+        <!-- <h4>如果想周一又吃上我们的美食的话周日早上10点又可以下订单了!</h4> -->
         <h3>UTSC 今日午饭菜单</h3>
         <h4 class='text-muted'>取餐时间、地点：13:00-13:30 于 BUS LOOP (38路旁边)</h4>
     </div>
@@ -95,10 +95,8 @@
     </div>
 
     <div class="food-items">
-        Checkout Area
         <row class="checkout-area">
             <div class="col-md-6">
-                Order List
                 <h3>你的订单(includes tax)</h3>
                 <p class="text-muted"
                    ng-show="order.length === 0">暂无选项</p>
@@ -113,7 +111,6 @@
                 <h4 ng-hide="order.length === 0">Total: ${{orderTotal(order)}}</h4>
             </div>
             <div class="col-md-6">
-                Order Submission Area
                 <h3>确定下单</h3>
                 <row class="phone">
                     <div class="input-group">
@@ -131,8 +128,8 @@
                                         ng-disabled="order.length === 0 || isCountingDown()">{{inputPlaceHolder()}}</button>
                             </span>
                                                             
-                    </div>/input-group
-            <p class="text-muted order-subtext">
+                    </div>
+                    <p class="text-muted order-subtext">
                         按下单后，我们会发一个短信给你，请回复 OK 确定下单。
                     </p>
                 </row>
