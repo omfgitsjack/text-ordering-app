@@ -55,13 +55,18 @@
             .state("admin", {
                 abstract: true,
                 url: "/admin",
-                templateUrl: TEMPLATEPATH + "admin.html"/*,
-                controller: 'adminController'*/
+                templateUrl: TEMPLATEPATH + "admin.html",
+                controller: 'adminController'
             })
             .state("admin.orders", {
                 url: "/orders",
                 templateUrl: TEMPLATEPATH + "orders.html",
                 controller: 'ordersController'
+            })
+            .state("admin.food", {
+                url: "/food",
+                templateUrl: TEMPLATEPATH + "food.html",
+                controller: 'foodController'
             });
     }
 

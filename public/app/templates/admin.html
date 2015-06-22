@@ -1,2 +1,31 @@
-<h3 class="center-header">Admin Page</h3>
-<ui-view/>
+<div layout="column" class="admin-wrap">
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+            <md-toolbar md-theme="redThemeBtn" class="md-primary">
+                <h1 class="md-toolbar-tools">Admin Panel</h1>
+            </md-toolbar>
+                <md-list>
+                    <md-list-item ng-click="leftClose()" hide-gt-md>
+                        Close Menu
+                    </md-list-item>
+                    <md-list-item ng-click="goToOrders()">
+                        <p>Orders</p>
+                    </md-list-item>
+                    <md-list-item ng-click="goToFood()">
+                        <p>Menu Rotation</p>
+                    </md-list-item>
+                </md-list>
+        </md-sidenav>
+        <md-content flex layout-padding>
+            <div layout="column" layout-fill layout-align="top center">
+                <ui-view/>
+            </div>
+        </md-content>
+    </section>
+</div>
+<md-button md-theme='redThemeBtn'
+           class="md-fab md-mini md-primary toggle-left-button"
+           aria-label="Plus"
+           ng-click="toggleLeft()">
+    <md-icon md-svg-src="assets/icons/navicon.svg"></md-icon>
+</md-button>

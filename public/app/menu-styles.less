@@ -15,8 +15,19 @@ body,h1,h2,h3,h4,h5,h6 {
   font-family: c !important;
 }
 
+body {
+  padding-bottom: 0 !important;
+}
+
+.admin-wrap,
 .body-container {
-  padding-bottom: 50px;
+  height: 100%;
+}
+
+.toggle-left-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
 }
 
 .center-header {
@@ -329,7 +340,8 @@ md-list-item {
 }
 
 .order-info {
-  margin-top: 50px;
+  margin-top: 10px;
+  margin-bottom: 50px;
 
   > h3,
   > h4 {
@@ -340,4 +352,9 @@ md-list-item {
 
 .order-subtext {
   margin-top: 10px;
+}
+
+md-menu-item {
+  display: block;
+  width: 100%;
 }
