@@ -1,1 +1,19 @@
-<h1>Menu Rotation</h1>
+<div class="center-header order-info">
+    <h4 class="text-muted">Menu</h4>
+</div>
+
+<row>
+    <div class="col-sm-0 col-md-3"> </div>
+    <div class="col-sm-12 col-md-6">
+        <md-whiteframe class="md-whiteframe-z2" layout layout-align="center left">
+            <md-list>
+                <md-subheader class="md-no-sticky">Check/Uncheck to set food menu</md-subheader>
+                <md-list-item ng-repeat="item in food">
+                    {{item.name}}
+                    <md-checkbox class="md-secondary" ng-model="item.available"></md-checkbox>
+                </md-list-item>
+            </md-list>
+        </md-whiteframe>
+    </div>
+    <div class="col-sm-0 col-md-3"> </div>
+</row>

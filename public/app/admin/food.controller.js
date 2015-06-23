@@ -5,8 +5,16 @@
         .module('app.admin')
         .controller('foodController', foodController);
 
-    function foodController() {
-        console.log('food');
+    function foodController($scope, FoodService) {
+
+        var updateFoodMenu = function() {
+            FoodService.get()
+                .success(function (res) {
+                    $scope.food = res;
+                });
+        };
+
+        updateFoodMenu();
     }
 
 })();
