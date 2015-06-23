@@ -13,74 +13,9 @@ class FoodsController extends \BaseController {
 		return Response::json(Food::where('available', true)->get());
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /foods/create
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function updateAll()
 	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /foods
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /foods/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /foods/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /foods/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /foods/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		// Loop through each one and update
 	}
 
 }

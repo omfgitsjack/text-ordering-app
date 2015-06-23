@@ -1,5 +1,5 @@
 <div class="center-header order-info">
-    <h4 class="text-muted">Menu</h4>
+    <h4 class="text-muted">Food Menu</h4>
 </div>
 
 <row>
@@ -9,7 +9,7 @@
             <md-list>
                 <md-subheader class="md-no-sticky">Check/Uncheck to set food menu</md-subheader>
                 <md-list-item ng-repeat="item in food">
-                    {{item.name}}
+                    {{item.id}}. {{item.name}}
                     <md-checkbox class="md-secondary" ng-model="item.available"></md-checkbox>
                 </md-list-item>
             </md-list>

@@ -7,14 +7,21 @@
 
     function foodController($scope, FoodService) {
 
-        var updateFoodMenu = function() {
+        var getFoodMenu = function() {
             FoodService.get()
                 .success(function (res) {
                     $scope.food = res;
+
+                    $scope.$watch('food', function(newVal, oldVal) {
+                        if (newVal !== oldVal) {
+                            FoodService.update(newVal);
+                            toastr.success('You have updated the menu!');
+                        }
+                    }, true);
                 });
         };
 
-        updateFoodMenu();
+        getFoodMenu();
     }
 
 })();

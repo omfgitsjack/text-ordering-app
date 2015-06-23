@@ -13,6 +13,18 @@
                             me.items = res;
                             return me.items;
                         });
+                },
+                update: function(foodItems) {
+                    foodItems = foodItems.map(function(el) {
+                        if (el.available === true) {
+                            el.available = 1;
+                        }
+                        if (el.available === false) {
+                            el.available = 0;
+                        }
+                    });
+
+                    $http.put('api/food', foodItems);
                 }
             }
         });
