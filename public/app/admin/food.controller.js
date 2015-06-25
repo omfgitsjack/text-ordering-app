@@ -16,7 +16,7 @@
                         if (newVal !== oldVal) {
                             FoodService
                                 .update(newVal);
-                            toastr.success('You have updated the menu!');
+                            toastr.success('You have updated the menu!', 1000);
                         }
                     }, true);
                 });
