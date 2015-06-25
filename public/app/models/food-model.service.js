@@ -14,17 +14,57 @@
                             return me.items;
                         });
                 },
+                getAll: function() {
+                    var me = this;
+
+                    return $http.get('api/food/all')
+                        .success(function(res) {
+                            res = res.map(function(el) {
+                                if (el.available === 1) {
+                                    el.available = true;
+                                } else {
+                                    el.available = false;
+                                }
+                                return el;
+                            });
+
+                            me.items = res;
+                            return me.items;
+                        });
+                },
                 update: function(foodItems) {
-                    foodItems = foodItems.map(function(el) {
-                        if (el.available === true) {
-                            el.available = 1;
+                    var items = foodItems.slice();
+                    var me = this;
+                    items = items.map(function(el) {
+
+                        if (typeof el !== "number") {
+                            if (el.available === true) {
+                                el.available = 1;
+                            } else if (el.available === false) {
+                                el.available = 0;
+                            }
                         }
-                        if (el.available === false) {
-                            el.available = 0;
-                        }
+
+                        return el;
                     });
 
-                    $http.put('api/food', foodItems);
+                    $http.put('api/food',
+                        {
+                            foodList: items
+                        });
+
+                    foodItems = items.map(function(el) {
+                        var temp = el;
+                        if (temp.available === 1) {
+                            temp.available = true;
+                        } else {
+                            temp.available = false;
+                        }
+                        return temp;
+                    });
+
+                    me.items = foodItems;
+                    return me.items;
                 }
             }
         });

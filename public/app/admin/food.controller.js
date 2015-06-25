@@ -8,13 +8,14 @@
     function foodController($scope, FoodService) {
 
         var getFoodMenu = function() {
-            FoodService.get()
+            FoodService.getAll()
                 .success(function (res) {
                     $scope.food = res;
 
                     $scope.$watch('food', function(newVal, oldVal) {
                         if (newVal !== oldVal) {
-                            FoodService.update(newVal);
+                            FoodService
+                                .update(newVal);
                             toastr.success('You have updated the menu!');
                         }
                     }, true);
