@@ -20,8 +20,8 @@ Route::get('/', function()
 });
 
 Route::get('api/food', 'FoodsController@index');
-Route::get('api/food/all', 'FoodsController@indexAll');
 Route::put('api/food', 'FoodsController@update');
+Route::get('api/food/all', 'FoodsController@indexAll');
 
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 

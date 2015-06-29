@@ -15,10 +15,15 @@
         };  
 
         var now = DateTimeService.now();
+        var deadline = DateTimeService.now()
+            .startOf('day')
+            .add(10, 'hours')
+            .add(30, 'minutes');
+
         $scope.tomorrowDay = DateTimeService.now().add(1, 'days').startOf('day').format('dddd, MMMM Do');
 
-        if (0 <= now.get('hour') && now.get('hour') < 10) {
-            
+        if (now.isBefore(deadline, 'minute')) {
+
         } else {
             toastr.warning('All orders made from this point on will be for ' + $scope.tomorrowDay);
         }

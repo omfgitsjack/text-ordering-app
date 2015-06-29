@@ -40,7 +40,7 @@ class OrdersController extends \BaseController {
 
 		if (0 <= $now->hour && $now->hour < 16) {
 			return [
-				'deadline' => $todayDeadline->startOfDay()->addHours(self::ORDERHOURCUTOFF),
+				'deadline' => $todayDeadline->startOfDay()->addHours(self::ORDERHOURCUTOFF)->addMinutes(30),
 				'start'	=> $todayStart->startOfDay()->subDays(1)->addHours(self::ORDERHOURCUTOFF)
 			];
 		} else {
