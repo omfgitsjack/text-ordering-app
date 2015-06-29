@@ -68,9 +68,12 @@
       <h5 class="subsubtitle">不仅仅是便当</h5>
 
     
-      <div class="instruction_button"><a href="#instruction" type="button"><h4 class="menutext">如何点单</h4></a> </div>
+      <div class="menu_button"><a href="#instruction" type="button"><h4 class="menutext">如何点单</h4></a> </div>
 
-      <div class="menu_button"><a href="http://menu.ucafe.ca/#/menu" type="button"><h4 class="menutext">看看今天的菜单</h4></a> </div>
+      <div class="menu_button"><a href="http://menu.ucafe.ca/#/menu" type="button"><h4 class="menutext">看看今天的菜单</h4></a></div>
+
+      <div class="menu_button"><a href="#past menu" type="button"><h4 class="menutext">看看往日的菜单</h4></a></div>
+
     </div>
     
     <!-- </div> -->

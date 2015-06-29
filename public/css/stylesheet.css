@@ -97,7 +97,7 @@ a:active{
 
 
 .menu-box{
-	height: 270px;
+	height: 280px;
 	width: 350px;
 	background-color: white;
 	margin-left: auto;
@@ -131,26 +131,10 @@ a:active{
 }*/
 
 
-.instruction_button{
-	margin-top: 1%;
-	height: 40px; 
-	width: 260px; 
-	border-color: rgb(251,64,7); 
-	border-style: solid; 
-	border-width:2px; 
-	border-radius:5px; 
-	text-align:center ;
-	float: none;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 3%;
-	background-color: rgb(251,64,7);
-}
 
 .menu_button{
-	margin-top: 1%;
-	height: 40px; 
-	width: 260px; 
+	height: 30px; 
+	width: 240px; 
 	border-color: rgb(251,64,7); 
 	border-style: solid; 
 	border-width:2px; 
@@ -159,11 +143,15 @@ a:active{
 	float: none;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 2%;
 	background-color: rgb(251,64,7);
+	padding-bottom: 5%;
 }
 
 .menutext{
+	margin-top: 6px;
 	color: white;
+	font-size: 15px;
 }
 
 .index-wrapper{
