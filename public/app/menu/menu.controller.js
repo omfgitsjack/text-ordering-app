@@ -1,6 +1,9 @@
 (function () {
     "use strict";
 
+    // CONSTANTS
+    var ORDER_TIMEOUT = 60 * 5;
+
     var ns = 'app.menu';
 
     angular
@@ -13,7 +16,7 @@
             id: -1,
             code: ''
         };  
-
+        console.log(ns); 
         var now = DateTimeService.now();
         var deadline = DateTimeService.now()
             .startOf('day')
@@ -97,7 +100,7 @@
                             }
                         }, 1000);
                     }
-                    countDown(60); 
+                    countDown(ORDER_TIMEOUT); 
                 });
         };
     }

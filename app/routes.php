@@ -32,7 +32,7 @@ Route::post('api/twilio', function() {
 	$twiml = new Services_Twilio_Twiml();
 	$WECHATACC = 'ucafe_ca';
 	
-	if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60) {
+	if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60 * 5) {
 		$auth->verified = true;
 		$auth->save();
 
@@ -40,8 +40,7 @@ Route::post('api/twilio', function() {
 		$response = Response::make($twiml, 200);
 		$response->header('Content-Type', 'text/xml');	
 	} else {
-		$twiml->message("Please visit http://www.ucafe.ca to order.\nIf you have any queries, please add " . $WECHATACC .
-			" on WeChat.");
+		$twiml->message("不好意思， 您没有立即确认”ok”, 您的订单没有成功录入我们的系统， 请回到ucafe.ca从新订单并收到短信后立即回复”ok” ：)");
 		$response = Response::make($twiml, 200);
 		$response->header('Content-Type', 'text/xml');
 	}
