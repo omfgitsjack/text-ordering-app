@@ -58,7 +58,7 @@ class AuthenticateController extends Controller {
                 "优厨房已收到你的订单: \n" . 
                 "订单号码: " . $authRecord->id . "\n" .
                 "你的午餐: \n" . $this->generateReceipt($savedOrders) .
-                "取餐地点: UTSC bus loop 38路旁边\n" .
+                "取餐地点: Tim Hortons前面的长椅（图书馆旁边\n" .
                 "预计时间: 1 PM\n" . 
                 "***请回复 OK 确定订单***"
             );
