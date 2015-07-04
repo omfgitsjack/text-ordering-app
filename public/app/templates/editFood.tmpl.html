@@ -1,0 +1,30 @@
+<md-dialog aria-label="Edit Food Item" md-theme="redThemeBtn">
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Edit Food Name</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancelDialog()">
+        <md-icon md-svg-src="assets/icons/ios-close-empty.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div>
+      <md-input-container>
+        <label>Food Name</label>
+        <input ng-model="item.name">
+      </md-input-container>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="cancelDialog()" class="md-primary">
+      Cancel
+    </md-button>
+    <md-button ng-click="closeDialog(item)" class="md-primary">
+      Save
+    </md-button>
+  </div>
+  </form>
+</md-dialog>
