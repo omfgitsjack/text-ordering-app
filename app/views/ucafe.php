@@ -136,7 +136,7 @@
         </div>
       </div>
     </div>
-
+)
     <div class="indicator-wrapper" id="instruction">
       <h1 class="i-title">点   发   吃</h1>
 
@@ -149,8 +149,8 @@
         <h4 class="Click">浏览菜单，选择你的午餐。可以从前一天的10am到当天的10am之间下订单</h4>
         <h4 class="Text">输入手机号，订单信息将发送到手机</h4>
         <h4 class="Eat">回复“OK” 确认订单，你的美食已经上路！我们会短信更新你的订单的状态哟~ </h4>
-        <h4 class="instruction_text">取餐时间、地点：13:00-13:30 于BUS LOOP（38路旁边）
-我们暂时只收现金，请尽量带零钱哟:）</h4>
+        <h4 class="instruction_text">取餐时间,地点: 13：00于Tim Hortons前面的长椅（图书馆旁边) 我们暂时只收现金，请尽量带零钱哟 :）
+</h4>
         <div class="menu_button"><a href="http://menu.ucafe.ca/#/menu" type="button"><h4 class="menutext">看看今天的菜单</h4></a> </div>
     </div>
 
