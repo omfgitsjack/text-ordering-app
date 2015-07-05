@@ -28,7 +28,9 @@ Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 Route::get('api/orders/current', array('after' => 'allowOrigin', 'uses' => 'OrdersController@currentOrders'));
 
 Route::get('api/test' , function() {
-	Queue::push('AuthenticateController@remind', array('id' => 1));
+	$date = Carbon::now()->addMinutes(1);
+
+	Queue::later($date, 'AuthenticateController@remind', array('id' => 1));
 });
 
 Route::post('api/twilio', function() {
