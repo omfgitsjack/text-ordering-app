@@ -69,4 +69,14 @@ class AuthenticateController extends Controller {
             return $e;
         }
     }
+
+    public function remind($job, $data) {
+
+        $auth = Authentication::where('id', $data['id'])->first();
+        $auth->verified = true;
+        $auth->save();
+
+        $job->delete();
+    }
+
 }

@@ -27,6 +27,10 @@ Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 
 Route::get('api/orders/current', array('after' => 'allowOrigin', 'uses' => 'OrdersController@currentOrders'));
 
+Route::get('api/test' , function() {
+	Queue::push('AuthenticateController@remind', array('id' => 1));
+});
+
 Route::post('api/twilio', function() {
 	$auth = Authentication::where('phone', Input::get('From'))->orderBy('id', 'desc')->first();
 	$twiml = new Services_Twilio_Twiml();
