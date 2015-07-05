@@ -40,6 +40,8 @@
             .then(function(newItem) {
                 // Hardcoding the way we update the new item.
                 $scope.curItem.name = newItem.name;
+                $scope.curItem.description = newItem.description;
+                $scope.curItem.ingredients = newItem.ingredients;
                 $scope.curItem = null;
                 console.log('You said the information was "' + newItem + '".');
             }, function() {
@@ -65,7 +67,6 @@
                 }
               }
             }
-
         }
 
         $scope.tempModel = true;
