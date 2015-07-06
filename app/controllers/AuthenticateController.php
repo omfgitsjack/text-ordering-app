@@ -78,7 +78,7 @@ class AuthenticateController extends Controller {
 
         $this->twilioClient->account->messages->sendMessage(
             "+12892071270",
-            $auth->number,
+            $auth->phone,
             "You did not type 'OK' to confirm your order. Please go back to ucafe.ca and make your order again."
         );
 
