@@ -17,6 +17,7 @@ class CreateAuthenticationsTable extends Migration {
 			$table->increments('id');
 			$table->text('phone');
 			$table->boolean('verified');
+			$table->boolean('reminded');
 			$table->timestamps();
 		});
 	}
