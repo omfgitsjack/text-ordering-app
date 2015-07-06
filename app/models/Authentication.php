@@ -3,8 +3,7 @@
 class Authentication extends \Eloquent {
 	protected $fillable = [
 		'phone',
-		'verified',
-		'reminded'
+		'verified'
 	];
 
 	public function orders() {

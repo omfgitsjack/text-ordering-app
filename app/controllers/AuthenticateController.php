@@ -39,8 +39,7 @@ class AuthenticateController extends Controller {
         // Store Authentication details
         $authRecord = Authentication::create([
             "phone"    => '+1' . $number,
-            "verified" => false,
-            "reminded" => false
+            "verified" => false
         ]);
 
         // Store Order
@@ -82,9 +81,7 @@ class AuthenticateController extends Controller {
     public function remind($job, $data) {
         $auth = Authentication::where('id', $data['id'])->first();
         
-        if (!$auth->verified && !$auth->reminded) {
-            $auth->reminded = true;
-
+        if (!$auth->verified) {
             $this->twilioClient->account->messages->sendMessage(
                 "+12892071270",
                 $auth->phone,
