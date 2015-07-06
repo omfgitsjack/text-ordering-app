@@ -28,6 +28,8 @@ class AuthenticateController extends Controller {
         return $receipt;
     }
 
+    // Receive initial order placement, send out confirmation message &
+    // schedule reminder text message to confirm order.
     public function sendAuthToken()
     {
         $number = Input::get("phoneNumber");
@@ -37,7 +39,8 @@ class AuthenticateController extends Controller {
         // Store Authentication details
         $authRecord = Authentication::create([
             "phone"    => '+1' . $number,
-            "verified" => false
+            "verified" => false,
+            "reminded" => false
         ]);
 
         // Store Order
@@ -62,7 +65,12 @@ class AuthenticateController extends Controller {
                 "预计时间: 1 PM\n" . 
                 "***请回复 OK 确定订单***"
             );
-            
+
+            // Fire task to remind user if they have not verified.
+            // Give them a chance to type OK instead of remaking the order.
+            $date = Carbon::now()->addMinutes(3);
+            Queue::later($date, 'AuthenticateController@remind', array('id' => $authRecord->id));
+
             return "OK";
         } catch (Services_Twilio_RestException $e)
         {
@@ -70,17 +78,19 @@ class AuthenticateController extends Controller {
         }
     }
 
+    // Remind a user to confirm order if they have yet to do so.
     public function remind($job, $data) {
-
         $auth = Authentication::where('id', $data['id'])->first();
-        $auth->verified = true;
-        $auth->save();
+        
+        if (!$auth->verified && !$auth->reminded) {
+            $auth->reminded = true;
 
-        $this->twilioClient->account->messages->sendMessage(
-            "+12892071270",
-            $auth->phone,
-            "You did not type 'OK' to confirm your order. Please go back to ucafe.ca and make your order again."
-        );
+            $this->twilioClient->account->messages->sendMessage(
+                "+12892071270",
+                $auth->phone,
+                "不好意思， 您没有立即确认”ok”, 您的订单没有成功录入我们的系统， 请回复 ”OK” 确定订单"
+            );
+        }
 
         $job->delete();
     }
