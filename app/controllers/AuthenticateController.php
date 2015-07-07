@@ -69,8 +69,11 @@ class AuthenticateController extends Controller {
 
             // Fire task to remind user if they have not verified.
             // Give them a chance to type OK instead of remaking the order.
-            $date = Carbon::now()->addMinutes(3);
-            Queue::later($date, 'AuthenticateController@remind', array('id' => $authRecord->id));
+            $remindDate = Carbon::now()->addMinutes(3);
+            Queue::later($remindDate, 'AuthenticateController@remind', array('id' => $authRecord->id));
+
+            $cancelDate = Carbon::now()->addMinutes(5);
+            Queue::later($cancelDate, 'AuthenticateController@cancel', array('id' => $authRecord->id));
 
             return "OK";
         } catch (Services_Twilio_RestException $e)
@@ -87,7 +90,22 @@ class AuthenticateController extends Controller {
             $this->twilioClient->account->messages->sendMessage(
                 "+12892071270",
                 $auth->phone,
-                "不好意思， 您没有立即确认”ok”, 您的订单没有成功录入我们的系统， 请回复 ”OK” 确定订单"
+                "请在两分钟内回复 ”OK” 确定订单, 否则您的顶单会被取消"
+            );
+        }
+
+        $job->delete();
+    }
+
+    // Remind a user to confirm order if they have yet to do so.
+    public function cancel($job, $data) {
+        $auth = Authentication::where('id', $data['id'])->first();
+        
+        if (!$auth->verified) {
+            $this->twilioClient->account->messages->sendMessage(
+                "+12892071270",
+                $auth->phone,
+                "不好意思, 您没有在规定时间内回复'OK',订单已取消。请回ucafe.ca再次下单:)"
             );
         }
 
