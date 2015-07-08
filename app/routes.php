@@ -56,7 +56,12 @@ Route::post('api/twilio', function() {
 
 		$msg = "我们取消了你的订单";
 	} else {
-		$msg = '如果想联络我们的话，请发短信给我们的微信：' . $WECHATACC;
+		if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60 * 5) {
+			$msg = "请回复 OK 确定订单\n" . "回复 NO 取消订单";
+		} else {
+			$msg = 	"想订单的话，请前往ucafe.ca.\n" . 
+	 						"如果想联络我们的话，请发短信给我们的微信：" . $WECHATACC;
+		}
 	}
 
 	$twiml->message($msg);
