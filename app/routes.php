@@ -27,11 +27,12 @@ Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 
 Route::get('api/orders/current', array('after' => 'allowOrigin', 'uses' => 'OrdersController@currentOrders'));
 
+define('CONFIRM_ORDER', "ok");
+define('CANCEL_ORDER', "cancel");
+
 Route::post('api/twilio', function() {
 	// RESPONSE CONSTANTS
-	const CONFIRM_ORDER = "ok";
-	const CANCEL_ORDER = "cancel";
-
+	
 	$auth = Authentication::where('phone', Input::get('From'))->orderBy('id', 'desc')->first();
 	$twiml = new Services_Twilio_Twiml();
 	$WECHATACC = 'ucafe_ca';
