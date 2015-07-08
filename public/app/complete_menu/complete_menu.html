@@ -1,0 +1,23 @@
+<div class='complete-menu'>
+	<div class="row">
+	    <div class="col-lg-12">
+	        <h1 class="page-header">我们的菜单
+	            <small>不仅仅是便当</small>
+	        </h1>
+	    </div>
+	</div>
+
+  <md-grid-list
+        md-cols-sm="1" md-cols-md="2" md-cols-gt-md="3"
+        md-row-height-gt-md="1.5:1" md-row-height="1.5:1"
+        md-gutter="8px" md-gutter-gt-sm="8px" >
+    <md-grid-tile ng-repeat="item in food"
+                  md-rowspan="1"
+                  md-colspan="1"
+                  md-colspan-sm="1" 
+                  style='overflow: hidden;'>
+				<img ng-src="{{item.image}}" alt="Food Image"/>
+      <md-grid-tile-footer><h3>{{item.name}}</h3></md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
