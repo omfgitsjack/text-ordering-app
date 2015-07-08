@@ -37,9 +37,9 @@ Route::post('api/twilio', function() {
 	$twiml = new Services_Twilio_Twiml();
 	$WECHATACC = 'ucafe_ca';
 
-	var responseString = strtolower(Input::get('Body'));
+	$responseString = strtolower(Input::get('Body'));
 
-	if (responseString == CONFIRM_ORDER) {
+	if ($responseString == CONFIRM_ORDER) {
 		if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60 * 5) {
 			// Save and confirm
 			$auth->verified = true;
@@ -50,7 +50,7 @@ Route::post('api/twilio', function() {
 			// Reject
 			$msg = "不好意思， 您没有在规定时间内回复'OK'. 您的订单没有成功录入我们的系统， 请回到ucafe.ca从新订单并收到短信后立即回复”ok” ：)";
 		}
-	} else if (responseString == CANCEL_ORDER) {
+	} else if ($responseString == CANCEL_ORDER) {
 		$auth->verified = false;
 		$auth->save();
 
