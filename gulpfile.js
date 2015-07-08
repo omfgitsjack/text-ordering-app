@@ -72,7 +72,7 @@
     });
 
     // WATCHERS
-    gulp.task('watch', ['watch-app', 'karma-test']);
+    gulp.task('watch', ['watch-app']);
 
     // Watch for changes in app, less, vendor dependencies & compile new dependency as necessary.
     gulp.task('watch-app', function() {

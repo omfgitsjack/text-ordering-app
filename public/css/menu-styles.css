@@ -14,8 +14,17 @@ h5,
 h6 {
   font-family: c !important;
 }
+body {
+  padding-bottom: 0 !important;
+}
+.admin-wrap,
 .body-container {
-  padding-bottom: 50px;
+  height: 100%;
+}
+.toggle-left-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
 }
 .center-header {
   text-align: center;
@@ -116,8 +125,7 @@ h6 {
   padding: 0;
   border: 0;
   font-weight: 500;
-  font-size: .8em;
-  line-height: 1.3em;
+  font-size: 1em;
   height: 50%;
 }
 @media screen and (max-width: 720px) {
@@ -153,7 +161,7 @@ h6 {
   display: block;
   height: 80px;
   background-color: #f7f7f7 !important;
-  font-size: .8em;
+  font-size: 1em;
 }
 @media screen and (max-width: 720px) {
   .ingredients-section-content {
@@ -164,12 +172,13 @@ h6 {
 .ingredients-section {
   display: none;
   height: auto;
+  font-size: 1em;
 }
 @media screen and (max-width: 720px) {
   .ingredients-section {
     display: block;
     float: left;
-    font-size: .8em;
+    font-size: 1em;
     height: auto;
     width: 100%;
   }
@@ -295,7 +304,8 @@ md-list-item {
   margin-top: 50px;
 }
 .order-info {
-  margin-top: 50px;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 .order-info > h3,
 .order-info > h4 {
@@ -304,5 +314,21 @@ md-list-item {
 }
 .order-subtext {
   margin-top: 10px;
+}
+md-menu-item {
+  display: block;
+  width: 100%;
+}
+.complete-menu {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.complete-menu > * img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 /*# sourceMappingURL=menu-styles.css.map */

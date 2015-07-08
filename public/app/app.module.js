@@ -14,6 +14,7 @@
             // App dependencies
             'app.menu',
             'app.admin',
+            'app.completeMenu',
 
             // Core
             'utilities.datetime',
@@ -51,6 +52,11 @@
                 url: "/menu",
                 templateUrl: TEMPLATEPATH + 'menu.html',
                 controller: 'menuController'
+            })
+            .state('completeMenu', {
+                url: "/complete_menu",
+                templateUrl: 'app/complete_menu/complete_menu.html',
+                controller: 'completeMenuController'
             })
             .state("admin", {
                 abstract: true,
