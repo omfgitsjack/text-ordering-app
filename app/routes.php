@@ -28,7 +28,7 @@ Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 Route::get('api/orders/current', array('after' => 'allowOrigin', 'uses' => 'OrdersController@currentOrders'));
 
 define('CONFIRM_ORDER', "ok");
-define('CANCEL_ORDER', "cancel");
+define('CANCEL_ORDER', "no");
 
 Route::post('api/twilio', function() {
 	// RESPONSE CONSTANTS
