@@ -51,10 +51,14 @@ Route::post('api/twilio', function() {
 			$msg = "不好意思， 您没有在规定时间内回复'OK'. 您的订单没有成功录入我们的系统， 请回到ucafe.ca从新订单并收到短信后立即回复”ok” ：)";
 		}
 	} else if ($responseString == CANCEL_ORDER) {
-		$auth->verified = false;
-		$auth->save();
+		if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60 * 5) {
+			$auth->verified = false;
+			$auth->save();
 
-		$msg = "我们取消了你的订单";
+			$msg = "我们取消了你的订单";
+		} else {
+			$msg = "想取消订单的话,请发短信给我们的微信：" . $WECHATACC;
+		}
 	} else {
 		if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60 * 5) {
 			$msg = "请回复 OK 确定订单\n" . "回复 NO 取消订单";
