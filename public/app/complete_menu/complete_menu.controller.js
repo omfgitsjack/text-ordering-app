@@ -12,17 +12,12 @@
                 .success(function (res) {
                     // Filter out the drinks
                     
-                    $scope.food = res.map(function(el) {
-                        switch (el.id) {
-                            case 21:
-                            case 22:
-                            case 23:
-                            case 24:
-                            case 25:
-                                break;
-                            default:
-                                return el;
-                        }
+                    $scope.food = res.filter(function(el) {
+                        return  el.id === 21 || 
+                                el.id === 22 || 
+                                el.id === 23 || 
+                                el.id === 24 || 
+                                el.id === 25; 
                     });
                 });
         };
