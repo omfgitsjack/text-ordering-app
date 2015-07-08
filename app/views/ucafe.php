@@ -72,7 +72,7 @@
 
       <div class="menu_button"><a href="http://menu.ucafe.ca/#/menu" type="button"><h4 class="menutext">看看今天的菜单</h4></a></div>
 
-      <div class="menu_button"><a href="#past menu" type="button"><h4 class="menutext">看看往日的菜单</h4></a></div>
+      <div class="menu_button"><a href="http://menu.ucafe.ca/#/complete_menu" type="button"><h4 class="menutext">看看往日的菜单</h4></a></div>
 
     </div>
     
