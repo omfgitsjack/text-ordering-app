@@ -5,7 +5,7 @@
         .module('app.admin')
         .controller('adminController', adminController);
 
-    function adminController($scope, $timeout, $mdSidenav, $mdUtil, $log, $state) {
+    function adminController($scope, $timeout, $mdSidenav, $mdUtil, $log, $state, ShopService) {
 
         $scope.toggleLeft = buildToggler('left');
 
@@ -34,6 +34,17 @@
         $scope.goToFood = function() {
             $state.go('admin.food');
         }
+
+        $scope.changeStoreStatus = function() {
+            // Dont do anything.
+        }
+
+        // Initialize ShopService
+        ShopService
+            .get()
+            .success(function(item) {
+                $scope.shop = item['is_open'];
+            });
     }
 
 })();
