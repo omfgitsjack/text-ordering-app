@@ -9,7 +9,7 @@
                     Close Menu
                 </md-list-item>
                 <md-list-item ng-click="changeStoreStatus()">
-                    <p>UCafe: {{shop.isOpen ? "Open" : "Closed"}}</p>
+                    <p>UCafe: {{shop ? "Open" : "Closed"}}</p>
                     <md-switch class="md-secondary" ng-model="shop.isOpen"></md-switch>
                 </md-list-item>
                 <md-divider></md-divider>
