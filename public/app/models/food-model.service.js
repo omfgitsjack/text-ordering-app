@@ -17,6 +17,7 @@
                 getAll: function() {
                     var me = this;
 
+                    // change this back!
                     return $http.get('api/food/all')
                         .success(function(res) {
                             res = res.map(function(el) {

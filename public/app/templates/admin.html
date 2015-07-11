@@ -4,17 +4,23 @@
             <md-toolbar md-theme="redThemeBtn" class="md-primary">
                 <h1 class="md-toolbar-tools">Admin Panel</h1>
             </md-toolbar>
-                <md-list>
-                    <md-list-item ng-click="leftClose()" hide-gt-md>
-                        Close Menu
-                    </md-list-item>
-                    <md-list-item ng-click="goToOrders()">
-                        <p>Orders</p>
-                    </md-list-item>
-                    <md-list-item ng-click="goToFood()">
-                        <p>Food Menu <span class="label label-success">New</span></p>
-                    </md-list-item>
-                </md-list>
+            <md-list>
+                <md-list-item ng-click="leftClose()" hide-gt-md>
+                    Close Menu
+                </md-list-item>
+                <md-list-item ng-click="changeStoreStatus()">
+                    <p>UCafe: {{shop.is_open ? "Open" : "Closed"}}</p>
+                    <md-switch class="md-secondary" ng-model="shop.is_open"></md-switch>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-subheader class="md-no-sticky">Admin Pages</md-subheader>
+                <md-list-item ng-click="goToOrders()">
+                    <p>Orders</p>
+                </md-list-item>
+                <md-list-item ng-click="goToFood()">
+                    <p>Food Menu</p>
+                </md-list-item>
+            </md-list>
         </md-sidenav>
         <md-content flex layout-padding>
             <div layout="column" layout-fill layout-align="top center">

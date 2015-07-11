@@ -1,1 +1,335 @@
-@font-face{font-family:c;src:url(../fonts/chinofont.ttf)}body,h1,h2,h3,h4,h5,h6,html{font-family:c!important}.body-container{padding-bottom:50px}.center-header{text-align:center}.title-area{text-align:center;height:auto;width:100%;line-height:1em;margin-bottom:2em;margin-top:3em}.title-area>h3{text-align:center;text-transform:uppercase;width:100%;color:#000;font-weight:500;font-size:17px}.food-items{display:table;margin-left:auto;margin-right:auto;float:none;max-width:716.77px;width:100%}.description-button{margin:0;width:100%;float:left;display:none;background:#e5e5e5;text-transform:uppercase;text-align:left;padding:0 .75em;font-size:1em;height:3em;line-height:3em}@media screen and (max-width:720px){.description-button{display:block;height:auto}}.food-item{margin-bottom:2em;display:inline-block}.food-item>.img-container{float:left;display:block;width:64.73666%;height:20em;position:relative;overflow:hidden}@media screen and (max-width:720px){.food-item>.img-container{width:100%;height:auto}}.food-item>.img-container>img{width:100%}.food-item>.food-description-box{float:left;display:block;width:35.26334%;height:20em;border:0 solid transparent!important;box-shadow:0 0 0 transparent!important;background-color:#f7f7f7;padding:1em}@media screen and (max-width:720px){.food-item>.food-description-box{display:none;width:100%}}.food-item>.food-description-box>.panel-heading{background-color:#e5e5e5!important;text-transform:uppercase;width:100%;padding-top:15px;padding-bottom:15px}.food-item>.food-description-box>.panel-heading>.panel-title{font-weight:500}.food-item>.food-description-box>.card-text-top{margin:0;padding:0;border:0;font-weight:500;font-size:.8em;line-height:1.3em;height:50%}@media screen and (max-width:720px){.food-item>.food-description-box>.card-text-top{font-size:12px;line-height:1.3em}}.food-item>.food-description-box>.card-text-bottom{float:left;font-size:.8em;width:100%;height:50%}.food-item>.food-description-box>* md-tabs{padding-top:0}@media screen and (max-width:720px){.food-item>.food-description-box>* md-tabs{padding-top:3em}}.food-item>.food-description-box.open{display:block;height:20em}@media screen and (max-width:720px){.food-item>.food-description-box.open{height:auto}}.ingredients-section-content{display:block;height:80px;background-color:#f7f7f7!important;font-size:.8em}@media screen and (max-width:720px){.ingredients-section-content{display:none;height:auto}}.ingredients-section{display:none;height:auto}@media screen and (max-width:720px){.ingredients-section{display:block;float:left;font-size:.8em;height:auto;width:100%}}md-tab-item span{font-weight:300;color:#9da6b1}md-tab-item.md-active span{font-weight:300;color:#212121}md-tab-content{margin-top:1em}md-tab-content>span{font-weight:300}.nutrition-tab{margin-top:1.8em;margin-left:.5em;font-size:.88em}@media screen and (max-width:720px){.nutrition-tab{margin-top:.5em;font-size:1em}}.nutrition-tab>.nutrition-item{width:3.7em;display:inline-block}.nutrition-tab>* .nutrition-label,.nutrition-tab>* .nutrition-value{text-align:center;margin:.5em 0}.nutrition-tab>* .nutrition-value{font-weight:500}.cost-section{margin-top:0;text-align:left;display:block;float:left;position:relative;width:100%}.cost-section>* .price{font-weight:500;font-size:1.15em}.cost-section>* .menu-title{font-weight:300;font-size:125%}.cost-section>.quantity-selector{position:absolute;top:0;right:0}@media screen and (max-width:720px){.cost-section>.quantity-selector{position:relative}}@media screen and (max-width:720px){.cost-section{display:block;text-align:center;margin-top:2em;padding:0 1.5em;float:left;width:100%;height:auto}}md-icon{margin-top:-3px!important;margin-left:.5px!important}.minus-icon{margin-right:-5px}.test{color:#fff}.plus-icon{margin-left:-5px}.minus-icon,.plus-icon{margin-top:-10px}.minus-icon>md-icon,.plus-icon>md-icon{color:#fff!important}.amount{display:inline-block;color:#999;font-size:250%;margin-right:.25em;margin-left:.25em;text-align:center;width:.75em}md-list,md-list-item{width:100%}.admin-date-change{text-align:center}.admin-date-change>button{width:100%;height:50px}.order-info,.select-order-header{margin-top:50px}.order-info>h3,.order-info>h4{margin-top:0;margin-bottom:0}.order-subtext{margin-top:10px}
+@font-face {
+  font-family: c;
+  src: url('../fonts/chinofont.ttf');
+}
+html {
+  font-family: c !important;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: c !important;
+}
+body {
+  padding-bottom: 0 !important;
+}
+.admin-wrap,
+.body-container {
+  height: 100%;
+}
+.toggle-left-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+.center-header {
+  text-align: center;
+}
+.title-area {
+  text-align: center;
+  height: auto;
+  width: 100%;
+  line-height: 1em;
+  margin-bottom: 2em;
+  margin-top: 3em;
+}
+.title-area > h3 {
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  color: black;
+  font-weight: 500;
+  font-size: 17px;
+}
+.food-items {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  max-width: 716.77px;
+  width: 100%;
+}
+.description-button {
+  margin: 0;
+  width: 100%;
+  float: left;
+  display: none;
+  background: #e5e5e5;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0 .75em;
+  font-size: 1em;
+  height: 3em;
+  line-height: 3em;
+}
+@media screen and (max-width: 720px) {
+  .description-button {
+    display: block;
+    height: auto;
+  }
+}
+.food-item {
+  margin-bottom: 2em;
+  display: inline-block;
+}
+.food-item > .img-container {
+  float: left;
+  display: block;
+  width: 64.73666%;
+  height: 20em;
+  position: relative;
+  overflow: hidden;
+}
+@media screen and (max-width: 720px) {
+  .food-item > .img-container {
+    width: 100%;
+    height: auto;
+  }
+}
+.food-item > .img-container > img {
+  width: 100%;
+}
+.food-item > .food-description-box {
+  float: left;
+  display: block;
+  width: 35.26334%;
+  height: 20em;
+  border: 0 solid transparent !important;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+  background-color: #f7f7f7;
+  padding: 1em;
+}
+@media screen and (max-width: 720px) {
+  .food-item > .food-description-box {
+    display: none;
+    width: 100%;
+  }
+}
+.food-item > .food-description-box > .panel-heading {
+  background-color: #e5e5e5 !important;
+  text-transform: uppercase;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.food-item > .food-description-box > .panel-heading > .panel-title {
+  font-weight: 500;
+}
+.food-item > .food-description-box > .card-text-top {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: 500;
+  font-size: 1em;
+  height: 50%;
+}
+@media screen and (max-width: 720px) {
+  .food-item > .food-description-box > .card-text-top {
+    font-size: 12px;
+    line-height: 1.3em;
+  }
+}
+.food-item > .food-description-box > .card-text-bottom {
+  float: left;
+  font-size: .8em;
+  width: 100%;
+  height: 50%;
+}
+.food-item > .food-description-box > * md-tabs {
+  padding-top: 0;
+}
+@media screen and (max-width: 720px) {
+  .food-item > .food-description-box > * md-tabs {
+    padding-top: 3em;
+  }
+}
+.food-item > .food-description-box.open {
+  display: block;
+  height: 20em;
+}
+@media screen and (max-width: 720px) {
+  .food-item > .food-description-box.open {
+    height: auto;
+  }
+}
+.ingredients-section-content {
+  display: block;
+  height: 80px;
+  background-color: #f7f7f7 !important;
+  font-size: 1em;
+}
+@media screen and (max-width: 720px) {
+  .ingredients-section-content {
+    display: none;
+    height: auto;
+  }
+}
+.ingredients-section {
+  display: none;
+  height: auto;
+  font-size: 1em;
+}
+@media screen and (max-width: 720px) {
+  .ingredients-section {
+    display: block;
+    float: left;
+    font-size: 1em;
+    height: auto;
+    width: 100%;
+  }
+}
+md-tab-item span {
+  font-weight: 300;
+  color: #9da6b1;
+}
+md-tab-item.md-active span {
+  font-weight: 300;
+  color: #212121;
+}
+md-tab-content {
+  margin-top: 1em;
+}
+md-tab-content > span {
+  font-weight: 300;
+}
+.nutrition-tab {
+  margin-top: 1.8em;
+  margin-left: .5em;
+  font-size: .88em;
+}
+@media screen and (max-width: 720px) {
+  .nutrition-tab {
+    margin-top: .5em;
+    font-size: 1em;
+  }
+}
+.nutrition-tab > .nutrition-item {
+  width: 3.7em;
+  display: inline-block;
+}
+.nutrition-tab > * .nutrition-value,
+.nutrition-tab > * .nutrition-label {
+  text-align: center;
+  margin: .5em 0;
+}
+.nutrition-tab > * .nutrition-value {
+  font-weight: 500;
+}
+.cost-section {
+  margin-top: 0;
+  text-align: left;
+  display: block;
+  float: left;
+  position: relative;
+  width: 100%;
+}
+.cost-section > * .price {
+  font-weight: 500;
+  font-size: 1.15em;
+}
+.cost-section > * .menu-title {
+  font-weight: 300;
+  font-size: 125%;
+}
+.cost-section > .quantity-selector {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+@media screen and (max-width: 720px) {
+  .cost-section > .quantity-selector {
+    position: relative;
+  }
+}
+@media screen and (max-width: 720px) {
+  .cost-section {
+    display: block;
+    text-align: center;
+    margin-top: 2em;
+    padding: 0 1.5em;
+    float: left;
+    width: 100%;
+    height: auto;
+  }
+}
+md-icon {
+  margin-top: -3px !important;
+  margin-left: .5px !important;
+}
+.minus-icon {
+  margin-right: -5px;
+}
+.test {
+  color: white;
+}
+.plus-icon {
+  margin-left: -5px;
+}
+.minus-icon,
+.plus-icon {
+  margin-top: -10px;
+}
+.minus-icon > md-icon,
+.plus-icon > md-icon {
+  color: white !important;
+}
+.amount {
+  display: inline-block;
+  color: #999999;
+  font-size: 250%;
+  margin-right: .25em;
+  margin-left: .25em;
+  text-align: center;
+  width: .75em;
+}
+md-list {
+  width: 100%;
+}
+md-list-item {
+  width: 100%;
+}
+.admin-date-change {
+  text-align: center;
+}
+.admin-date-change > button {
+  width: 100%;
+  height: 50px;
+}
+.select-order-header {
+  margin-top: 50px;
+}
+.order-info {
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.order-info > h3,
+.order-info > h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.order-subtext {
+  margin-top: 10px;
+}
+md-menu-item {
+  display: block;
+  width: 100%;
+}
+.complete-menu {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.complete-menu > * img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.complete-menu > * .item-name {
+  font-size: 1.3em;
+}

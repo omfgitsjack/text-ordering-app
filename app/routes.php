@@ -27,6 +27,9 @@ Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
 
 Route::get('api/orders/current', array('after' => 'allowOrigin', 'uses' => 'OrdersController@currentOrders'));
 
+Route::get('api/shop', array('after' => 'allowOrigin', 'uses' => 'ShopsController@index'));
+Route::put('api/shop', array('after' => 'allowOrigin', 'uses' => 'ShopsController@update'));
+
 define('CONFIRM_ORDER', "ok");
 
 Route::post('api/twilio', function() {
