@@ -61,12 +61,10 @@ class ShopsController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /shops/{id}
-	 *
-	 * @param  int  $id
+	 * PUT /shops
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
 				// Loop through each one and update
 		$shop = Input::get('shop');
