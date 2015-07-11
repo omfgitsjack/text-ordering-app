@@ -9,8 +9,8 @@
                     Close Menu
                 </md-list-item>
                 <md-list-item ng-click="changeStoreStatus()">
-                    <p>UCafe: {{shop ? "Open" : "Closed"}}</p>
-                    <md-switch class="md-secondary" ng-model="shop"></md-switch>
+                    <p>UCafe: {{shop.is_open ? "Open" : "Closed"}}</p>
+                    <md-switch class="md-secondary" ng-model="shop.is_open"></md-switch>
                 </md-list-item>
                 <md-divider></md-divider>
                 <md-subheader class="md-no-sticky">Admin Pages</md-subheader>

@@ -43,8 +43,18 @@
         ShopService
             .get()
             .success(function(item) {
-                $scope.shop = item['is_open'];
+                $scope.shop = {
+                    is_open: item['is_open']
+                };
+
+                $scope.$watch('shop', function(newVal, oldVal) {
+                    if (newVal !== oldVal) {
+                        ShopService.update(newVal)
+                    }
+                })
             });
+
+
     }
 
 })();
