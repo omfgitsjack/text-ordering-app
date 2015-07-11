@@ -38,7 +38,6 @@
                     is_open: item['is_open']
                 };
             });
-        });
 
         // Init our $scope.food
         FoodService.get()
