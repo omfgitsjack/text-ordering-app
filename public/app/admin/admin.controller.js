@@ -50,8 +50,11 @@
                 $scope.$watch('shop', function(newVal, oldVal) {
                     if (newVal !== oldVal) {
                         ShopService.update(newVal)
+				.success(function(res) {
+					toastr.success("You updated your shop's status");
+				});
                     }
-                })
+                },true)
             });
 
 
