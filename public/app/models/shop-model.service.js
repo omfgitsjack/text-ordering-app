@@ -16,11 +16,15 @@
                         });
                 },
                 update: function(shop) {
-                    shop.is_open = shop.is_open ? 1 : 0;
-                    
+			var o = {};
+			if (shop.is_open) {
+				o.is_open = 1;
+			} else {
+				o.is_open = 0;
+			}
                     return $http.put('api/shop',
                         {
-                            shop: shop
+                            shop: o
                         });
                 }
             }
