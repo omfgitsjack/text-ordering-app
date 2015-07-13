@@ -8,3 +8,4 @@ composer.lock
 Thumbs.db
 public/bower_components
 .idea/workspace.xml
+public/build/*
