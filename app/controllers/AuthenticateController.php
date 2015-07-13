@@ -1,7 +1,5 @@
 <?php
 
-use Carbon\Carbon;
-
 class AuthenticateController extends Controller {
 
     private $twilioClient;
@@ -30,8 +28,6 @@ class AuthenticateController extends Controller {
         return $receipt;
     }
 
-    // Receive initial order placement, send out confirmation message &
-    // schedule reminder text message to confirm order.
     public function sendAuthToken()
     {
         $number = Input::get("phoneNumber");
@@ -57,24 +53,15 @@ class AuthenticateController extends Controller {
         try
         {
             $this->twilioClient->account->messages->sendMessage(
-                "+17059980253",
+                $_SERVER['TWILIO_PHONE_NUMBER'],
                 $number,
                 "优厨房已收到你的订单: \n" .
                 "订单号码: " . $authRecord->id . "\n" .
                 "你的午餐: \n" . $this->generateReceipt($savedOrders) .
-                "取餐地点: Tim Hortons前面的长椅（图书馆旁边)\n" .
-                "预计时间: 1 PM\n\n" . 
-                "***请回复 OK 确定订单***\n" . 
-                "(回复 NO 取消订单）"
+                "取餐地点: Tim Hortons前面的长椅（图书馆旁边\n" .
+                "预计时间: 1 PM\n" .
+                "***请回复 OK 确定订单***"
             );
-
-            // Fire task to remind user if they have not verified.
-            // Give them a chance to type OK instead of remaking the order.
-            $remindDate = Carbon::now()->addMinutes(3);
-            Queue::later($remindDate, 'AuthenticateController@remind', array('id' => $authRecord->id));
-
-            $cancelDate = Carbon::now()->addMinutes(5);
-            Queue::later($cancelDate, 'AuthenticateController@cancel', array('id' => $authRecord->id));
 
             return "OK";
         } catch (Services_Twilio_RestException $e)
@@ -83,32 +70,11 @@ class AuthenticateController extends Controller {
         }
     }
 
-    // Remind a user to confirm order if they have yet to do so.
     public function remind($job, $data) {
-        $auth = Authentication::where('id', $data['id'])->first();
-        
-        if (!$auth->verified) {
-            $this->twilioClient->account->messages->sendMessage(
-                "+12892071270",
-                $auth->phone,
-                "请在两分钟内回复 ”OK” 确定订单, 否则您的顶单会被取消"
-            );
-        }
 
-        $job->delete();
-    }
-
-    // Remind a user to confirm order if they have yet to do so.
-    public function cancel($job, $data) {
         $auth = Authentication::where('id', $data['id'])->first();
-        
-        if (!$auth->verified) {
-            $this->twilioClient->account->messages->sendMessage(
-                "+12892071270",
-                $auth->phone,
-                "不好意思, 您没有在规定时间内回复'OK',订单已取消。请回ucafe.ca再次下单:)"
-            );
-        }
+        $auth->verified = true;
+        $auth->save();
 
         $job->delete();
     }
