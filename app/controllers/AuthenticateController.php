@@ -9,8 +9,8 @@ class AuthenticateController extends Controller {
     function __construct()
     {
         $this->twilioClient = new Services_Twilio(
-            getenv('TWILIO_SID'),
-            getenv('TWILIO_AUTH_TOKEN')
+            $_SERVER['TWILIO_SID'],
+            $_SERVER['TWILIO_AUTH_TOKEN']
         );
     }
 
@@ -57,14 +57,14 @@ class AuthenticateController extends Controller {
         try
         {
             $this->twilioClient->account->messages->sendMessage(
-                "+12892071270",
+                "+17059980253",
                 $number,
-                "优厨房已收到你的订单: \n" . 
+                "优厨房已收到你的订单: \n" .
                 "订单号码: " . $authRecord->id . "\n" .
                 "你的午餐: \n" . $this->generateReceipt($savedOrders) .
                 "取餐地点: Tim Hortons前面的长椅（图书馆旁边)\n" .
-                "预计时间: 1 PM\n\n" . 
-                "***请回复 OK 确定订单***\n" . 
+                "预计时间: 1 PM\n\n" .
+                "***请回复 OK 确定订单***\n" .
                 "(回复 NO 取消订单）"
             );
 
@@ -86,7 +86,7 @@ class AuthenticateController extends Controller {
     // Remind a user to confirm order if they have yet to do so.
     public function remind($job, $data) {
         $auth = Authentication::where('id', $data['id'])->first();
-        
+
         if (!$auth->verified) {
             $this->twilioClient->account->messages->sendMessage(
                 "+12892071270",
@@ -101,7 +101,7 @@ class AuthenticateController extends Controller {
     // Remind a user to confirm order if they have yet to do so.
     public function cancel($job, $data) {
         $auth = Authentication::where('id', $data['id'])->first();
-        
+
         if (!$auth->verified) {
             $this->twilioClient->account->messages->sendMessage(
                 "+12892071270",
