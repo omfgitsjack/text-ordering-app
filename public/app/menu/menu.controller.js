@@ -15,8 +15,8 @@
         $scope.auth = {
             id: -1,
             code: ''
-        };  
-        console.log(ns); 
+        };
+
         var now = DateTimeService.now();
         var deadline = DateTimeService.now()
             .startOf('day')
@@ -108,7 +108,7 @@
                             }
                         }, 1000);
                     }
-                    countDown(ORDER_TIMEOUT); 
+                    countDown(ORDER_TIMEOUT);
                 });
         };
     }
