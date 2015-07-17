@@ -2,7 +2,8 @@
     "use strict";
 
     var ns = 'app';
-    var TEMPLATEPATH = 'app/templates/';
+    var BASEPATH = 'app/';
+    var TEMPLATEPATH = BASEPATH + 'templates/';
 
     angular
         .module(ns, [
@@ -61,17 +62,17 @@
             .state("admin", {
                 abstract: true,
                 url: "/admin",
-                templateUrl: TEMPLATEPATH + "admin.html",
+                templateUrl: BASEPATH + "admin/admin.html",
                 controller: 'adminController'
             })
             .state("admin.orders", {
                 url: "/orders",
-                templateUrl: TEMPLATEPATH + "orders.html",
+                templateUrl: BASEPATH + "admin/orders.html",
                 controller: 'ordersController'
             })
             .state("admin.food", {
                 url: "/food",
-                templateUrl: TEMPLATEPATH + "food.html",
+                templateUrl: BASEPATH + "admin/food.html",
                 controller: 'foodController'
             });
     }
