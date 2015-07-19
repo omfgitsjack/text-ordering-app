@@ -30,7 +30,7 @@
 
             $mdDialog.show({
               controller: DialogController,
-              templateUrl: 'app/templates/editFood.tmpl.html',
+              templateUrl: 'app/admin/editFood.tmpl.html',
               parent: angular.element(document.body),
               locals: {
                 item: angular.copy(item)

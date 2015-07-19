@@ -51,7 +51,7 @@
             })
             .state('menu', {
                 url: "/menu",
-                templateUrl: TEMPLATEPATH + 'menu.html',
+                templateUrl: 'app/menu/menu.html',
                 controller: 'menuController'
             })
             .state('completeMenu', {
