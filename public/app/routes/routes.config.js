@@ -12,10 +12,6 @@
         $urlRouterProvider.otherwise('/menu');
 
         $stateProvider
-            .state('/', {
-                url: "/",
-                templateUrl: TEMPLATEPATH + 'promo.html'
-            })
             .state('menu', {
                 url: "/menu",
                 templateUrl: 'app/menu/menu.html',
