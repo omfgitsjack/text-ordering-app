@@ -27,6 +27,6 @@
     "angular-cookies": "~1.4.3"
   },
   "resolutions": {
-    "angular": ">=1.2.0 <1.5.0"
+    "angular": "1.4.3"
   }
 }
