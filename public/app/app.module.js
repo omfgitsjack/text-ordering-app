@@ -19,7 +19,8 @@
             // Core
             'utilities.datetime',
             'utilities.googleanalytics',
-            'ngSanitize'
+            'ngSanitize',
+            'ngCookies'
         ])
         .config(materialConfig)
         .config(toastrConfig);
