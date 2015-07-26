@@ -15,6 +15,12 @@
                             })
                         });
                 },
+                makeOrder: function(phoneNumber, order) {
+                  return $http.post('api/authenticate', {
+                    phoneNumber: phoneNumber,
+                    order: order
+                  });
+                },
                 isLastOrder: function(time) {
                     // Last Order is defined by any order between 10:00 - 10:30
                     var start = DateTimeService.now()

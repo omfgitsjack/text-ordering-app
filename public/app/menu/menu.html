@@ -84,7 +84,7 @@
                     </div>
                     <div class="quantity-selector">
                         <md-button md-theme='redThemeBtn' class="minus-icon md-fab md-primary md-mini" aria-label="Remove"
-                                   ng-click="decrement(item)"
+                                   ng-click="decrement(item.order)"
                                    ng-disabled="item.order.quantity === 0">
                             <md-icon md-svg-src="assets/icons/ic_remove_48px.svg"></md-icon>
                         </md-button>
@@ -92,7 +92,7 @@
                             {{item.order.quantity}}
                         </div>
                         <md-button md-theme='greenThemeBtn' class="plus-icon md-fab md-mini md-primary" aria-label="Plus"
-                                   ng-click="increment(item)">
+                                   ng-click="increment(item.order)">
                             <md-icon md-svg-src="assets/icons/ic_add_48px.svg"></md-icon>
                         </md-button>
                     </div>
@@ -130,7 +130,7 @@
                                     <button
                                             class="btn btn-success"
                                             type="button"
-                                            ng-click="makeOrder()"
+                                            ng-click="makeOrder(phoneNumber, order)"
                                             ng-disabled="order.length === 0 || isCountingDown()">{{inputPlaceHolder()}}</button>
                                 </span>
 
