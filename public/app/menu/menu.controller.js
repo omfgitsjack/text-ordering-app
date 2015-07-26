@@ -10,12 +10,8 @@
         .module(ns)
         .controller('menuController', menuController);
 
-    function menuController($scope, $http, $timeout, $filter, FoodService, DateTimeService, ShopService, foodResolve) {
+    function menuController($scope, $http, $timeout, $filter, DateTimeService, shopStatusResolve, foodResolve) {
         $scope.order = [];
-        $scope.auth = {
-            id: -1,
-            code: ''
-        };
 
         var now = DateTimeService.now();
         var deadline = DateTimeService.now()
@@ -31,15 +27,7 @@
             toastr.warning('All orders made from this point on will be for ' + $scope.tomorrowDay);
         }
 
-        ShopService
-            .get()
-            .success(function(item) {
-                $scope.shop = {
-                    is_open: item['is_open']
-                };
-            });
-
-        // Init our $scope.food
+        $scope.shopStatus = shopStatusResolve.data;
         $scope.food = foodResolve.data;
 
         $scope.increment = function (item) {

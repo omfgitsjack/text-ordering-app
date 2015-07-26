@@ -16,12 +16,12 @@
                         });
                 },
                 update: function(shop) {
-			var o = {};
-			if (shop.is_open) {
-				o.is_open = 1;
-			} else {
-				o.is_open = 0;
-			}
+              			var o = {};
+              			if (shop.is_open) {
+              				o.is_open = 1;
+              			} else {
+              				o.is_open = 0;
+              			}
                     return $http.put('api/shop',
                         {
                             shop: o

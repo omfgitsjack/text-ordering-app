@@ -29,6 +29,13 @@
                           return el;
                       });
                     });
+                  },
+                  shopStatusResolve: function(ShopService) {
+                    return ShopService.get().success(function(res) {
+                      return {
+                        is_open: res['is_open']
+                      }
+                    });
                   }
                 },
                 data: {
