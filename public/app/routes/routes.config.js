@@ -16,6 +16,21 @@
                 url: "/menu",
                 templateUrl: 'app/menu/menu.html',
                 controller: 'menuController',
+                resolve: {
+                  foodResolve: function(FoodService) {
+                    return FoodService.get().success(function(res) {
+                      return res.map(function (el) {
+                          el.order = {
+                              quantity: 0,
+                              cost: function () {
+                                  return this.quantity * el.taxedprice
+                              }
+                          };
+                          return el;
+                      });
+                    });
+                  }
+                },
                 data: {
                   requireLogin: false
                 }

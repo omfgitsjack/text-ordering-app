@@ -10,7 +10,7 @@
         .module(ns)
         .controller('menuController', menuController);
 
-    function menuController($scope, $http, $timeout, $filter, FoodService, DateTimeService, ShopService) {
+    function menuController($scope, $http, $timeout, $filter, FoodService, DateTimeService, ShopService, foodResolve) {
         $scope.order = [];
         $scope.auth = {
             id: -1,
@@ -40,18 +40,7 @@
             });
 
         // Init our $scope.food
-        FoodService.get()
-            .success(function (res) {
-                $scope.food = res.map(function (el) {
-                    el.order = {
-                        quantity: 0,
-                        cost: function () {
-                            return this.quantity * el.taxedprice
-                        }
-                    };
-                    return el;
-                });
-            });
+        $scope.food = foodResolve.data;
 
         $scope.increment = function (item) {
             item.order.quantity++
