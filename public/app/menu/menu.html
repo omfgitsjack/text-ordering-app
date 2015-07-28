@@ -33,6 +33,11 @@
                 <div class="food-description-box" ng-class="{open: !isCollapsed}">
                     <div class="card-text-top" ng-bind-html="item.description">
                     </div>
+                    <md-content class="card-text-middle">
+                      <span ng-show="item.spicy">
+                        <md-icon md-svg-src="assets/icons/fireball.svg" alt="spicy"></md-icon> Spicy
+                      </span>
+                    </md-content>
                     <div class="card-text-bottom">
                         <md-tabs md-stretch-tabs="never" md-dynamic-height="true">
                             <md-tab>
