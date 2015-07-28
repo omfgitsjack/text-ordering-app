@@ -29,7 +29,7 @@
                                 if (el.spicy === 1) {
                                   el.spicy = true;
                                 } else {
-                                  el.available = false;
+                                  el.spicy = false;
                                 }
                                 return el;
                             });
@@ -49,6 +49,11 @@
                             } else if (el.available === false) {
                                 el.available = 0;
                             }
+                            if (el.spicy === true) {
+                              el.spicy = 1;
+                            } else if (el.spicy === false){
+                              el.spicy = 0;
+                            }
                         }
 
                         return el;
@@ -65,6 +70,11 @@
                             temp.available = true;
                         } else {
                             temp.available = false;
+                        }
+                        if (temp.spicy === 1) {
+                            temp.spicy = true;
+                        } else {
+                            temp.spicy = false;
                         }
                         return temp;
                     });
