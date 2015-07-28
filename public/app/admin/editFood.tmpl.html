@@ -23,6 +23,11 @@
         <label>Ingredients (For new line, type <.br> -- remove the . inbetween < and b)</label>
         <input ng-model="item.ingredients">
       </md-input-container>
+      <md-input-container>
+        <md-checkbox ng-model="item.spicy" aria-label="Spicy">
+          Spicy
+        </md-checkbox>
+      </md-input-container>
     </div>
   </md-dialog-content>
   <div class="md-actions" layout="row">

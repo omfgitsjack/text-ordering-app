@@ -42,6 +42,7 @@
                 $scope.curItem.name = newItem.name;
                 $scope.curItem.description = newItem.description;
                 $scope.curItem.ingredients = newItem.ingredients;
+                $scope.curItem.spicy = newItem.spicy;
                 $scope.curItem = null;
                 console.log('You said the information was "' + newItem + '".');
             }, function() {
