@@ -26,6 +26,11 @@
                                 } else {
                                     el.available = false;
                                 }
+                                if (el.spicy === 1) {
+                                  el.spicy = true;
+                                } else {
+                                  el.available = false;
+                                }
                                 return el;
                             });
 
