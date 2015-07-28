@@ -11,7 +11,7 @@
                 <md-subheader class="md-no-sticky"><span class="pull-left">Active</span><span class="pull-right">Edit Item</span></md-subheader>
                 <md-list-item ng-repeat="item in food">
                     <md-checkbox ng-model="item.available"></md-checkbox>
-                    {{item.id}}. {{item.name}} <span ng-show="item.spicy" class="md-warn"> (Spicy)</span>
+                    {{item.id}}. {{item.name}} <span ng-show="item.spicy"> (Spicy)</span>
                     <md-icon class="md-secondary" ng-click="edit($event, item)" aria-label="edit" md-svg-src="assets/icons/edit.svg"></md-icon>
                 </md-list-item>
             </md-list>
