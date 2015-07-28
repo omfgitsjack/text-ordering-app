@@ -49,7 +49,7 @@ Route::post('api/twilio', function() {
 			$auth->verified = true;
 			$auth->save();
 
-			$msg = '订单已确认, 您的午饭会在1点到达 :) 如果想联络我们的话，请发短信给我们的微信：' . $WECHATACC;
+			$msg = '订单已确认, 您的午饭会 12:45-13:15PM 到达 :) 如果想联络我们的话，请发短信给我们的微信：' . $WECHATACC;
 		} else {
 			// Reject
 			$msg = "不好意思， 您没有在规定时间内回复'OK'. 您的订单没有成功录入我们的系统， 请回到ucafe.ca从新订单并收到短信后立即回复”ok” ：)";
