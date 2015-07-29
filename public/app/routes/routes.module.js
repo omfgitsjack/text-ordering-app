@@ -2,8 +2,7 @@
 
   angular
     .module('app.routes', [
-      'ui.router',
-      'angular-storage'
+      'ui.router'
     ]);
 
 })();
