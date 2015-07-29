@@ -19,8 +19,9 @@
             // Core
             'utilities.datetime',
             'utilities.googleanalytics',
-            'ngSanitize',
-            'ngCookies'
+            'utilities.localstorage',
+            'ngSanitize'
+
         ])
         .config(materialConfig)
         .config(toastrConfig);
