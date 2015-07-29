@@ -5,7 +5,7 @@
         .module('app.admin-login')
         .controller('adminLoginController', adminLoginController);
 
-    function adminLoginController($scope, $http, $mdDialog, store) {
+    function adminLoginController($scope, $http, $mdDialog, localStorageService) {
 
         $scope.login = function(password) {
           $http.post('api/login', {
@@ -13,7 +13,7 @@
           })
           .then(function(res) {
             if (res.data === 'OK') {
-              store.set('loggedIn', true);
+              localStorageService.set('loggedIn', true);
               toastr.success('You have successfully logged in.');
               $mdDialog.hide(true);
             } else {
