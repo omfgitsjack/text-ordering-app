@@ -4,6 +4,8 @@ use Carbon\Carbon;
 
 class AuthenticateController extends Controller {
 
+    const CASH = "Cash";
+
     private $twilioClient;
 
     function __construct()
@@ -39,7 +41,9 @@ class AuthenticateController extends Controller {
         // Store Authentication details
         $authRecord = Authentication::create([
             "phone"    => '+1' . $number,
-            "verified" => false
+            "verified" => false,
+            "paid"     => false, // CHANGE THIS WHEN WE INTRODUCE STRIPE PAYMENT
+            "payment_type" => self::CASH
         ]);
 
         // Store Order
@@ -59,6 +63,7 @@ class AuthenticateController extends Controller {
                 $number,
                 "优厨房已收到你的订单: \n" .
                 "订单号码: " . $authRecord->id . "\n" .
+                "Payment Method: " . $authRecord->payment_type . "\n" .
                 "你的午餐: \n" . $this->generateReceipt($savedOrders) .
                 "取餐地点: Tim Hortons前面的长椅（图书馆旁边)\n" .
                 "预计时间: 12:45-1:15PM\n\n" .
