@@ -26,6 +26,7 @@ Route::get('api/food/all', 'FoodsController@indexAll');
 Route::post('api/login', 'LoginController@login');
 
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
+Route::put('api/authenticate', 'AuthenticateController@update');
 
 Route::get('api/orders/current', array('after' => 'allowOrigin', 'uses' => 'OrdersController@currentOrders'));
 
@@ -47,6 +48,7 @@ Route::post('api/twilio', function() {
 		if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60 * 5) {
 			// Save and confirm
 			$auth->verified = true;
+			$auth->paid = true;
 			$auth->save();
 
 			$msg = '订单已确认, 您的午饭会 12:45-13:15PM 到达 :) 如果想联络我们的话，请发短信给我们的微信：' . $WECHATACC;

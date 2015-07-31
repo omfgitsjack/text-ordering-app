@@ -16,6 +16,17 @@ class AuthenticateController extends Controller {
         );
     }
 
+    public function update()
+    {
+      $auth = Input::get('authentication');
+
+      $item = DB::table('authentications')
+        ->where('id','=', $auth['id'])
+        ->update($auth);
+
+      return Response::json($auth);
+    }
+
     public function generateReceipt($order)
     {
         // Has to have at least one item in the order.

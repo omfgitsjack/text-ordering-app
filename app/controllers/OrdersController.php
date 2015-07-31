@@ -13,7 +13,7 @@ class OrdersController extends \BaseController {
 		$timePeriod = self::calculateDeadline();
 		$deadline = $timePeriod['deadline'];
 		$today = $timePeriod['start'];
-		
+
 		$records = DB::table('authentications')
 			->join('orders','authentications.id','=','orders.authentication_id')
 			->join('foods','foods.id','=','orders.food_id')
@@ -21,7 +21,7 @@ class OrdersController extends \BaseController {
 			->where('authentications.updated_at','>',$today)
 			->where('authentications.verified','=',true)
 			->orderBy('authentications.updated_at','desc')
-			->select('authentications.updated_at',
+			->select('authentications.updated_at', 'authentications.paid', 'authentications.payment_type', 'authentications.verified',
 				'phone','authentications.id','foods.name','orders.quantity',
 				'foods.description','foods.price','foods.image','foods.calories','foods.taxedprice','foods.protein','foods.fat','foods.carbs','foods.fiber','foods.ingredients')
 			->get();

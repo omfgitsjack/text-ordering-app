@@ -5,7 +5,7 @@
         .module('app.admin')
         .controller('ordersController', ordersController);
 
-    function ordersController($scope, $timeout, OrderService, DateTimeService) {
+    function ordersController($scope, $timeout, $http, OrderService, DateTimeService) {
         $scope.orderService = OrderService;
         var me = this;
         var now = DateTimeService.now();
@@ -21,6 +21,18 @@
         $scope.today = function () {
             $scope.currentDay = $scope.todayDay;
         };
+
+        $scope.hasPaid = function(order) {
+          $http.put('api/authenticate', {
+            'authentication': {
+              id: order.id,
+              paid: order.paid ? 1 : 0,
+              verified: 1,
+              payment_type: order.payment_type,
+              phone: order.phone
+            }
+          });
+        }
 
         me.init = function () {
 

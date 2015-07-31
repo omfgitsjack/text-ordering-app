@@ -17,11 +17,17 @@
             </md-list>
         </md-whiteframe>
         <h3 class="text-muted">订单列表</h3>
-        <md-whiteframe class="md-whiteframe-z2" layout layout-align="center left">
+        <md-whiteframe class="md-whiteframe-z2 individual-order-list" layout layout-align="center left">
             <md-list>
-                <md-subheader class="md-no-sticky"
-                              ng-repeat-start="order in currentOrderList">{{order.id}}: {{order.phone}}. (${{order.totalprice}})
-                              </md-subheader>
+              <md-list-item class="md-1-line"
+                            ng-repeat-start="order in currentOrderList"
+                            ng-click='hasPaid(order)'>
+                            <p class='text-muted'>
+                              {{order.id}}: {{order.phone}}. (${{order.totalprice}})
+                            </p>
+                            Paid <md-checkbox class='paidCheckBox' ng-model="order.paid" aria-label="Paid">
+                            </md-checkbox>
+                          </md-list-item>
                 <md-list-item class="md-1-line"
                               ng-repeat="item in order.items">
                     <div class="md-list-item-text">

@@ -10,6 +10,8 @@
                             return res.map(function(el) {
                                 var n = el;
                                 n.updated_at = DateTimeService.parseUTC(el.updated_at);
+                                n.paid = n.paid === 1 ? true : false;
+                                n.verified = n.verified === 1 ? true : false;
 
                                 return n;
                             })
@@ -73,6 +75,8 @@
                                 id: items[i].id,
                                 phone: items[i].phone,
                                 totalprice: items[i].quantity * items[i].taxedprice,
+                                paid: items[i].paid,
+                                payment_type: items[i].payment_type,
                                 items: [{
                                     name: items[i].name,
                                     quantity: items[i].quantity,
