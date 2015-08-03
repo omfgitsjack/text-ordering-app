@@ -1,6 +1,13 @@
 <?php
 
+use Acme\Repositories\DishRepository\DishRepository;
+
 class FoodsController extends \BaseController {
+
+	function __construct(DishRepository $dish)
+	{
+		$this->dish = $dish;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -10,7 +17,7 @@ class FoodsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::json(Food::where('available', true)->get());
+		return $this->dish->getDishesForSale();
 	}
 
 	/**
@@ -21,19 +28,12 @@ class FoodsController extends \BaseController {
 	 */
 	public function indexAll()
 	{
-		return Response::json(Food::get());
+		return Response::json($this->dish->getAll());
 	}
 
 	public function update()
 	{
-		// Loop through each one and update
-		$rawFoodList = Input::get('foodList');
-
-		foreach ($rawFoodList as $food) {
-			$item = DB::table('foods')
-				->where('id','=', $food['id'])
-				->update($food);
-		}
+		$this->dish->updateAllDishes(Input::get('foodList'));
 
 		return Response::json(Food::get());
 	}

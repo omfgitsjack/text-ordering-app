@@ -13,6 +13,8 @@ class Food extends \Eloquent {
 		'carbs',
 		'fiber',
 		'ingredients',
-		'available'
+		'available',
+		'spicy',
+		'food_type'
 	];
 }
