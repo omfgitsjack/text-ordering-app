@@ -68,6 +68,11 @@
                 url: "/food",
                 templateUrl: BASEPATH + "admin/food.html",
                 controller: 'foodController'
+            })
+            .state("admin.drinks", {
+                url: "/drinks",
+                templateUrl: BASEPATH + "admin/drinks.html",
+                controller: 'drinkController'
             });
     }
 

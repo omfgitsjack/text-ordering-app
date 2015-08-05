@@ -10,13 +10,13 @@
         $scope.toggleLeft = buildToggler('left');
 
         function buildToggler(navID) {
-            var debounceFn =  $mdUtil.debounce(function(){
+            var debounceFn = $mdUtil.debounce(function () {
                 $mdSidenav(navID)
                     .toggle()
                     .then(function () {
                         $log.debug("toggle " + navID + " is done");
                     });
-            },300);
+            }, 300);
             return debounceFn;
         }
 
@@ -27,38 +27,40 @@
                 });
         };
 
-        $scope.goToOrders = function() {
+        $scope.goToOrders = function () {
             $state.go('admin.orders');
         };
 
-        $scope.goToFood = function() {
+        $scope.goToFoodMenu = function () {
             $state.go('admin.food');
-        }
+        };
 
-        $scope.changeStoreStatus = function() {
+        $scope.goToDrinkMenu = function () {
+            $state.go('admin.drinks');
+        };
+
+        $scope.changeStoreStatus = function () {
             // Dont do anything.
-        }
+        };
 
         // Initialize ShopService
         ShopService
             .get()
-            .success(function(item) {
+            .success(function (item) {
                 $scope.shop = {
                     is_open: item['is_open']
                 };
 
-                $scope.$watch('shop', function(newVal, oldVal) {
+                $scope.$watch('shop', function (newVal, oldVal) {
                     if (newVal !== oldVal) {
                         ShopService
-                          .update(newVal)
-                  				.success(function(res) {
-                  					toastr.success("You updated your shop's status");
-                  				});
+                            .update(newVal)
+                            .success(function (res) {
+                                toastr.success("You updated your shop's status");
+                            });
                     }
-                },true)
+                }, true)
             });
-
-
     }
 
 })();

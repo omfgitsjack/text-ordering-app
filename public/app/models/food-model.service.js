@@ -2,35 +2,26 @@
     "use strict";
 
     angular.module('app.models')
-        .service('FoodService', function($http) {
+        .service('FoodService', function ($http) {
             return {
                 items: [],
-                get: function() {
+                get: function () {
                     var me = this;
 
                     return $http.get('api/food')
-                        .success(function(res) {
+                        .success(function (res) {
                             me.items = res;
                             return me.items;
                         });
                 },
-                getAll: function() {
+                getAll: function () {
                     var me = this;
 
-                    // change this back!
                     return $http.get('api/food/all')
-                        .success(function(res) {
-                            res = res.map(function(el) {
-                                if (el.available === 1) {
-                                    el.available = true;
-                                } else {
-                                    el.available = false;
-                                }
-                                if (el.spicy === 1) {
-                                  el.spicy = true;
-                                } else {
-                                  el.spicy = false;
-                                }
+                        .success(function (res) {
+                            res = res.map(function (el) {
+                                el.available = el.available === 1;
+                                el.spicy = el.spicy === 1;
                                 return el;
                             });
 
@@ -38,10 +29,10 @@
                             return me.items;
                         });
                 },
-                update: function(foodItems) {
+                update: function (foodItems) {
                     var items = foodItems.slice();
                     var me = this;
-                    items = items.map(function(el) {
+                    items = items.map(function (el) {
 
                         if (typeof el !== "number") {
                             if (el.available === true) {
@@ -50,9 +41,9 @@
                                 el.available = 0;
                             }
                             if (el.spicy === true) {
-                              el.spicy = 1;
-                            } else if (el.spicy === false){
-                              el.spicy = 0;
+                                el.spicy = 1;
+                            } else if (el.spicy === false) {
+                                el.spicy = 0;
                             }
                         }
 
@@ -64,18 +55,10 @@
                             foodList: items
                         });
 
-                    foodItems = items.map(function(el) {
+                    foodItems = items.map(function (el) {
                         var temp = el;
-                        if (temp.available === 1) {
-                            temp.available = true;
-                        } else {
-                            temp.available = false;
-                        }
-                        if (temp.spicy === 1) {
-                            temp.spicy = true;
-                        } else {
-                            temp.spicy = false;
-                        }
+                        temp.available = temp.available === 1;
+                        temp.spicy = temp.spicy === 1;
                         return temp;
                     });
 
