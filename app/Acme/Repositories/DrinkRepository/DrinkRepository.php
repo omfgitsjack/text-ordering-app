@@ -8,8 +8,9 @@
 
 namespace Acme\Repositories\DrinkRepository;
 
+use Acme\Repositories\BaseRepository\BaseRepository;
 
-Interface DrinkRepository {
+Interface DrinkRepository extends BaseRepository {
 
     public function getDrinksForSale();
 

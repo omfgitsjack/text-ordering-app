@@ -25,6 +25,10 @@ Route::group(array('prefix' => 'api'), function() {
 	Route::put('food', 'FoodsController@update');
 	Route::get('food/all', 'FoodsController@indexAll');
 
+	Route::get('drinks', 'DrinksController@index');
+	Route::put('drinks', 'DrinksController@update');
+	Route::get('drinks/all', 'DrinksController@indexAll');
+
 	Route::post('login', 'LoginController@login');
 
 	Route::post('authenticate', 'AuthenticateController@sendAuthToken');

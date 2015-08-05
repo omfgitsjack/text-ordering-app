@@ -10,6 +10,7 @@ namespace Acme\Repositories\DrinkRepository;
 
 
 use Acme\Repositories\BaseRepository\DbBaseRepository;
+use DB;
 use Food;
 
 class DbDrinkRepository extends DbBaseRepository implements DrinkRepository {
@@ -27,6 +28,14 @@ class DbDrinkRepository extends DbBaseRepository implements DrinkRepository {
             ->model
             ->where('food_type', Food::DRINK)
             ->where('available', true)
+            ->get();
+    }
+
+    public function getAll()
+    {
+        return $this
+            ->model
+            ->where('food_type', Food::DRINK)
             ->get();
     }
 

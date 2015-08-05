@@ -1,6 +1,8 @@
 <?php namespace Acme\Repositories\DishRepository;
 
-Interface DishRepository {
+use Acme\Repositories\BaseRepository\BaseRepository;
+
+Interface DishRepository extends BaseRepository{
 
   public function getDishesForSale();
 
