@@ -17,4 +17,9 @@ class Food extends \Eloquent {
 		'spicy',
 		'food_type'
 	];
+
+	// Constants for Types of Food
+	const DISH = "dish";
+	const DRINK = "drink";
+
 }

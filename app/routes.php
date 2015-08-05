@@ -19,51 +19,55 @@ Route::get('/', function()
 	//return View::make('ucafe');
 });
 
-Route::get('api/food', 'FoodsController@index');
-Route::put('api/food', 'FoodsController@update');
-Route::get('api/food/all', 'FoodsController@indexAll');
+Route::group(array('prefix' => 'api'), function() {
 
-Route::post('api/login', 'LoginController@login');
+	Route::get('food', 'FoodsController@index');
+	Route::put('food', 'FoodsController@update');
+	Route::get('food/all', 'FoodsController@indexAll');
 
-Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');
-Route::put('api/authenticate', 'AuthenticateController@update');
+	Route::post('login', 'LoginController@login');
 
-Route::get('api/orders/current', array('after' => 'allowOrigin', 'uses' => 'OrdersController@currentOrders'));
+	Route::post('authenticate', 'AuthenticateController@sendAuthToken');
+	Route::put('authenticate', 'AuthenticateController@update');
 
-Route::get('api/shop', array('after' => 'allowOrigin', 'uses' => 'ShopsController@index'));
-Route::put('api/shop', array('after' => 'allowOrigin', 'uses' => 'ShopsController@update'));
+	Route::get('orders/current', array('after' => 'allowOrigin', 'uses' => 'OrdersController@currentOrders'));
 
-define('CONFIRM_ORDER', "ok");
+	Route::get('shop', array('after' => 'allowOrigin', 'uses' => 'ShopsController@index'));
+	Route::put('shop', array('after' => 'allowOrigin', 'uses' => 'ShopsController@update'));
 
-Route::post('api/twilio', function() {
-	// RESPONSE CONSTANTS
+	define('CONFIRM_ORDER', "ok");
 
-	$auth = Authentication::where('phone', Input::get('From'))->orderBy('id', 'desc')->first();
-	$twiml = new Services_Twilio_Twiml();
-	$WECHATACC = 'ucafe_ca';
+	Route::post('twilio', function() {
+		// RESPONSE CONSTANTS
 
-	$responseString = strtolower(Input::get('Body'));
+		$auth = Authentication::where('phone', Input::get('From'))->orderBy('id', 'desc')->first();
+		$twiml = new Services_Twilio_Twiml();
+		$WECHATACC = 'ucafe_ca';
 
-	if ($responseString == CONFIRM_ORDER) {
-		if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60 * 5) {
-			// Save and confirm
-			$auth->verified = true;
-			$auth->paid = true;
-			$auth->save();
+		$responseString = strtolower(Input::get('Body'));
 
-			$msg = '订单已确认, 您的午饭会 12:45-13:15PM 到达 :) 如果想联络我们的话，请发短信给我们的微信：' . $WECHATACC;
+		if ($responseString == CONFIRM_ORDER) {
+			if (!$auth->verified && $auth->created_at->diffInSeconds(Carbon::now(new DateTimeZone('America/Toronto'))) < 60 * 5) {
+				// Save and confirm
+				$auth->verified = true;
+				$auth->paid = true;
+				$auth->save();
+
+				$msg = '订单已确认, 您的午饭会 12:45-13:15PM 到达 :) 如果想联络我们的话，请发短信给我们的微信：' . $WECHATACC;
+			} else {
+				// Reject
+				$msg = "不好意思， 您没有在规定时间内回复'OK'. 您的订单没有成功录入我们的系统， 请回到ucafe.ca从新订单并收到短信后立即回复”ok” ：)";
+			}
 		} else {
-			// Reject
-			$msg = "不好意思， 您没有在规定时间内回复'OK'. 您的订单没有成功录入我们的系统， 请回到ucafe.ca从新订单并收到短信后立即回复”ok” ：)";
-		}
-	} else {
 			$msg = 	"想订单的话，请前往ucafe.ca.\n" .
-	 						"如果想联络我们或取消订单的话，请发短信给我们的微信：" . $WECHATACC;
-	}
+				"如果想联络我们或取消订单的话，请发短信给我们的微信：" . $WECHATACC;
+		}
 
-	$twiml->message($msg);
-	$response = Response::make($twiml, 200);
-	$response->header('Content-Type', 'text/xml');
+		$twiml->message($msg);
+		$response = Response::make($twiml, 200);
+		$response->header('Content-Type', 'text/xml');
 
-	return $response;
+		return $response;
+	});
+
 });
