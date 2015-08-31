@@ -128,7 +128,18 @@
                     id:   { dataType: DT.Int32, isPartOfKey: true },
                     name: { maxLength: 4000 }, // DT.String is the default type
                     description:  { maxLength: 4000 },
-                    price:      { dataType: DT.Double, maxLength: 4000}
+                    price: { dataType: DT.Double, maxLength: 4000},
+                    taxedPrice: {dataType: DT.Double, maxLength: 4000},
+                    image: { },
+                    calories: {dataType: DT.Int32 },
+                    protein: {dataType: DT.Int32 },
+                    fat: {dataType: DT.Int32 },
+                    carbs: {dataType: DT.Int32 },
+                    fiber: {dataType: DT.Int32 },
+                    ingredients: { },
+                    created_at: {dataType: DT.DateTime},
+                    modified_at: {dataType: DT.DateTime},
+                    food_type: {}
                 }
             };
 
@@ -146,6 +157,33 @@
                 console.log('fail!');
                 console.log(res);
             });
+
+        var newDrink = manager.createEntity('drink', {
+            "name": "new drink baby",
+            "description": "Quam reprehenderit aut tempore voluptatibus facilis voluptas fuga distinctio in eligendi et quia voluptatum nam iste facilis et optio non sit sit sit est corporis totam dolores non perferendis est qui unde eos omnis nostrum quidem autem quibusdam rerum re",
+            "price": 7.55,
+            "taxedprice": 8.5,
+            "image": "assets/food/7.JPG",
+            "calories": 172,
+            "protein": 15,
+            "fat": 381,
+            "carbs": 160,
+            "fiber": 115,
+            "ingredients": "Molestiae minus ipsa quia sed sint et voluptatem dicta ipsam est et rerum repellat soluta fuga voluptatem blanditiis dolorem vitae facilis omnis incidunt quod aut adipisci recusandae odio laudantium amet dolore quia numquam ab tenetur harum sint enim poss",
+            "spicy": 1,
+            "food_type": "drink"
+        });
+
+        var so = new breeze.SaveOptions({ resourceName: 'drinks', dataService: store.getDataService(serviceName) });
+        manager.saveChanges(null, so, function(res) {
+            console.log('success');
+            console.log(res);
+        },
+        function(res) {
+            console.log('fail');
+            console.log(res);
+        });
+
     }
 
 })();

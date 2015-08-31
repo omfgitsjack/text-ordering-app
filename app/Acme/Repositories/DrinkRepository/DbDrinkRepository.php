@@ -48,4 +48,13 @@ class DbDrinkRepository extends DbBaseRepository implements DrinkRepository {
                 ->update($drink);
         }
     }
+
+
+    public function store($drink)
+    {
+        $item = Food::create($drink);
+
+        return $item;
+    }
+
 }

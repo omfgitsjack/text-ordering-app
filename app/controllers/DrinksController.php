@@ -35,7 +35,19 @@ class DrinksController extends \BaseController {
 	{
 		$this->drink->updateAllDrinks(Input::get('drinkList'));
 
-		return Response::json(DrinkRepository::getAll());
+		return Response::json($this->drink->getAll());
+	}
+
+	public function store()
+	{
+		$drink = [];
+
+		foreach (Input::get('entities') as $entity)
+		{
+			$drink[] = $this->drink->store($entity);
+		}
+
+		return Response::json($drink);
 	}
 
 }

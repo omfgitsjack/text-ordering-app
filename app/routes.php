@@ -27,6 +27,7 @@ Route::group(array('prefix' => 'api'), function() {
 
 	Route::get('drinks', 'DrinksController@index');
 	Route::put('drinks', 'DrinksController@update');
+	Route::post('drinks', 'DrinksController@store');
 	Route::get('drinks/all', 'DrinksController@indexAll');
 
 	Route::post('login', 'LoginController@login');
