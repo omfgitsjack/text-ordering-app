@@ -20,6 +20,7 @@
             'utilities.datetime',
             'utilities.googleanalytics',
             'utilities.localstorage',
+            'utilities.entitymanager',
             'ngSanitize'
 
         ])

@@ -23,7 +23,9 @@
     "toastr": "~2.1.1",
     "angular-sanitize": "~1.4.0",
     "angulartics": "~0.18.0",
-    "angular-local-storage": "~0.2.2"
+    "angular-local-storage": "~0.2.2",
+    "breeze-client": "~1.5.4",
+    "breeze-client-labs": "~1.5.8"
   },
   "resolutions": {
     "angular": "1.4.3"

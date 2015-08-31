@@ -75,7 +75,8 @@
     gulp.task('watch', ['watch-app']);
 
     // Watch for changes in app, less, vendor dependencies & compile new dependency as necessary.
-    gulp.task('watch-app', function() {
+    gulp.task('watch-app', ['build'], function() {
+        process.stdout.write("\nWatching for changes\n");
         gulp.watch('public/app/**/*.js', ['js']);
         gulp.watch('public/**/*.less', ['less']);
         gulp.watch('gulp.config.json', ['vendorjs', 'vendorcss']);
