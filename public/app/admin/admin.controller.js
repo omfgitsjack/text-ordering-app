@@ -5,8 +5,7 @@
         .module('app.admin')
         .controller('adminController', adminController);
 
-    function adminController($scope, $timeout, $mdSidenav, $mdUtil, $log, $state, ShopService,
-                             entityManagerFactory) {
+    function adminController($scope, $timeout, $mdSidenav, $mdUtil, $log, $state, ShopService, breeze) {
 
         $scope.toggleLeft = buildToggler('left');
 
@@ -81,12 +80,20 @@
 
             var jsonResultsAdapter = new breeze.JsonResultsAdapter({
                 name: "ucafe",
-                extractResults: function(json) {
+                extractResults: function (json) {
                     return json.results;
                 },
-                visitNode: function(node, mappingContext, nodeContext) {
-                    var queryResourceName = mappingContext.query.resourceName;
-                    var entityType = mappingContext.metadataStore.getEntityTypeNameForResourceName(queryResourceName);
+                visitNode: function (node, mappingContext, nodeContext) {
+
+                    var entityType = "";
+
+                    if (node.$type) {
+                        entityType = node.$type;
+                    } else {
+                        // It's a GET call
+                        var queryResourceName = mappingContext.query.resourceName;
+                        entityType = mappingContext.metadataStore.getEntityTypeNameForResourceName(queryResourceName);
+                    }
 
                     return {
                         entityType: entityType,
@@ -117,6 +124,15 @@
             metadataStore: store
         });
 
+        // inherit from the regular Breeze Web API OData adapter
+        var adapter = breeze.config.getAdapterInstance('dataService', 'webApi');
+        //adapter._prepareSaveResult = function (saveContext, data) {
+         //   return {'entities': data};
+        //};
+
+
+        console.log(adapter);
+
         function addDrinkType(store) {
             var et = {
                 // Header info
@@ -125,18 +141,18 @@
                 defaultResourceName: "drinks",
 
                 dataProperties: {
-                    id:   { dataType: DT.Int32, isPartOfKey: true },
-                    name: { maxLength: 4000 }, // DT.String is the default type
-                    description:  { maxLength: 4000 },
-                    price: { dataType: DT.Double, maxLength: 4000},
+                    id: {dataType: DT.Int32, isPartOfKey: true},
+                    name: {maxLength: 4000}, // DT.String is the default type
+                    description: {maxLength: 4000},
+                    price: {dataType: DT.Double, maxLength: 4000},
                     taxedPrice: {dataType: DT.Double, maxLength: 4000},
-                    image: { },
-                    calories: {dataType: DT.Int32 },
-                    protein: {dataType: DT.Int32 },
-                    fat: {dataType: DT.Int32 },
-                    carbs: {dataType: DT.Int32 },
-                    fiber: {dataType: DT.Int32 },
-                    ingredients: { },
+                    image: {},
+                    calories: {dataType: DT.Int32},
+                    protein: {dataType: DT.Int32},
+                    fat: {dataType: DT.Int32},
+                    carbs: {dataType: DT.Int32},
+                    fiber: {dataType: DT.Int32},
+                    ingredients: {},
                     created_at: {dataType: DT.DateTime},
                     modified_at: {dataType: DT.DateTime},
                     food_type: {}
@@ -150,14 +166,13 @@
             .from("drinks")
             .using(manager)
             .execute()
-            .then(function(res) {
+            .then(function (res) {
                 console.log('success!');
                 console.log(res);
-            }, function(res) {
+            }, function (res) {
                 console.log('fail!');
                 console.log(res);
             });
-
         var newDrink = manager.createEntity('drink', {
             "name": "new drink baby",
             "description": "Quam reprehenderit aut tempore voluptatibus facilis voluptas fuga distinctio in eligendi et quia voluptatum nam iste facilis et optio non sit sit sit est corporis totam dolores non perferendis est qui unde eos omnis nostrum quidem autem quibusdam rerum re",
@@ -174,15 +189,15 @@
             "food_type": "drink"
         });
 
-        var so = new breeze.SaveOptions({ resourceName: 'drinks', dataService: store.getDataService(serviceName) });
-        manager.saveChanges(null, so, function(res) {
-            console.log('success');
-            console.log(res);
-        },
-        function(res) {
-            console.log('fail');
-            console.log(res);
-        });
+        var so = new breeze.SaveOptions({resourceName: 'drinks', dataService: store.getDataService(serviceName)});
+        manager.saveChanges(null, so, function (res) {
+                console.log('success');
+                console.log(res);
+            },
+            function (res) {
+                console.log('fail');
+                console.log(res);
+            });
 
     }
 

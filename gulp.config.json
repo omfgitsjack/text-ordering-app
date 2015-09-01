@@ -41,8 +41,8 @@
     "public/bower_components/angulartics/dist/angulartics-ga.min.js",
     "public/bower_components/angular-local-storage/dist/angular-local-storage.js",
     "public/bower_components/breeze-client/build/breeze.debug.js",
-    "public/bower_components/breeze-client/build/adapters/breeze.bridge.angular.js",
-    "public/bower_components/breeze-client-labs/breeze.metadata-helper.js"
+    "public/bower_components/breeze-client-labs/breeze.metadata-helper.js",
+    "public/bower_components/breeze-client/build/adapters/breeze.bridge.angular.js"
   ],
   "vendorcss": [
     "public/bower_components/angular-material/angular-material.css",
