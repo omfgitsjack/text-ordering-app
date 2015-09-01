@@ -2,29 +2,30 @@
 
 abstract class DbBaseRepository implements BaseRepository {
 
-  public function getById(int $id)
-	{
-		return $this->model->find($id);
-	}
+    public function getById($id)
+    {
+        return $this->model->find($id);
+    }
 
-	public function getAll()
-	{
-		return $this->model->all();
-	}
+    public function getAll()
+    {
+        return $this->model->all();
+    }
 
-	public function store($input)
-	{
-		return $this->model->create($input);
-	}
+    public function store($input)
+    {
+        return $this->model->create($input);
+    }
 
-	public function delete(int $id)
-	{
-		$this->model->destroy($id);
-	}
+    public function delete($id)
+    {
+        $this->model->destroy($id);
+    }
 
-  public function update(int $id, $input)
-  {
-    $this->model->find($id)->update($input);
-  }
+    public function update($id, $input)
+    {
+        $val =  $this->model->find($id)->update($input);
+        return $this->getById($input['id']);
+    }
 
 }

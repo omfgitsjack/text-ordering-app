@@ -2,14 +2,14 @@
 
 Interface BaseRepository {
 
-    public function getById(int $id);
+    public function getById($id);
 
   	public function getAll();
 
   	public function store($input);
 
-  	public function delete(int $id);
+  	public function delete($id);
 
-    public function update(int $id, $input);
+    public function update($id, $input);
 
 }

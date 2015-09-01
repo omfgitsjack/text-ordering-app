@@ -31,17 +31,39 @@ class DrinksController extends \BaseController {
         return Response::json($this->drink->getAll());
     }
 
-    public function update()
+    public function update($id)
     {
-        $this->drink->updateAllDrinks(Input::get('drinkList'));
+        $entity = Input::get('entities')[0];
 
-        return Response::json($this->drink->getAll());
+        $drink = DB::table('foods')
+            ->where('id', '=', $id)
+            ->update($entity);
+
+        $drink['$type'] = "drink";
+
+        return Response::json([
+            "entities"      => [$drink],
+            "keyMappings"   => [
+                [
+                    "entityTypeName" => "drink",
+                    "tempValue" => $entity['id'],
+                    "realValue" => $drink['id']
+                ]
+            ]
+        ]);
     }
 
     public function store()
     {
         $entity = Input::get('entities')[0];
-        $drink = $this->drink->store($entity);
+        if ($entity['id'] < 0) // Automatically set by client side
+        {
+            $drink = $this->drink->store($entity);
+        }
+        else
+        {
+            $drink = $this->drink->update($entity['id'], $entity);
+        }
 
         $drink['$type'] = "drink";
 

@@ -126,12 +126,6 @@
 
         // inherit from the regular Breeze Web API OData adapter
         var adapter = breeze.config.getAdapterInstance('dataService', 'webApi');
-        //adapter._prepareSaveResult = function (saveContext, data) {
-         //   return {'entities': data};
-        //};
-
-
-        console.log(adapter);
 
         function addDrinkType(store) {
             var et = {
@@ -167,37 +161,55 @@
             .using(manager)
             .execute()
             .then(function (res) {
-                console.log('success!');
+                console.log('read worked');
                 console.log(res);
+
+                var newDrink = manager.createEntity('drink', {
+                    "name": "new drink baby",
+                    "description": "Quam reprehenderit aut tempore voluptatibus facilis voluptas fuga distinctio in eligendi et quia voluptatum nam iste facilis et optio non sit sit sit est corporis totam dolores non perferendis est qui unde eos omnis nostrum quidem autem quibusdam rerum re",
+                    "price": 7.55,
+                    "taxedprice": 8.5,
+                    "image": "assets/food/7.JPG",
+                    "calories": 172,
+                    "protein": 15,
+                    "fat": 381,
+                    "carbs": 160,
+                    "fiber": 115,
+                    "ingredients": "Molestiae minus ipsa quia sed sint et voluptatem dicta ipsam est et rerum repellat soluta fuga voluptatem blanditiis dolorem vitae facilis omnis incidunt quod aut adipisci recusandae odio laudantium amet dolore quia numquam ab tenetur harum sint enim poss",
+                    "spicy": 1,
+                    "food_type": "drink"
+                });
+
+                var so = new breeze.SaveOptions({resourceName: 'drinks', dataService: store.getDataService(serviceName)});
+                manager.saveChanges(null, so, function (res) {
+                        console.log('save worked');
+                        console.log(res);
+                        var m = res.entities[0].entityAspect.entityManager;
+                        var q = breeze.EntityQuery.from('drinks');
+
+                        console.log('local query');
+
+                        var localItems = m.executeQueryLocally(q);
+                        console.log(localItems);
+
+                        console.log('editing...');
+
+                        localItems[0].price = 99999;
+
+                        m.saveChanges(null, so, function(res) {
+                            console.log('put worked');
+                            console.log(res);
+                        })
+                    },
+                    function (res) {
+                        console.log('fail');
+                        console.log(res);
+                    });
             }, function (res) {
                 console.log('fail!');
                 console.log(res);
             });
-        var newDrink = manager.createEntity('drink', {
-            "name": "new drink baby",
-            "description": "Quam reprehenderit aut tempore voluptatibus facilis voluptas fuga distinctio in eligendi et quia voluptatum nam iste facilis et optio non sit sit sit est corporis totam dolores non perferendis est qui unde eos omnis nostrum quidem autem quibusdam rerum re",
-            "price": 7.55,
-            "taxedprice": 8.5,
-            "image": "assets/food/7.JPG",
-            "calories": 172,
-            "protein": 15,
-            "fat": 381,
-            "carbs": 160,
-            "fiber": 115,
-            "ingredients": "Molestiae minus ipsa quia sed sint et voluptatem dicta ipsam est et rerum repellat soluta fuga voluptatem blanditiis dolorem vitae facilis omnis incidunt quod aut adipisci recusandae odio laudantium amet dolore quia numquam ab tenetur harum sint enim poss",
-            "spicy": 1,
-            "food_type": "drink"
-        });
 
-        var so = new breeze.SaveOptions({resourceName: 'drinks', dataService: store.getDataService(serviceName)});
-        manager.saveChanges(null, so, function (res) {
-                console.log('success');
-                console.log(res);
-            },
-            function (res) {
-                console.log('fail');
-                console.log(res);
-            });
 
     }
 

@@ -26,7 +26,7 @@ Route::group(array('prefix' => 'api'), function() {
 	Route::get('food/all', 'FoodsController@indexAll');
 
 	Route::get('drinks', 'DrinksController@index');
-	Route::put('drinks', 'DrinksController@update');
+	Route::put('drinks/{id}', 'DrinksController@update');
 	Route::post('drinks', 'DrinksController@store');
 	Route::get('drinks/all', 'DrinksController@indexAll');
 
