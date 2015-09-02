@@ -5,7 +5,7 @@ use Carbon\Carbon;
 class AuthenticateController extends Controller {
 
     const CASH = "Cash";
-
+ 
     private $twilioClient;
 
     function __construct()

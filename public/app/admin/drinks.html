@@ -2,3 +2,20 @@
     <h3 class="">Drinks Menu</h3>
     <h4 class="text-muted">Change your menu by simply clicking on the checkboxes</h4>
 </div>
+
+<row>
+    <div class="col-sm-0 col-md-2"> </div>
+    <div class="col-sm-12 col-md-8">
+        <md-whiteframe class="md-whiteframe-z2" layout layout-align="center left">
+            <md-list>
+                <md-subheader class="md-no-sticky"><span class="pull-left">Active</span><span class="pull-right">Edit Item</span></md-subheader>
+                <md-list-item ng-repeat="item in food">
+                    <md-checkbox ng-model="item.available"></md-checkbox>
+                    {{item.id}}. {{item.name}} <span ng-show="item.spicy"> (Spicy)</span>
+                    <md-icon class="md-secondary" ng-click="edit($event, item)" aria-label="edit" md-svg-src="assets/icons/edit.svg"></md-icon>
+                </md-list-item>
+            </md-list>
+        </md-whiteframe>
+    </div>
+    <div class="col-sm-0 col-md-2"> </div>
+</row>

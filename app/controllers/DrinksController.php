@@ -11,13 +11,22 @@ class DrinksController extends \BaseController {
 
     /**
      * Display a listing of the resource.
-     * GET /foods
+     * GET /drinks
      *
      * @return Response
      */
     public function index()
     {
-        return $this->drink->getDrinksForSale();
+        Log::info(Input::get('available'));
+
+        if (Input::get('available'))
+        {
+            return $this->drink->getDrinksForSale();
+        }
+        else
+        {
+            return Response::json($this->drink->getAll());
+        }
     }
 
     /**

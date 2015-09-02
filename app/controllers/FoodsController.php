@@ -22,7 +22,7 @@ class FoodsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /foods
+	 * GET /foods/all
 	 *
 	 * @return Response
 	 */

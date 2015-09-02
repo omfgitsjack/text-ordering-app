@@ -3,7 +3,8 @@
 
     angular.module('utilities.entitymanager',
         [
-            'breeze.angular'
+            'breeze.angular',
+            'utilities.entitymanager.entities'
         ]);
 
 })();

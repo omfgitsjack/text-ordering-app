@@ -5,29 +5,27 @@
         .module('utilities.entitymanager')
         .factory('entityManagerFactory', entityManagerFactory);
 
-    function entityManagerFactory(breeze) {
-        // Convert server-side PascalCase to client-side camelCase property names
-        breeze.NamingConvention.camelCase.setAsDefault();
-        // Do not validate when we attach a newly created entity to an EntityManager.
-        // We could also set this per entityManager
-        new breeze.ValidationOptions({validateOnAttach: false}).setAsDefault();
-
-        var serviceRoot = window.location.protocol + '//' + window.location.host + '/';
-        var serviceName = 'api/';
-        var metadataStore = new breeze.MetadataStore();
+    function entityManagerFactory(breeze,
+                                  metadataStore,
+                                  laravelDataService,
+                                  entitiesService,
+                                  API_ROOT) {
 
         var provider = {
+            newManager: newManager,
             metadataStore: metadataStore,
-            newManager: newManager
+            dataService: laravelDataService,
+            entities: entitiesService
         };
 
         return provider;
 
-        function newManager(apiRoute) {
+        function newManager() {
             var mgr = new breeze.EntityManager({
-                serviceName: serviceName + apiRoute,
+                dataService: metadataStore.getDataService(API_ROOT),
                 metadataStore: metadataStore
             });
+
             return mgr;
         }
     }
