@@ -38,7 +38,7 @@ class AuthenticateController extends Controller {
             $receipt = $receipt . $order[$i]->quantity . 'x ' . $order[$i]->food->name . "\n";
             $total += $order[$i]->quantity * $order[$i]->food->taxedprice;
         }
-        $receipt = $receipt . "价格（请付现金）: " . $total . "\n";
+        $receipt = $receipt . "价格: " . $total . "\n";
 
         return $receipt;
     }
@@ -72,12 +72,13 @@ class AuthenticateController extends Controller {
 
         try
         {
+            $paymentType = $authRecord->payment_type == "Cash" ? "现金" : "Payment";
             $this->twilioClient->account->messages->sendMessage(
                 $_SERVER['TWILIO_PHONE_NUMBER'],
                 $number,
                 "优厨房已收到你的订单: \n" .
                 "订单号码: " . $authRecord->id . "\n" .
-                "Payment Method: " . $authRecord->payment_type . "\n" .
+                "付款方式: " . $paymentType . "\n" .
                 "你的午餐: \n" . $this->generateReceipt($savedOrders) .
                 "取餐地点: " . $selectedLocation['pickupLocation'] . "\n" .
                 "预计时间: 12:45-1:15PM\n\n" .
