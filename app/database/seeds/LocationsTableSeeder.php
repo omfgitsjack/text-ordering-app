@@ -24,7 +24,7 @@ class LocationsTableSeeder extends Seeder {
 			]
 		];
 
-		foreach(range(1, 3) as $index)
+		foreach(range(0, 2) as $index)
 		{
 			Location::create($locations[$index]);
 		}

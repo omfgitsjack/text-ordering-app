@@ -17,11 +17,11 @@ class CreateLocationsTable extends Migration {
 			$table->increments('id');
 			$table->string('school');
 			$table->string('pickupLocation');
+			$table->string('schoolImage');
 			$table->timestamps();
 		});
 	}
-
-
+	
 	/**
 	 * Reverse the migrations.
 	 *
