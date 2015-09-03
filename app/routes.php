@@ -19,6 +19,8 @@ Route::get('/', function()
 	//return View::make('ucafe');
 });
 
+Route::get('api/location', 'LocationsController@index');
+
 Route::get('api/food', 'FoodsController@index');
 Route::put('api/food', 'FoodsController@update');
 Route::get('api/food/all', 'FoodsController@indexAll');

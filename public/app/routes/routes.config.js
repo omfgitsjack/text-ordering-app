@@ -5,8 +5,8 @@
     var BASEPATH = 'app/';
 
     angular
-      .module('app.routes')
-      .config(routesConfig);
+        .module('app.routes')
+        .config(routesConfig);
 
     function routesConfig($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/menu');
@@ -17,29 +17,32 @@
                 templateUrl: 'app/menu/menu.html',
                 controller: 'menuController',
                 resolve: {
-                  foodResolve: function(FoodService) {
-                    return FoodService.get().success(function(res) {
-                      return res.map(function (el) {
-                          el.order = {
-                              quantity: 0,
-                              cost: function () {
-                                  return this.quantity * el.taxedprice
-                              }
-                          };
-                          return el;
-                      });
-                    });
-                  },
-                  shopStatusResolve: function(ShopService) {
-                    return ShopService.get().success(function(res) {
-                      return {
-                        is_open: res['is_open']
-                      }
-                    });
-                  }
+                    foodResolve: function (FoodService) {
+                        return FoodService.get().success(function (res) {
+                            return res.map(function (el) {
+                                el.order = {
+                                    quantity: 0,
+                                    cost: function () {
+                                        return this.quantity * el.taxedprice
+                                    }
+                                };
+                                return el;
+                            });
+                        });
+                    },
+                    shopStatusResolve: function (ShopService) {
+                        return ShopService.get().success(function (res) {
+                            return {
+                                is_open: res['is_open']
+                            }
+                        });
+                    },
+                    locationResolve: function(LocationService) {
+                        return LocationService.get();
+                    }
                 },
                 data: {
-                  requireLogin: false
+                    requireLogin: false
                 }
             })
             .state('completeMenu', {
@@ -47,7 +50,7 @@
                 templateUrl: 'app/complete_menu/complete_menu.html',
                 controller: 'completeMenuController',
                 data: {
-                  requireLogin: false
+                    requireLogin: false
                 }
             })
             .state("admin", {
@@ -56,7 +59,7 @@
                 templateUrl: BASEPATH + "admin/admin.html",
                 controller: 'adminController',
                 data: {
-                  requireLogin: true
+                    requireLogin: true
                 }
             })
             .state("admin.orders", {

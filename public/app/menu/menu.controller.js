@@ -10,16 +10,22 @@
         .module(ns)
         .controller('menuController', menuController);
 
-    function menuController($scope, $http, $timeout, $filter, DateTimeService, OrderService,
-      shopStatusResolve, foodResolve) {
+    function menuController($scope, $timeout, DateTimeService, OrderService,
+                            shopStatusResolve, foodResolve, locationResolve) {
 
         // Set Shop Status & food items for sale
         $scope.shopStatus = shopStatusResolve.data;
         $scope.food = foodResolve.data;
+        $scope.locations = locationResolve.data;
 
         // Configuration for food items
         $scope.increment = increment;
         $scope.decrement = decrement;
+
+        // Configuration for List of Schools
+        $scope.selectedLocation = undefined;
+        $scope.selectLocation = selectLocation;
+        $scope.resetSelectedLocation = resetSelectedLocation;
 
         // Configuration for List of items being ordered
         $scope.order = [];
@@ -52,12 +58,22 @@
 
         // Increment items being ordered by 1.
         function increment(item) {
-          item.quantity++;
+            item.quantity++;
         }
 
         // Decrement item being ordered by 1.
         function decrement(item) {
-          item.quantity--;
+            item.quantity--;
+        }
+
+        // Set selected Location
+        function selectLocation(location) {
+            $scope.selectedLocation = location;
+        }
+
+        // Reset selected Location
+        function resetSelectedLocation() {
+            $scope.selectedLocation = undefined;
         }
 
         // Watches and updates current listing of food being ordered.
@@ -79,32 +95,32 @@
 
         // Returns a bool value of whether timer is on
         function isCountingDown() {
-          return $scope.countDownVal > 0;
+            return $scope.countDownVal > 0;
         }
 
         // Dynamic Order Btn Place Holder
         function orderBtnPlaceHolder() {
-          if ($scope.isCountingDown()) {
-              return "请等" + $scope.countDownVal + "秒";
-          } else {
-              return "下单";
-          }
+            if ($scope.isCountingDown()) {
+                return "请等" + $scope.countDownVal + "秒";
+            } else {
+                return "下单";
+            }
         }
 
         // Make Order and timeout the order button.
-        function makeOrder(phoneNumber, order) {
+        function makeOrder(phoneNumber, order, selectedLocation) {
             OrderService
-                .makeOrder(phoneNumber, order)
+                .makeOrder(phoneNumber, order, selectedLocation)
                 .success(function (res) {
                     toastr.success('谢谢！你的订单已经收到。请查看短信完成订单');
-                    var countDown = function(val) {
+                    var countDown = function (val) {
                         $scope.countDownVal = val;
-                        $timeout(function() {
+                        $timeout(function () {
                             if (val > 0) {
                                 countDown(--val);
                             }
                         }, 1000);
-                    }
+                    };
                     countDown(ORDER_TIMEOUT);
                 });
         };

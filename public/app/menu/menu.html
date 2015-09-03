@@ -11,10 +11,32 @@
         </div>
     </div>
 
-    <div ng-show="shopStatus.is_open">
+    <div class="food-items" ng-show="!selectedLocation">
+        <h2 style="text-align: center; margin-top: 20px;">请选择你的学校</h2>
+        <md-grid-list
+                md-cols-sm="1" md-cols-md="2" md-cols-gt-md="3"
+                md-row-height-gt-md="1.5:1" md-row-height="1.5:1"
+                md-gutter="8px" md-gutter-gt-sm="8px" >
+            <md-grid-tile ng-repeat="location in locations"
+                          md-rowspan="1"
+                          md-colspan="1"
+                          md-colspan-sm="1"
+                          style='overflow: hidden;'
+                          ng-click="selectLocation(location)">
+                <img ng-src="{{location.image}}" alt="Location Image"/>
+                <md-grid-tile-footer><h3 class='item-name'>{{location.school}}</h3></md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+
+    <div ng-show="shopStatus.is_open && selectedLocation">
         <div class="title-area">
-            <h3>UTSC 今日午饭菜单</h3>
-            <h4 class='text-muted'>取餐时间、地点：12:45-13:15 于 Tim Hortons 前面的长椅（图书馆旁边）</h4>
+            <h3>{{selectedLocation.school}} 今日午饭菜单</h3>
+            <h4 class='text-muted'>取餐时间、地点：12:45-13:15 于 {{selectedLocation.pickupLocation}}</h4>
+            <button
+                    class="btn btn-primary"
+                    type="button"
+                    ng-click="resetSelectedLocation()">选另外学校</button>
         </div>
 
         <div class="food-items">
@@ -123,6 +145,7 @@
                 </div>
                 <div class="col-md-6">
                     <h3>确定下单</h3>
+                    <h5 class='text-muted'>取餐时间、地点：12:45-13:15 于 {{selectedLocation.pickupLocation}}</h5>
                     <row class="phone">
                         <div class="input-group">
                                 <input
@@ -135,7 +158,7 @@
                                     <button
                                             class="btn btn-success"
                                             type="button"
-                                            ng-click="makeOrder(phoneNumber, order)"
+                                            ng-click="makeOrder(phoneNumber, order, selectedLocation)"
                                             ng-disabled="order.length === 0 || isCountingDown()">{{inputPlaceHolder()}}</button>
                                 </span>
 

@@ -2,28 +2,29 @@
     "use strict";
 
     angular.module('app.models')
-        .service('OrderService', function($http, DateTimeService) {
+        .service('OrderService', function ($http, DateTimeService) {
             return {
-                getCurrent: function() {
+                getCurrent: function () {
                     return $http.get('api/orders/current')
-                        .success(function(res) {
-                            return res.map(function(el) {
+                        .success(function (res) {
+                            return res.map(function (el) {
                                 var n = el;
                                 n.updated_at = DateTimeService.parseUTC(el.updated_at);
-                                n.paid = n.paid === 1 ? true : false;
-                                n.verified = n.verified === 1 ? true : false;
+                                n.paid = n.paid === 1;
+                                n.verified = n.verified === 1;
 
                                 return n;
                             })
                         });
                 },
-                makeOrder: function(phoneNumber, order) {
-                  return $http.post('api/authenticate', {
-                    phoneNumber: phoneNumber,
-                    order: order
-                  });
+                makeOrder: function (phoneNumber, order, selectedLocation) {
+                    return $http.post('api/authenticate', {
+                        phoneNumber: phoneNumber,
+                        order: order,
+                        selectedLocation: selectedLocation
+                    });
                 },
-                isLastOrder: function(time) {
+                isLastOrder: function (time) {
                     // Last Order is defined by any order between 10:00 - 10:30
                     var start = DateTimeService.now()
                         .startOf('day')
@@ -35,15 +36,15 @@
                         .add(30, 'minutes');
 
                     return time.isAfter(start, 'minute') &&
-                            time.isBefore(deadline, 'minute');
+                        time.isBefore(deadline, 'minute');
                 },
-                aggregateTransformer: function(items) {
+                aggregateTransformer: function (items) {
                     var aggregate = [];
                     var me = this;
 
                     for (var i = 0; i < items.length; i++) {
                         var index = me.isInList(items[i].name, 'name', aggregate);
-                        if (index !== false ) {
+                        if (index !== false) {
                             aggregate[index].quantity += items[i].quantity;
                         } else {
                             aggregate.push({
@@ -54,7 +55,7 @@
                     }
                     return aggregate;
                 },
-                orderListTransformer: function(items) {
+                orderListTransformer: function (items) {
                     var me = this;
                     var list = [];
 
@@ -89,7 +90,7 @@
 
                     return list;
                 },
-                isInList: function(propertyValue, identifyingProperty, list) {
+                isInList: function (propertyValue, identifyingProperty, list) {
                     for (var i = 0; i < list.length; i++) {
                         if (list[i]) {
                             if (list[i][identifyingProperty] === propertyValue)

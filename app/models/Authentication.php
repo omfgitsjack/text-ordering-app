@@ -5,7 +5,8 @@ class Authentication extends \Eloquent {
 		'phone',
 		'verified',
 		'payment_type',
-		'paid'
+		'paid',
+		'location_id'
 	];
 
 	public function orders() {

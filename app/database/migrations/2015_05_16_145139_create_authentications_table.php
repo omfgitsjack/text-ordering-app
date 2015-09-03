@@ -17,7 +17,12 @@ class CreateAuthenticationsTable extends Migration {
 			$table->increments('id');
 			$table->text('phone');
 			$table->boolean('verified');
+			$table->boolean('paid');
+			$table->string('payment_type');
+			$table->integer('location_id')->unsigned();
 			$table->timestamps();
+
+			$table->foreign('location_id')->references('id')->on('locations');
 		});
 	}
 

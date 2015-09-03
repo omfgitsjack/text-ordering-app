@@ -47,6 +47,8 @@ class AuthenticateController extends Controller {
     {
         $number = Input::get("phoneNumber");
         $order = Input::get("order");
+        $selectedLocation = Input::get("selectedLocation");
+
         $savedOrders = [];
 
         // Store Authentication details
@@ -54,7 +56,8 @@ class AuthenticateController extends Controller {
             "phone"    => '+1' . $number,
             "verified" => false,
             "paid"     => false, // CHANGE THIS WHEN WE INTRODUCE STRIPE PAYMENT
-            "payment_type" => self::CASH
+            "payment_type" => self::CASH,
+            "location_id" => $selectedLocation['id']
         ]);
 
         // Store Order
@@ -76,7 +79,7 @@ class AuthenticateController extends Controller {
                 "订单号码: " . $authRecord->id . "\n" .
                 "Payment Method: " . $authRecord->payment_type . "\n" .
                 "你的午餐: \n" . $this->generateReceipt($savedOrders) .
-                "取餐地点: Tim Hortons前面的长椅（图书馆旁边)\n" .
+                "取餐地点: " . $selectedLocation['pickupLocation'] . "\n" .
                 "预计时间: 12:45-1:15PM\n\n" .
                 "***请回复 OK 确定订单***\n" .
                 "(回复 NO 取消订单）"

@@ -27,6 +27,8 @@ class CreateFoodsTable extends Migration {
 			$table->integer('fiber');
 			$table->string('ingredients');
 			$table->boolean('available');
+			$table->string('food_type');
+			$table->boolean('spicy');
 			$table->timestamps();
 		});
 	}
