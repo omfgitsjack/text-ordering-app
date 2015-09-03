@@ -6,7 +6,7 @@
 <row>
     <div class="col-sm-0 col-md-2"> </div>
     <div class="col-sm-12 col-md-8">
-        <h3 class="text-muted">便当总数量</h3>
+        <h3>便当总数量</h3>
         <md-whiteframe class="md-whiteframe-z2" layout layout-align="center left">
             <md-list>
                 <md-list-item class="md-1-line" ng-repeat="order in currentAggregateOrder">
@@ -16,16 +16,26 @@
                 </md-list-item>
             </md-list>
         </md-whiteframe>
-        <h3 class="text-muted">订单列表</h3>
+        <h3 style="margin-top: 40px;">
+            订单列表
+            <span class="text-muted">
+                <md-select
+                        style="padding-top: 10px; padding-bottom: 5px;"
+                        placeholder="Filter by Location" ng-model="selectedLocation">
+                    <md-option ng-value="defaultLocation">Any Location</md-option>
+                    <md-option ng-repeat="location in locations" ng-value="location">{{ location.school }} - {{ location.pickupLocation }}</md-option>
+                </md-select>
+            </span>
+        </h3>
         <md-whiteframe class="md-whiteframe-z2 individual-order-list" layout layout-align="center left">
             <md-list>
               <md-list-item class="md-1-line"
                             ng-repeat-start="order in currentOrderList"
                             ng-click='hasPaid(order)'>
                             <p class='text-muted'>
-                              {{order.id}}: {{order.phone}}. (${{order.totalprice}})
+                              {{order.id}}: {{order.phone}} ({{order.location.school}} - {{order.location.pickupLocation }})
                             </p>
-                            Paid <md-checkbox class='paidCheckBox' ng-model="order.paid" aria-label="Paid">
+                            Paid ${{order.totalprice}}<md-checkbox class='paidCheckBox' ng-model="order.paid" aria-label="Paid">
                             </md-checkbox>
                           </md-list-item>
                 <md-list-item class="md-1-line"

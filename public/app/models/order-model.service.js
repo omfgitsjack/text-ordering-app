@@ -78,6 +78,7 @@
                                 totalprice: items[i].quantity * items[i].taxedprice,
                                 paid: items[i].paid,
                                 payment_type: items[i].payment_type,
+                                location: { school: items[i].school, pickupLocation: items[i].pickupLocation },
                                 items: [{
                                     name: items[i].name,
                                     quantity: items[i].quantity,

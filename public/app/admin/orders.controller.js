@@ -5,8 +5,36 @@
         .module('app.admin')
         .controller('ordersController', ordersController);
 
-    function ordersController($scope, $timeout, $http, OrderService, DateTimeService) {
+    function ordersController($scope, $timeout, $http,
+                              OrderService,
+                              DateTimeService,
+                              LocationService) {
+
         $scope.orderService = OrderService;
+
+        // Location filter box
+        $scope.defaultLocation = {school: 'any', pickupLocation: 'any'};
+        LocationService
+            .get()
+            .then(function (res) {
+                $scope.locations = res.data;
+                $scope.selectedLocation = $scope.defaultLocation;
+            });
+        $scope.selectedLocation = undefined;
+        $scope.updateCurrentOrderList = function (list) {
+            if ($scope.selectedLocation == undefined ||
+                $scope.selectedLocation == $scope.defaultLocation) {
+                $scope.currentOrderList = list;
+                return;
+            }
+            $scope.currentOrderList = list.filter(function (el) {
+                var containsSchool = el.location.school.indexOf($scope.selectedLocation.school) > -1,
+                    containsPickupLocation = el.location.pickupLocation.indexOf($scope.selectedLocation.pickupLocation) > -1;
+
+                return containsSchool && containsPickupLocation;
+            });
+        };
+
         var me = this;
         var now = DateTimeService.now();
 
@@ -22,17 +50,17 @@
             $scope.currentDay = $scope.todayDay;
         };
 
-        $scope.hasPaid = function(order) {
-          $http.put('api/authenticate', {
-            'authentication': {
-              id: order.id,
-              paid: order.paid ? 1 : 0,
-              verified: 1,
-              payment_type: order.payment_type,
-              phone: order.phone
-            }
-          });
-        }
+        $scope.hasPaid = function (order) {
+            $http.put('api/authenticate', {
+                'authentication': {
+                    id: order.id,
+                    paid: order.paid ? 1 : 0,
+                    verified: 1,
+                    payment_type: order.payment_type,
+                    phone: order.phone
+                }
+            });
+        };
 
         me.init = function () {
 
@@ -47,14 +75,17 @@
                 return OrderService.getCurrent()
                     .success(function (res) {
                         $scope.currentAggregateOrder = $scope.orderService.aggregateTransformer(res);
-                        $scope.currentOrderList = $scope.orderService.orderListTransformer(res);
+                        $scope.originalOrderList = $scope.orderService.orderListTransformer(res);
+
+                        $scope.updateCurrentOrderList($scope.originalOrderList);
+
                         return true;
                     });
             };
 
             me.initPoll = function () {
                 $timeout(function () {
-                    me.getOrders().success(function() {
+                    me.getOrders().success(function () {
                         toastr.info('Updated Order List');
                         me.initPoll();
                     });
@@ -63,6 +94,17 @@
 
             me.getOrders();
             me.initPoll();
+
+            $scope.$watch('selectedLocation', function (newVal, oldVal) {
+                if (newVal != oldVal) {
+                    if (newVal == $scope.defaultLocation || newVal == undefined) {
+                        $scope.currentOrderList = $scope.originalOrderList;
+                        return;
+                    }
+
+                    $scope.updateCurrentOrderList($scope.originalOrderList);
+                }
+            });
         };
 
         me.init();
