@@ -12,19 +12,24 @@
     </div>
 
     <div class="food-items" ng-show="!selectedLocation">
-        <h2 style="text-align: center; margin-top: 20px;">请选择你的学校</h2>
+        <h3 class="text-muted" style="text-align: center; margin-top: 30px;">请选择你的学校</h3>
         <md-grid-list
                 md-cols-sm="1" md-cols-md="2" md-cols-gt-md="3"
-                md-row-height-gt-md="1.5:1" md-row-height="1.5:1"
-                md-gutter="8px" md-gutter-gt-sm="8px" >
+                md-row-height-gt-md=".9:1.1" md-row-height=".9:1.1"
+                md-gutter="16px" md-gutter-gt-sm="16px" >
             <md-grid-tile ng-repeat="location in locations"
                           md-rowspan="1"
                           md-colspan="1"
                           md-colspan-sm="1"
                           style='overflow: hidden;'
                           ng-click="selectLocation(location)">
-                <img ng-src="{{location.image}}" alt="Location Image"/>
-                <md-grid-tile-footer><h3 class='item-name'>{{location.school}}</h3></md-grid-tile-footer>
+                <img ng-src="{{location.schoolImage}}" alt="Location Image"/>
+                <md-grid-tile-footer
+                        style="bottom:40%;height:auto;">
+                    <h3 class='item-name'
+                        style="font-size:30px;
+                        text-align: center;">{{location.school}}
+                    </h3></md-grid-tile-footer>
             </md-grid-tile>
         </md-grid-list>
     </div>
