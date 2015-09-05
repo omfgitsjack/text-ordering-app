@@ -59,7 +59,7 @@ class OrdersController extends \BaseController {
         $todayDeadline = Carbon::now(self::getTimeZone());
         $todayStart = Carbon::now(self::getTimeZone());
 
-        if (0 <= $now->hour && $now->hour < 16)
+        if (0 <= $now->hour && $now->hour < 15)
         {
             return [
                 'deadline' => $todayDeadline->startOfDay()->addHours(self::ORDERHOURCUTOFF)->addMinutes(30),

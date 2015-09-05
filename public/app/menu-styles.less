@@ -11,7 +11,8 @@
 html {
   font-family: c !important;
 }
-body,h1,h2,h3,h4,h5,h6 {
+
+body, h1, h2, h3, h4, h5, h6 {
   font-family: c !important;
 }
 
@@ -52,13 +53,21 @@ body {
   }
 }
 
-.food-items {
+.menu-area {
   display: table;
   margin-left: auto;
   margin-right: auto;
   float: none;
-  max-width: 716.77px;
+  max-width: 910.77px;
   width: 100%;
+
+  > .location-sidebar-area {
+    padding-right: 7.5px;
+  }
+
+  > .food-items-area {
+    padding-left: 7.5px;
+  }
 }
 
 .description-button {
@@ -74,7 +83,7 @@ body {
   height: 3em;
   line-height: 3em;
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 908px) {
     display: block;
     height: auto;
   }
@@ -92,7 +101,7 @@ body {
     position: relative;
     overflow: hidden;
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: 908px) {
       width: 100%;
       height: auto;
     }
@@ -108,7 +117,8 @@ body {
     width: 35.26334%;
     height: 20em;
 
-    @media screen and (max-width: 720px) { // By default closed when in mobile
+    @media screen and (max-width: 908px) {
+      // By default closed when in mobile
       display: none;
       width: 100%;
     }
@@ -139,7 +149,7 @@ body {
       font-size: 1em;
       height: 32.5%;
 
-      @media screen and (max-width: 720px) {
+      @media screen and (max-width: 908px) {
         font-size: 12px;
         line-height: 1.3em;
       }
@@ -154,7 +164,7 @@ body {
       height: 17.5%;
       background-color: inherit;
 
-      @media screen and (max-width: 720px) {
+      @media screen and (max-width: 908px) {
         font-size: 12px;
         line-height: 1.3em;
       }
@@ -170,7 +180,7 @@ body {
     > * md-tabs {
       padding-top: 0;
 
-      @media screen and (max-width: 720px) {
+      @media screen and (max-width: 908px) {
         padding-top: 3em;
       }
     }
@@ -180,7 +190,7 @@ body {
     display: block;
     height: 20em;
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: 908px) {
       height: auto;
     }
   }
@@ -192,7 +202,7 @@ body {
   background-color: #f7f7f7 !important;
   font-size: 1em;
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 908px) {
     display: none;
     height: auto;
   }
@@ -203,7 +213,7 @@ body {
   height: auto;
   font-size: 1em;
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 908px) {
     display: block;
     float: left;
     font-size: 1em;
@@ -213,13 +223,13 @@ body {
 }
 
 md-tab-item span {
-    font-weight: 300;
-    color: @blue-gray;
+  font-weight: 300;
+  color: @blue-gray;
 }
 
 md-tab-item.md-active span {
   font-weight: 300;
-  color: rgb(33,33,33);
+  color: rgb(33, 33, 33);
 }
 
 md-tab-content {
@@ -235,7 +245,7 @@ md-tab-content {
   margin-left: .5em;
   font-size: .88em;
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 908px) {
     margin-top: .5em;
     font-size: 1em;
   }
@@ -285,12 +295,12 @@ md-tab-content {
     top: 0;
     right: 0;
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: 908px) {
       position: relative;
     }
   }
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 908px) {
     display: block;
     text-align: center;
     margin-top: 2em;
@@ -309,7 +319,11 @@ md-icon {
 .minus-icon {
   margin-right: -5px;
 }
-.test { color:white    }
+
+.test {
+  color: white
+}
+
 .plus-icon {
   margin-left: -5px;
 }
@@ -381,11 +395,11 @@ md-menu-item {
   margin-top: 50px;
 
   > * img {
-    width:100%;
-    height:auto;
-    position:absolute;
-    top:0;
-    left:0
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0
   }
 
   > * .item-name {
@@ -395,4 +409,21 @@ md-menu-item {
 
 md-select-label {
   width: 100%;
+}
+
+.location-sidebar {
+  width: 100%;
+
+  > label {
+    margin: 5px 0 5px 0 !important;
+  }
+
+}
+
+.checkout-area {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 20px;
 }

@@ -10,12 +10,15 @@
 	<link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.min.css">
 	<link href="build/vendor.css" rel="stylesheet">
 	<link href="build/app.css" rel="stylesheet">
+	<link href="app/style.css" rel="stylesheet">
 </head>
 <body ng-app="app">
+
 	<div ui-view class="body-container"></div>
+
 </body>
 
 <script src="build/vendor.js"></script>
 <script src="build/app.js"></script>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </html>

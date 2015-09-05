@@ -14,7 +14,7 @@ class FoodsTableSeeder extends Seeder {
 			Food::create([
 				'id' => $index,
 				'name' => $faker->sentence(3),
-				'description' => $faker->sentence(rand(10, 100)),
+				'description' => "主菜： 牛肉，生菜<br>配菜： 土豆，萝卜，洋葱<br>制作时间： 45分钟",
 				'price' => rand(5,10),
 				'taxedprice' => rand(5,10)+1,
 				'image' => 'assets/food_pic' . (rand(1,5) . '.png'),
@@ -23,7 +23,7 @@ class FoodsTableSeeder extends Seeder {
 				'fat' => rand(0,400),
 				'carbs' => rand(0,400),
 				'fiber' => rand(0,400),
-				'ingredients' => $faker->sentence(rand(300, 500)),
+				'ingredients' => "主菜： 牛肉，生菜<br>配菜： 土豆，萝卜，洋葱",
 				'available' => 1
 			]);
 		}

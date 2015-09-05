@@ -1,54 +1,42 @@
 <div>
-    <div class="header-area">
-        <h1>优厨房</h1>
-        <h3 class="text-muted">精彩在味蕾绽放</h3>
-    </div>
-
-    <div ng-hide="shopStatus.is_open">
-        <div class="title-area">
-            <h3>亲, 我们周五和周六不开放.</h3>
-            <h4>如果想周一又吃上我们的美食的话周日早上10点又可以下订单了!</h4>
+    <div class="main-header">
+        <div class="logo-section">
+            <img src="images/logo.png" class="logo">
         </div>
     </div>
+</div>
+<div ng-hide="shopStatus.is_open">
+    <div class="title-area">
+        <h3>亲, 我们周五和周六不开放.</h3>
+        <h4>如果想周一又吃上我们的美食的话周日早上10点又可以下订单了!</h4>
+    </div>
+</div>
 
-    <div class="food-items" ng-show="!selectedLocation">
-        <h3 class="text-muted" style="text-align: center; margin-top: 30px;">请选择你的学校</h3>
-        <md-grid-list
-                md-cols-sm="1" md-cols-md="2" md-cols-gt-md="3"
-                md-row-height-gt-md=".9:1.1" md-row-height=".9:1.1"
-                md-gutter="16px" md-gutter-gt-sm="16px" >
-            <md-grid-tile ng-repeat="location in locations"
-                          md-rowspan="1"
-                          md-colspan="1"
-                          md-colspan-sm="1"
-                          style='overflow: hidden;'
-                          ng-click="selectLocation(location)">
-                <img ng-src="{{location.schoolImage}}" alt="Location Image"/>
-                <md-grid-tile-footer
-                        style="bottom:40%;height:auto;">
-                    <h3 class='item-name'
-                        style="font-size:30px;
-                        text-align: center;">{{location.school}}
-                    </h3></md-grid-tile-footer>
-            </md-grid-tile>
-        </md-grid-list>
+<div ng-show="shopStatus.is_open">
+    <div class="title-area">
+        <h3>{{selectedLocation.school}} 今日午饭菜单</h3>
+        <h4 ng-hide="selectedLocation" class='text-muted'>请先选择你的学校</h4>
+        <h4 ng-show="selectedLocation" class='text-muted'>取餐时间、地点：{{defaultPickupTime}} 于
+            {{selectedLocation.pickupLocation}}</h4>
     </div>
 
-    <div ng-show="shopStatus.is_open && selectedLocation">
-        <div class="title-area">
-            <h3>{{selectedLocation.school}} 今日午饭菜单</h3>
-            <h4 class='text-muted'>取餐时间、地点：12:45-13:15 于 {{selectedLocation.pickupLocation}}</h4>
-            <button
-                    class="btn btn-primary"
-                    type="button"
-                    ng-click="resetSelectedLocation()">选另外学校</button>
-        </div>
+    <row class="menu-area">
+        <div class="col-xs-3 location-sidebar-area">
+            <div class="btn-group-vertical location-sidebar">
 
-        <div class="food-items">
+                <label class="btn btn-default"
+                       ng-repeat="location in locations"
+                       ng-model="selectedLocation"
+                       btn-radio="location"
+                       ng-click="selectLocation(location)">
+                    {{location.school}}</label>
+            </div>
+        </div>
+        <div class="col-xs-9 food-items-area">
+
             <div class="food-item"
                  ng-controller="foodController"
                  ng-repeat="item in food">
-
                 <div class="img-container">
                     <img ng-src="{{item.image}}" alt="Food Image"/>
                 </div>
@@ -71,10 +59,10 @@
                                 <md-tab-label>材料</md-tab-label>
                                 <md-tab-body>
                                     <md-content class="ingredients-section-content"
-                                            ng-bind-html="item.ingredients">
+                                                ng-bind-html="item.ingredients">
                                     </md-content>
                                     <div class="ingredients-section"
-                                            ng-bind-html="item.ingredients">
+                                         ng-bind-html="item.ingredients">
                                     </div>
                                 </md-tab-body>
                             </md-tab>
@@ -115,7 +103,8 @@
                         <div class="price">${{item.price}}</div>
                     </div>
                     <div class="quantity-selector">
-                        <md-button md-theme='redThemeBtn' class="minus-icon md-fab md-primary md-mini" aria-label="Remove"
+                        <md-button md-theme='redThemeBtn' class="minus-icon md-fab md-primary md-mini"
+                                   aria-label="Remove"
                                    ng-click="decrement(item.order)"
                                    ng-disabled="item.order.quantity === 0">
                             <md-icon md-svg-src="assets/icons/ic_remove_48px.svg"></md-icon>
@@ -123,57 +112,89 @@
                         <div class="amount">
                             {{item.order.quantity}}
                         </div>
-                        <md-button md-theme='greenThemeBtn' class="plus-icon md-fab md-mini md-primary" aria-label="Plus"
+                        <md-button md-theme='greenThemeBtn' class="plus-icon md-fab md-mini md-primary"
+                                   aria-label="Plus"
                                    ng-click="increment(item.order)">
                             <md-icon md-svg-src="assets/icons/ic_add_48px.svg"></md-icon>
                         </md-button>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <div class="food-items">
-            <row class="checkout-area">
-                <div class="col-md-6">
-                    <h3>你的订单(includes tax)</h3>
-                    <p class="text-muted"
-                       ng-show="order.length === 0">暂无选项</p>
-                    <ul class="list-group">
-                        <li class="list-group-item"
-                            ng-repeat="item in order">
-                            <p>
-                                <span class="pull-left">{{item.order.quantity}}x {{item.name}}</span>
-                                <span class="text-muted pull-right">${{item.order.cost()}}</span></p>
-                        </li>
-                    </ul>
-                    <h4 ng-hide="order.length === 0">Total: ${{orderTotal(order)}}</h4>
+    </row>
+
+    <div class="menu-area">
+        <row class="checkout-area">
+            <div class="col-md-6">
+                <h3>你的订单(includes tax)</h3>
+
+                <div class="text-muted"
+                     ng-hide="order.length === 0">
+                    <h5>学校： {{selectedLocation.school}}</h5>
+                    <h5>取餐地点： {{selectedLocation.pickupLocation}}</h5>
+                    <h5>取餐时间： {{defaultPickupTime}}</h5>
                 </div>
-                <div class="col-md-6">
-                    <h3>确定下单</h3>
-                    <h5 class='text-muted'>取餐时间、地点：12:45-13:15 于 {{selectedLocation.pickupLocation}}</h5>
-                    <row class="phone">
-                        <div class="input-group">
-                                <input
-                                    class="form-control"
-                                    type="text"
-                                    placeholder="e.g. 6478321234"
-                                    ng-model="phoneNumber"
-                                    ng-disabled="order.length === 0 || isCountingDown()"/>
+                <p class="text-muted"
+                   ng-show="order.length === 0">暂无选项</p>
+                <ul class="list-group">
+                    <li class="list-group-item"
+                        ng-repeat="item in order">
+                        <p>
+                            <span class="pull-left">{{item.order.quantity}}x {{item.name}}</span>
+                            <span class="text-muted pull-right">${{item.order.cost()}}</span></p>
+                    </li>
+                </ul>
+                <h4 ng-hide="order.length === 0">Total: ${{orderTotal(order)}}</h4>
+            </div>
+            <div class="col-md-6">
+                <h3>确定下单</h3>
+                <h5 class='text-danger'
+                    ng-show="!selectedLocation">请选择你的学校</h5>
+                <row class="phone">
+                    <div class="input-group">
+                        <input
+                                class="form-control"
+                                type="text"
+                                placeholder="e.g. 6478321234"
+                                ng-model="phoneNumber"
+                                ng-disabled="order.length === 0 || !selectedLocation || isCountingDown()"/>
                                 <span class="input-group-btn">
                                     <button
                                             class="btn btn-success"
                                             type="button"
                                             ng-click="makeOrder(phoneNumber, order, selectedLocation)"
-                                            ng-disabled="order.length === 0 || isCountingDown()">{{inputPlaceHolder()}}</button>
+                                            ng-disabled="order.length === 0 || !selectedLocation || isCountingDown()">
+                                        {{inputPlaceHolder()}}
+                                    </button>
                                 </span>
 
-                        </div>
-                        <p class="text-muted order-subtext">
-                            按下单后，我们会发一个短信给你，请回复 OK 确定下单。
-                        </p>
-                    </row>
-                </div>
-            </row>
-        </div>
+                    </div>
+                    <p class="text-muted order-subtext">
+                        按下单后，我们会发一个短信给你，请回复 OK 确定下单。
+                    </p>
+                </row>
+            </div>
+        </row>
     </div>
 </div>
+<footer>
+    <div class="company-intro">
+        <ul>
+            <li>公司简介:</li>
+            <li><b>UFAN</b>, 热爱生活, 热爱时尚, 不爱千遍一律;</li>
+            <li><b>UFAN</b>, 要美食, 要玩乐, 不要辘辘饥肠；</li>
+            <li><b>UFAN</b>, 不是街边餐馆, 不是家庭厨房, 更不是垃圾食物;</li>
+            <li><b>UFAN</b>, 用心做好每一份盒饭。</li>
+        </ul>
+    </div>
+
+    <div class="company-contact">
+        <ul>
+            <li>公司联系方式:</li>
+            <li>电话：905-597-0143</li>
+            <li>地址：300 John St，Toronto, ON M5T 1X5</li>
+        </ul>
+    </div>
+</footer>

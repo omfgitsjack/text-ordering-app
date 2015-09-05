@@ -23,6 +23,7 @@
         $scope.decrement = decrement;
 
         // Configuration for List of Schools
+        $scope.defaultPickupTime = "12:45-13:15";
         $scope.selectedLocation = undefined;
         $scope.selectLocation = selectLocation;
         $scope.resetSelectedLocation = resetSelectedLocation;

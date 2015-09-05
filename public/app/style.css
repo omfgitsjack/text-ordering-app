@@ -34,10 +34,108 @@ body {
     margin-bottom: 20px;
 }
 
-#phone-number {
+
+.main-header{
+    height:160px;
+    width: 100%;
+    padding-left: 9%;
+    padding-right: 9%;
+    display: block;
+}
+
+.logo-section{
+    height: 160px;
+    width: 320px;
+    display: block;
+}
+
+.logo{
+    height: 160px;
+    width: 320px;
+}
+
+.email{
+    font-size: 1.8em;
+    color: black;
+    text-align: center;
+    padding-top: 35px;
+    margin-bottom: 1.3em;
+}
+
+.instructions-box{
+    height: 280px;
+    width: 350px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 10;
+    opacity: 0.9;
+    margin-top: -30%;
+    margin-bottom: 12%;
+}
+
+.title{
+    padding-top: 7%;
+    text-align: center;
+}
+
+.instructions-images{
+    float: left;
+    width: 75px;
+    height: 200px;
+    text-align: center;
+}
+
+.instructions-image{
+    margin-top: 20px;
+    height: 40px;
+}
+
+.instructions-text{
+    float: left;
+    width: 260px;
+    height: 200px;
+}
+
+.instructions-text>p{
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.backdrop > img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    max-width: 716.77px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+footer > * li {
+    list-style:none;
+}
+
+.company-intro{
+    float: left;
+}
+
+.company-intro > ul {
     padding-left: 0;
 }
 
-#submit-button {
+.company-contact{
+    float: right;
+}
+
+.company-contact>ul>li:first-child{
+    margin-top: 30px;
+}
+
+.company-contact>ul{
     padding-right: 0;
+    text-align: right;
 }

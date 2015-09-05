@@ -11,11 +11,11 @@ class LocationsTableSeeder extends Seeder {
 
 		$locations = [
 			[
-				"school" => "University of Toronto",
+				"school" => "UTSC",
 				"pickupLocation" => "Bus loop"
 			],
 			[
-				"school" => "University of Waterloo",
+				"school" => "UTSG",
 				"pickupLocation" => "Convenient store"
 			],
 			[
