@@ -1,9 +1,5 @@
-<div>
-    <div class="main-header">
-        <div class="logo-section">
-            <img src="images/logo.png" class="logo">
-        </div>
-    </div>
+<div class="logo-header">
+    <img src="images/logo.png" class="logo">
 </div>
 <div ng-hide="shopStatus.is_open">
     <div class="title-area">
@@ -22,7 +18,8 @@
 
     <row class="menu-area">
         <div class="col-xs-3 location-sidebar-area">
-            <div class="btn-group-vertical location-sidebar">
+            <div class="btn-group-vertical location-sidebar"
+                 sticky offset="100" stick-limit="true">
 
                 <label class="btn btn-default"
                        ng-repeat="location in locations"
@@ -120,46 +117,40 @@
                     </div>
                 </div>
             </div>
+            <row class="checkout-area">
+                <div class="col-md-6">
+                    <h3>你的订单(includes tax)</h3>
 
-        </div>
-
-    </row>
-
-    <div class="menu-area">
-        <row class="checkout-area">
-            <div class="col-md-6">
-                <h3>你的订单(includes tax)</h3>
-
-                <div class="text-muted"
-                     ng-hide="order.length === 0">
-                    <h5>学校： {{selectedLocation.school}}</h5>
-                    <h5>取餐地点： {{selectedLocation.pickupLocation}}</h5>
-                    <h5>取餐时间： {{defaultPickupTime}}</h5>
+                    <div class="text-muted"
+                         ng-hide="order.length === 0">
+                        <h5>学校： {{selectedLocation.school}}</h5>
+                        <h5>取餐地点： {{selectedLocation.pickupLocation}}</h5>
+                        <h5>取餐时间： {{defaultPickupTime}}</h5>
+                    </div>
+                    <p class="text-muted"
+                       ng-show="order.length === 0">暂无选项</p>
+                    <ul class="list-group">
+                        <li class="list-group-item"
+                            ng-repeat="item in order">
+                            <p>
+                                <span class="pull-left">{{item.order.quantity}}x {{item.name}}</span>
+                                <span class="text-muted pull-right">${{item.order.cost()}}</span></p>
+                        </li>
+                    </ul>
+                    <h4 ng-hide="order.length === 0">Total: ${{orderTotal(order)}}</h4>
                 </div>
-                <p class="text-muted"
-                   ng-show="order.length === 0">暂无选项</p>
-                <ul class="list-group">
-                    <li class="list-group-item"
-                        ng-repeat="item in order">
-                        <p>
-                            <span class="pull-left">{{item.order.quantity}}x {{item.name}}</span>
-                            <span class="text-muted pull-right">${{item.order.cost()}}</span></p>
-                    </li>
-                </ul>
-                <h4 ng-hide="order.length === 0">Total: ${{orderTotal(order)}}</h4>
-            </div>
-            <div class="col-md-6">
-                <h3>确定下单</h3>
-                <h5 class='text-danger'
-                    ng-show="!selectedLocation">请选择你的学校</h5>
-                <row class="phone">
-                    <div class="input-group">
-                        <input
-                                class="form-control"
-                                type="text"
-                                placeholder="e.g. 6478321234"
-                                ng-model="phoneNumber"
-                                ng-disabled="order.length === 0 || !selectedLocation || isCountingDown()"/>
+                <div class="col-md-6">
+                    <h3>确定下单</h3>
+                    <h5 class='text-danger'
+                        ng-show="!selectedLocation">请选择你的学校</h5>
+                    <row class="phone">
+                        <div class="input-group">
+                            <input
+                                    class="form-control"
+                                    type="text"
+                                    placeholder="e.g. 6478321234"
+                                    ng-model="phoneNumber"
+                                    ng-disabled="order.length === 0 || !selectedLocation || isCountingDown()"/>
                                 <span class="input-group-btn">
                                     <button
                                             class="btn btn-success"
@@ -170,31 +161,35 @@
                                     </button>
                                 </span>
 
-                    </div>
-                    <p class="text-muted order-subtext">
-                        按下单后，我们会发一个短信给你，请回复 OK 确定下单。
-                    </p>
-                </row>
-            </div>
-        </row>
-    </div>
+                        </div>
+                        <p class="text-muted order-subtext">
+                            按下单后，我们会发一个短信给你，请回复 OK 确定下单。
+                        </p>
+                    </row>
+                </div>
+            </row>
+        </div>
+
+    </row>
+
 </div>
 <footer>
-    <div class="company-intro">
-        <ul>
-            <li>公司简介:</li>
-            <li><b>UFAN</b>, 热爱生活, 热爱时尚, 不爱千遍一律;</li>
-            <li><b>UFAN</b>, 要美食, 要玩乐, 不要辘辘饥肠；</li>
-            <li><b>UFAN</b>, 不是街边餐馆, 不是家庭厨房, 更不是垃圾食物;</li>
-            <li><b>UFAN</b>, 用心做好每一份盒饭。</li>
-        </ul>
-    </div>
-
-    <div class="company-contact">
-        <ul>
-            <li>公司联系方式:</li>
-            <li>电话：905-597-0143</li>
-            <li>地址：300 John St，Toronto, ON M5T 1X5</li>
-        </ul>
-    </div>
+    <row class="menu-area footer-area">
+        <div class="col-md-6 company-intro">
+            <ul>
+                <li>公司简介:</li>
+                <li><b>UFAN</b>, 热爱生活, 热爱时尚, 不爱千遍一律;</li>
+                <li><b>UFAN</b>, 要美食, 要玩乐, 不要辘辘饥肠；</li>
+                <li><b>UFAN</b>, 不是街边餐馆, 不是家庭厨房, 更不是垃圾食物;</li>
+                <li><b>UFAN</b>, 用心做好每一份盒饭。</li>
+            </ul>
+        </div>
+        <div class="col-md-6 company-contact">
+            <ul>
+                <li>公司联系方式:</li>
+                <li>电话：905-597-0143</li>
+                <li>地址：300 John St，Toronto, ON M5T 1X5</li>
+            </ul>
+        </div>
+    </row>
 </footer>

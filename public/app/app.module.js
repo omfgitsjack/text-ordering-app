@@ -8,6 +8,7 @@
             // Third party dependencies
             'ui.bootstrap',
             'ngMaterial',
+            'sticky',
 
             // App dependencies
             'app.menu',

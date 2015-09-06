@@ -34,23 +34,12 @@ body {
     margin-bottom: 20px;
 }
 
-
-.main-header{
-    height:160px;
-    width: 100%;
-    padding-left: 9%;
-    padding-right: 9%;
-    display: block;
-}
-
-.logo-section{
-    height: 160px;
-    width: 320px;
-    display: block;
+.logo-header {
+    margin: 0 auto;
+    text-align: center;
 }
 
 .logo{
-    height: 160px;
     width: 320px;
 }
 
@@ -108,16 +97,12 @@ body {
     height: auto;
 }
 
-footer {
-    max-width: 716.77px;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 50px;
-}
-
 footer > * li {
     list-style:none;
 }
+
+
+
 
 .company-intro{
     float: left;
