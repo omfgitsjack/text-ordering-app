@@ -76,7 +76,7 @@ class AuthenticateController extends Controller {
             $this->twilioClient->account->messages->sendMessage(
                 $_SERVER['TWILIO_PHONE_NUMBER'],
                 $number,
-                "优厨房已收到你的订单: \n" .
+                $_SERVER['STORE_NAME'] . "已收到你的订单: \n" .
                 "订单号码: " . $authRecord->id . "\n" .
                 "付款方式: " . $paymentType . "\n" .
                 "你的午餐: \n" . $this->generateReceipt($savedOrders) .
@@ -122,7 +122,7 @@ class AuthenticateController extends Controller {
             $this->twilioClient->account->messages->sendMessage(
                 $_SERVER['TWILIO_PHONE_NUMBER'],
                 $auth->phone,
-                "不好意思, 您没有在规定时间内回复'OK',订单已取消。请回ucafe.ca再次下单:)"
+                "不好意思, 您没有在规定时间内回复'OK',订单已取消。请回" . $_SERVER['SITE_URL'] . "再次下单:)"
             );
         }
 

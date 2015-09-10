@@ -42,7 +42,6 @@ Route::post('api/twilio', function() {
 
 	$auth = Authentication::where('phone', Input::get('From'))->orderBy('id', 'desc')->first();
 	$twiml = new Services_Twilio_Twiml();
-	$WECHATACC = 'ucafe_ca';
 
 	$responseString = strtolower(Input::get('Body'));
 
@@ -53,13 +52,14 @@ Route::post('api/twilio', function() {
 			$auth->paid = false;
 			$auth->save();
 
-			$msg = '订单已确认, 您的午饭会 12:45-13:15PM 到达 :) 如果想联络我们的话，请发短信给我们的微信：' . $WECHATACC;
+			$msg = '订单已确认, 您的午饭会 12:45-13:15PM 到达 :) 如果想联络我们的话，请发短信给我们的微信：' . $_SERVER['WECHAT_ACC'];
 		} else {
 			// Reject
-			$msg = "不好意思， 您没有在规定时间内回复'OK'. 您的订单没有成功录入我们的系统， 请回到ucafe.ca从新订单并收到短信后立即回复”ok” ：)";
+			$msg = "不好意思， 您没有在规定时间内回复'OK'. 您的订单没有成功录入我们的系统， 请回到"
+				. $_SERVER['SITE_URL'] . "从新订单并收到短信后立即回复”ok” ：)";
 		}
 	} else {
-			$msg = 	"想订单的话，请前往ucafe.ca.\n" .
+			$msg = 	"想订单的话，请前往" . $_SERVER['SITE_URL'] . ".\n" .
 	 						"如果想联络我们或取消订单的话，请发短信给我们的微信：" . $WECHATACC;
 	}
 
