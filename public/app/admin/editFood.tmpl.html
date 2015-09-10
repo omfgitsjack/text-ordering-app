@@ -28,6 +28,14 @@
           Spicy
         </md-checkbox>
       </md-input-container>
+      <md-input-container>
+        <label>Price (Pre-tax)</label>
+        <input ng-model="item.price">
+      </md-input-container>
+      <md-input-container>
+        <label>Price (After-tax)</label>
+        <input ng-model="item.taxedprice">
+      </md-input-container>
     </div>
   </md-dialog-content>
   <div class="md-actions" layout="row">
