@@ -29,6 +29,7 @@ Route::get('api/location', 'LocationsController@index');
 
 Route::get('api/locationaccount', 'LocationAccountsController@index');
 Route::post('api/locationaccount', 'LocationAccountsController@create');
+Route::put('api/locationaccount', 'LocationAccountsController@store');
 Route::post('api/locationaccount/auth', 'LocationAccountsController@auth');
  
 Route::post('api/login', 'LoginController@login');

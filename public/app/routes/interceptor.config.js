@@ -36,7 +36,7 @@
   function displayLoginModal(mdDialog, state, toState) {
     mdDialog.show({
       controller: 'adminLoginController',
-      templateUrl: 'app/admin-login/location-login.tmpl.html',
+      templateUrl: 'app/admin-login/admin-login.tmpl.html',
       parent: angular.element(document.body)
     }).then(function(res) {
       state.go(toState);

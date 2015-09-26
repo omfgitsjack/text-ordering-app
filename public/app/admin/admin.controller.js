@@ -33,11 +33,15 @@
 
         $scope.goToFood = function() {
             $state.go('admin.food');
-        }
+        };
+
+        $scope.goToLocations = function() {
+            $state.go('admin.locations');
+        };
 
         $scope.changeStoreStatus = function() {
             // Dont do anything.
-        }
+        };
 
         // Initialize ShopService
         ShopService

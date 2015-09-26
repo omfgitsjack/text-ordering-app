@@ -70,7 +70,7 @@
                     }
                 }
             }
-        }
+        };
 
         $scope.tempModel = true;
 

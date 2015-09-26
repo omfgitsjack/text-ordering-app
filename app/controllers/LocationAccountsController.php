@@ -10,7 +10,16 @@ class LocationAccountsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::json(LocationAccount::get());
+		$locations = [];
+		$locationAccounts = LocationAccount::get();
+
+		foreach ($locationAccounts as $account) {
+			$school = Location::where("id", "=", $account->location_id)->first();
+
+			$locations[] = $this->buildFullLocation($school, $account);
+		}
+
+		return Response::json($locations);
 	}
 
 	public function auth()
@@ -47,11 +56,29 @@ class LocationAccountsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return LocationAccount::create([
+		$location = Location::create([
+			"pickupLocation" => Input::get("pickupLocation"),
+			"school" => Input::get("school")
+		]);
+
+		$locationAccount = LocationAccount::create([
 			"username" => Input::get("username"),
 			"password" => Input::get("password"),
-			"location_id" => Input::get("location_id"),
+			"location_id" => $location->id,
 		]);
+
+		return $this->buildFullLocation($location, $locationAccount);
+	}
+
+	private function buildFullLocation($school, $account) {
+		return [
+			"location_id" => $school->id,
+			"school" => $school->pickupLocation,
+			"pickupLocation" => $school->pickupLocation,
+			"location_account_id" => $account->id,
+			"username" => $account->username,
+			"password" => $account->password
+		];
 	}
 
 	/**
@@ -62,7 +89,19 @@ class LocationAccountsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$location = Location::where("id", '=', Input::get("location_id"))->firstOrFail();
+		$account = LocationAccount::where("id", "=", Input::get("location_account_id"))->firstOrFail();
+
+		$location->pickupLocation = Input::get("pickupLocation");
+		$location->school = Input::get("school");
+
+		$account->username = Input::get("username");
+		$account->password = Input::get("password");
+
+		$location->save();
+		$account->save();
+
+		return $this->buildFullLocation($location, $account);
 	}
 
 	/**

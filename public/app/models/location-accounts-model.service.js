@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('app.models')
-        .service('LocationAccountsService', function($http) {
+        .service('LocationAccountService', function($http) {
             return {
                 items: [],
                 auth: function(username, password) {
@@ -15,6 +15,18 @@
                     .success(function(res) {
                         return res;
                     });
+                },
+                get: function() {
+                    return $http.get('api/locationaccount')
+                        .then(function(res) {
+                            return res.data;
+                        });
+                },
+                create: function(location) {
+                    return $http.post('api/locationaccount', location);
+                },
+                update: function(location) {
+                    return $http.put('api/locationaccount', location);
                 }
             }
         });
