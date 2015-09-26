@@ -19,12 +19,18 @@ Route::get('/', function()
 	//return View::make('ucafe');
 });
 
-Route::get('api/location', 'LocationsController@index');
 
 Route::get('api/food', 'FoodsController@index');
 Route::put('api/food', 'FoodsController@update');
 Route::get('api/food/all', 'FoodsController@indexAll');
 
+Route::get('api/location', 'LocationsController@index');
+
+
+Route::get('api/locationaccount', 'LocationAccountsController@index');
+Route::post('api/locationaccount', 'LocationAccountsController@create');
+Route::post('api/locationaccount/auth', 'LocationAccountsController@auth');
+ 
 Route::post('api/login', 'LoginController@login');
 
 Route::post('api/authenticate', 'AuthenticateController@sendAuthToken');

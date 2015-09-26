@@ -12,6 +12,7 @@
 
             // App dependencies
             'app.menu',
+            'app.location-login',
             'app.admin-login',
             'app.admin',
             'app.completeMenu',

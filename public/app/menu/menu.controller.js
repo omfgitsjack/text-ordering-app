@@ -11,12 +11,15 @@
         .controller('menuController', menuController);
 
     function menuController($scope, $timeout, DateTimeService, OrderService,
-                            shopStatusResolve, foodResolve, locationResolve) {
+                            shopStatusResolve, foodResolve, locationResolve, $mdDialog) {
 
         // Set Shop Status & food items for sale
         $scope.shopStatus = shopStatusResolve.data;
         $scope.food = foodResolve.data;
         $scope.locations = locationResolve.data;
+
+        // Location prompter
+        $scope.promptLocation = promptLocation;
 
         // Configuration for food items
         $scope.increment = increment;
@@ -55,6 +58,18 @@
             if (now.isAfter(deadline, 'minute')) {
                 toastr.warning('All orders made from this point on will be for ' + $scope.tomorrowDay);
             }
+        }
+
+        function promptLocation() {
+            $mdDialog.show({
+                controller: 'locationLoginController',
+                templateUrl: 'app/location-login/location-login.tmpl.html',
+                parent: angular.element(document.body)
+            }).then(function(res) {
+                if (res.success) {
+                    $scope.selectedLocation = res.location;
+                }
+            });
         }
 
         // Increment items being ordered by 1.

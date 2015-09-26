@@ -1,12 +1,18 @@
-<md-dialog aria-label="Admin Password" md-theme="redThemeBtn">
+<md-dialog aria-label="FUN VIP Login" md-theme="redThemeBtn">
   <form>
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <h2>Admin Password</h2>
+      <h2>VIP Login</h2>
       <span flex></span>
     </div>
   </md-toolbar>
   <md-dialog-content>
+    <div>
+      <md-input-container>
+        <label>Username</label>
+        <input type="text" ng-model="username">
+      </md-input-container>
+    </div>
     <div>
       <md-input-container>
         <label>Password</label>
@@ -16,7 +22,10 @@
   </md-dialog-content>
   <div class="md-actions" layout="row">
     <span flex></span>
-    <md-button ng-click="login(password)" class="md-primary" md-autofocus>
+    <md-button ng-click="cancel()" >
+      Cancel
+    </md-button>
+    <md-button ng-click="login(username, password)" class="md-primary" md-autofocus>
       Login
     </md-button>
   </div>
