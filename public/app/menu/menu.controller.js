@@ -139,7 +139,7 @@
                     };
                     countDown(ORDER_TIMEOUT);
                 });
-        };
+        }
     }
 
 })();

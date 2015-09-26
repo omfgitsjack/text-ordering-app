@@ -12,8 +12,17 @@
         $urlRouterProvider.otherwise('/menu');
 
         $stateProvider
-            .state('menu', {
-                url: "/menu",
+            .state('app', {
+                abstract: true,
+                url: "/",
+                templateUrl: 'app/app.html',
+                controller: 'appController',
+                data: {
+                    requireLogin: false
+                }
+            })
+            .state('app.menu', {
+                url: "menu",
                 templateUrl: 'app/menu/menu.html',
                 controller: 'menuController',
                 resolve: {
@@ -45,8 +54,8 @@
                     requireLogin: false
                 }
             })
-            .state('completeMenu', {
-                url: "/complete_menu",
+            .state('app.completeMenu', {
+                url: "complete_menu",
                 templateUrl: 'app/complete_menu/complete_menu.html',
                 controller: 'completeMenuController',
                 data: {
