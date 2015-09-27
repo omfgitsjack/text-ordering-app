@@ -60,6 +60,39 @@
             }
         };
 
+        $scope.createNew = function () {
+            $mdDialog.show({
+                controller: DialogController,
+                templateUrl: 'app/admin/editLocation.tmpl.html',
+                parent: angular.element(document.body),
+                locals: {
+                    item: {}
+                }
+            })
+            .then(function (newItem) {
+                // Hardcoding the way we update the new item.
+
+                var loc = $scope.locationAccountService
+                    .create(newItem)
+                    .then(function(res) {
+                        toastr.success("Created School");
+                    });
+                $scope.locations.push(newItem);
+            }, function () {
+                $scope.alert = 'You cancelled the dialog.';
+            });
+
+            function DialogController($scope, $mdDialog, item) {
+                $scope.item = item;
+                $scope.closeDialog = function (item) {
+                    $mdDialog.hide(item);
+                };
+                $scope.cancelDialog = function () {
+                    $mdDialog.cancel('canceled');
+                };
+            }
+        };
+
         me.init();
     }
 
