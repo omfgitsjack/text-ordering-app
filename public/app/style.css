@@ -116,10 +116,6 @@ footer > * li {
     float: right;
 }
 
-.company-contact>ul>li:first-child{
-    margin-top: 30px;
-}
-
 .company-contact>ul{
     padding-right: 0;
     text-align: right;

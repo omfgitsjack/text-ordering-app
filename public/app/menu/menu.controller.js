@@ -64,7 +64,8 @@
             $mdDialog.show({
                 controller: 'locationLoginController',
                 templateUrl: 'app/location-login/location-login.tmpl.html',
-                parent: angular.element(document.body)
+                parent: angular.element(document.body),
+                clickOutsideToClose: true
             }).then(function(res) {
                 if (res.success) {
                     $scope.selectedLocation = res.location;

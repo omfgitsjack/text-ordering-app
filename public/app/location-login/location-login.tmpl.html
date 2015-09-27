@@ -10,7 +10,7 @@
     <div>
       <md-input-container>
         <label>Username</label>
-        <input type="text" ng-model="username">
+        <input type="text" ng-model="username" md-autofocus>
       </md-input-container>
     </div>
     <div>
@@ -22,10 +22,7 @@
   </md-dialog-content>
   <div class="md-actions" layout="row">
     <span flex></span>
-    <md-button ng-click="cancel()" >
-      Cancel
-    </md-button>
-    <md-button ng-click="login(username, password)" class="md-primary" md-autofocus>
+    <md-button ng-click="login(username, password)" class="md-primary">
       Login
     </md-button>
   </div>
